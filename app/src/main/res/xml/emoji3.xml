@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:horizontalGap="1%p"
+    android:keyWidth="9.1%p"
+    android:keyHeight="@dimen/key_height"
+    android:verticalGap="1%p">
+    <Row
+        android:horizontalGap="1%p"
+        android:keyWidth="8.9%p"
+        android:keyHeight="@dimen/key_height"
+        android:rowEdgeFlags="top"
+        android:verticalGap="3%p">
+        <Key
+            android:codes="-300"
+            android:keyEdgeFlags="left"
+            android:keyIcon="@mipmap/a11" />
+        <Key
+            android:codes="-302"
+            android:keyIcon="@mipmap/emoji_1f63b" />
+        <Key
+            android:codes="-303"
+            android:keyIcon="@mipmap/emoji_1f352" />
+        <Key
+            android:codes="-304"
+            android:keyIcon="@mipmap/emoji_1f370" />
+        <Key
+            android:codes="-305"
+            android:keyIcon="@mipmap/emoji_1f406" />
+        <Key
+            android:codes="-306"
+            android:keyIcon="@mipmap/emoji_1f42f" />
+        <Key
+            android:codes="-307"
+            android:keyIcon="@mipmap/emoji_26bd" />
+        <Key
+            android:codes="-308"
+            android:keyIcon="@mipmap/emoji_1f45a" />
+        <Key
+            android:codes="-309"
+            android:keyIcon="@mipmap/emoji_231a" />
+        <Key
+            android:codes="-310"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@mipmap/emoji_1f3e1" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="127813"
+            android:keyWidth="8.9%p"
+            android:keyEdgeFlags="left"
+            android:keyIcon="@mipmap/emoji_1f345" />
+        <Key
+            android:codes="127814"
+            android:keyWidth="8.9%p"
+            android:keyIcon="@mipmap/emoji_1f346" />
+        <Key
+            android:codes="127815"
+            android:keyWidth="8.9%p"
+            android:keyIcon="@mipmap/emoji_1f347" />
+        <Key
+            android:codes="127816"
+            android:keyWidth="8.9%p"
+            android:keyIcon="@mipmap/emoji_1f348" />
+        <Key
+            android:codes="127817"
+            android:keyWidth="8.9%p"
+            android:keyIcon="@mipmap/emoji_1f349" />
+        <Key
+            android:codes="127858"
+            android:keyWidth="8.9%p"
+            android:keyIcon="@mipmap/emoji_1f372" />
+        <Key
+            android:codes="127819"
+            android:keyWidth="8.9%p"
+            android:keyIcon="@mipmap/emoji_1f351" />
+        <Key
+            android:codes="127859"
+            android:keyWidth="8.9%p"
+            android:keyIcon="@mipmap/emoji_1f373" />
+        <Key
+            android:codes="127860"
+            android:keyWidth="8.9%p"
+            android:keyIcon="@mipmap/emoji_1f374" />
+        <Key
+            android:codes="127864"
+            android:keyWidth="8.9%p"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@mipmap/emoji_1f378" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="127863"
+            android:horizontalGap="5%p"
+            android:keyEdgeFlags="left"
+            android:keyIcon="@mipmap/emoji_1f377" />
+        <Key
+            android:codes="127865"
+            android:keyIcon="@mipmap/emoji_1f379" />
+        <Key
+            android:codes="127831"
+            android:keyIcon="@mipmap/emoji_1f357" />
+        <Key
+            android:codes="127832"
+            android:keyIcon="@mipmap/emoji_1f358" />
+        <Key
+            android:codes="127833"
+            android:keyIcon="@mipmap/emoji_1f359" />
+        <Key
+            android:codes="127834"
+            android:keyIcon="@mipmap/emoji_1f360" />
+        <Key
+            android:codes="127836"
+            android:keyIcon="@mipmap/emoji_1f362" />
+        <Key
+            android:codes="127837"
+            android:keyIcon="@mipmap/emoji_1f363" />
+        <Key
+            android:codes="127844"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@mipmap/emoji_1f364" />
+    </Row>
+    <Row
+        android:horizontalGap="1.2%p"
+        android:keyWidth="9.3%p">
+        <Key
+            android:codes="127845"
+            android:keyEdgeFlags="left"
+            android:keyIcon="@mipmap/emoji_1f365" />
+        <Key
+            android:codes="127846"
+            android:keyIcon="@mipmap/emoji_1f366" />
+        <Key
+            android:codes="127847"
+            android:keyIcon="@mipmap/emoji_1f367" />
+        <Key
+            android:codes="127848"
+            android:keyIcon="@mipmap/emoji_1f368" />
+        <Key
+            android:codes="127849"
+            android:keyIcon="@mipmap/emoji_1f369" />
+        <Key
+            android:codes="127850"
+            android:keyIcon="@mipmap/emoji_1f370" />
+        <Key
+            android:codes="127851"
+            android:keyIcon="@mipmap/emoji_1f371" />
+        <Key
+            android:codes="127874"
+            android:keyIcon="@mipmap/emoji_1f382" />
+        <Key
+            android:codes="-5"
+            android:isRepeatable="true"
+            android:keyWidth="14%p"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@drawable/ic_baseline_backspace_24" />
+    </Row>
+    <Row>
+        <Key android:codes="-200" android:keyEdgeFlags="left" android:keyLabel="123"/>
+        <Key android:codes="-17" android:keyIcon="@drawable/ic_theme_key"/>
+        <Key android:keyWidth="12%p" android:codes="-15" android:keyLabel="@string/eng_ime"/>
+        <Key android:keyWidth="43%p" android:codes="32" android:keyLabel="space"/>
+        <Key android:codes="46" android:keyLabel="."/>
+        <Key android:keyWidth="13%p" android:codes="10" android:keyEdgeFlags="right" android:keyIcon="@drawable/ic_enter"/>
+    </Row>
+</Keyboard>

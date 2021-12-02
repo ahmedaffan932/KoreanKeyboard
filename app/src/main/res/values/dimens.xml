@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_padding">8sp</dimen>
+    <dimen name="extra_padding">16sp</dimen>
+    <dimen name="double_extra_padding">64sp</dimen>
+    <dimen name="padding">8sp</dimen>
+    <dimen name="less_padding">5sp</dimen>
+
+    <dimen name="key_height">50dip</dimen>
+    <dimen name="candidate_font_height">16sp</dimen>
+    <dimen name="candidate_vertical_padding">6sp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+</resources>

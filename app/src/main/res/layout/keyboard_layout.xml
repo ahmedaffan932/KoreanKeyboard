@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.koreankeyboard.views.CustomKeyboardView
+    android:background="@color/black"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:alpha="1"
+    android:paddingTop="4dp"
+    android:inputType="text"
+    android:keyTextSize="20sp"
+    android:keyTextColor="#fff"
+    android:keyPreviewOffset="0dp"
+    android:adjustViewBounds="true"
+    android:imeOptions="actionSearch"
+    android:layout_centerHorizontal="true"
+    android:focusable="true"
+    android:elevation="@dimen/extra_padding"
+    android:focusableInTouchMode="true"
+    style="@style/keyboard_on_press_theme" />

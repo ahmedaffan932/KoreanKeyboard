@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/ime_name_preferences">
+
+    <PreferenceCategory android:title="@string/general">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefPrediction"
+            android:summary="@string/show_prediction"
+            android:title="@string/prediction" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefVibrate"
+            android:summary="@string/vibrate_on_keys"
+            android:title="@string/vibrate" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefSound"
+            android:summary="@string/sound_on_keys"
+            android:title="@string/sound" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

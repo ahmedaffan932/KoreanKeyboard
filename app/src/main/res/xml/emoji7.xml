@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:keyWidth="9.1%p" android:keyHeight="@dimen/key_height" android:horizontalGap="1%p" android:verticalGap="1%p">
+    <Row android:keyWidth="8.9%p" android:keyHeight="@dimen/key_height" android:horizontalGap="1%p" android:verticalGap="3%p" android:rowEdgeFlags="top">
+        <Key android:codes="-300" android:keyEdgeFlags="left" android:keyIcon="@mipmap/a11"/>
+        <Key android:codes="-302" android:keyIcon="@mipmap/emoji_1f63b"/>
+        <Key android:codes="-303" android:keyIcon="@mipmap/emoji_1f352"/>
+        <Key android:codes="-304" android:keyIcon="@mipmap/emoji_1f370"/>
+        <Key android:codes="-305" android:keyIcon="@mipmap/emoji_1f406"/>
+        <Key android:codes="-306" android:keyIcon="@mipmap/emoji_1f42f"/>
+        <Key android:codes="-307" android:keyIcon="@mipmap/emoji_26bd"/>
+        <Key android:codes="-308" android:keyIcon="@mipmap/emoji_1f45a"/>
+        <Key android:codes="-309" android:keyIcon="@mipmap/emoji_231a"/>
+        <Key android:codes="-310" android:keyEdgeFlags="right" android:keyIcon="@mipmap/emoji_1f3e1"/>
+    </Row>
+    <Row>
+        <Key android:keyWidth="8.9%p" android:codes="128090" android:keyEdgeFlags="left" android:keyIcon="@mipmap/emoji_1f45a"/>
+        <Key android:keyWidth="8.9%p" android:codes="128091" android:keyIcon="@mipmap/emoji_1f45b"/>
+        <Key android:keyWidth="8.9%p" android:codes="128092" android:keyIcon="@mipmap/emoji_1f45c"/>
+        <Key android:keyWidth="8.9%p" android:codes="128093" android:keyIcon="@mipmap/emoji_1f45d"/>
+        <Key android:keyWidth="8.9%p" android:codes="128094" android:keyIcon="@mipmap/emoji_1f45e"/>
+        <Key android:keyWidth="8.9%p" android:codes="128095" android:keyIcon="@mipmap/emoji_1f45f"/>
+        <Key android:keyWidth="8.9%p" android:codes="128139" android:keyIcon="@mipmap/emoji_1f48b"/>
+        <Key android:keyWidth="8.9%p" android:codes="128140" android:keyIcon="@mipmap/emoji_1f48c"/>
+        <Key android:keyWidth="8.9%p" android:codes="128141" android:keyIcon="@mipmap/emoji_1f48d"/>
+        <Key android:keyWidth="8.9%p" android:codes="128142" android:keyEdgeFlags="right" android:keyIcon="@mipmap/emoji_1f48e"/>
+    </Row>
+    <Row>
+        <Key android:horizontalGap="5%p" android:codes="128154" android:keyEdgeFlags="left" android:keyIcon="@mipmap/emoji_1f49a"/>
+        <Key android:codes="128155" android:keyIcon="@mipmap/emoji_1f49b"/>
+        <Key android:codes="128156" android:keyIcon="@mipmap/emoji_1f49c"/>
+        <Key android:codes="128157" android:keyIcon="@mipmap/emoji_1f49d"/>
+        <Key android:codes="128158" android:keyIcon="@mipmap/emoji_1f49e"/>
+        <Key android:codes="128159" android:keyIcon="@mipmap/emoji_1f49f"/>
+        <Key android:codes="128087" android:keyIcon="@mipmap/emoji_1f457"/>
+        <Key android:codes="128088" android:keyIcon="@mipmap/emoji_1f458"/>
+        <Key android:codes="128096" android:keyEdgeFlags="right" android:keyIcon="@mipmap/emoji_1f460"/>
+    </Row>
+    <Row android:keyWidth="9.3%p" android:horizontalGap="1.2%p">
+        <Key android:codes="128132" android:keyEdgeFlags="left" android:keyIcon="@mipmap/emoji_1f484"/>
+        <Key android:codes="128133" android:keyIcon="@mipmap/emoji_1f485"/>
+        <Key android:codes="128148" android:keyIcon="@mipmap/emoji_1f494"/>
+        <Key android:codes="128149" android:keyIcon="@mipmap/emoji_1f495"/>
+        <Key android:codes="128150" android:keyIcon="@mipmap/emoji_1f496"/>
+        <Key android:codes="128152" android:keyIcon="@mipmap/emoji_1f498"/>
+        <Key android:codes="128147" android:keyIcon="@mipmap/emoji_1f493"/>
+        <Key android:codes="10084" android:keyIcon="@mipmap/emoji_2764"/>
+        <Key android:keyWidth="14%p" android:codes="-5" android:keyEdgeFlags="right" android:isRepeatable="true" android:keyIcon="@drawable/ic_baseline_backspace_24"/>
+    </Row>
+    <Row>
+        <Key android:codes="-200" android:keyEdgeFlags="left" android:keyLabel="123"/>
+        <Key android:codes="-17" android:keyIcon="@drawable/ic_theme_key"/>
+        <Key android:keyWidth="12%p" android:codes="-15" android:keyLabel="@string/eng_ime"/>
+        <Key android:keyWidth="43%p" android:codes="32" android:keyLabel="space"/>
+        <Key android:codes="46" android:keyLabel="."/>
+        <Key android:keyWidth="13%p" android:codes="10" android:keyEdgeFlags="right" android:keyIcon="@drawable/ic_enter"/>
+    </Row>
+</Keyboard>

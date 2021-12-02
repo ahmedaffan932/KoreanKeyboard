@@ -1,0 +1,52 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.KeyboardKotlin" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#f5f6fb</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/gray_700</item>
+        <item name="colorSecondaryVariant">@color/orange</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+        <!-- Customize your theme here. -->
+        <item name="buttonTint">?attr/colorSecondaryVariant</item>
+        <item name="colorControlActivated">?attr/colorSecondaryVariant</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!--        <item name="android:ambientShadowAlpha">0.1</item>-->
+        <!--        <item name="android:spotShadowAlpha">0.1</item>-->
+        <!--        <item name="android:shadowColor">@color/yellow</item>-->
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="Candidate" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/candidate_font_height</item>
+        <item name="android:paddingBottom">@dimen/candidate_vertical_padding</item>
+        <item name="android:paddingTop">@dimen/candidate_vertical_padding</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/gray_900</item>
+    </style>
+
+    <style name="keyboard_on_press_theme">
+        <item name="android:keyTextSize">30dp</item>
+        <item name="android:fontFamily">roboto</item>
+        <item name="android:keyBackground">@drawable/key_press_ripple</item>
+        <item name="android:keyTextColor">@android:color/white</item>
+    </style>
+
+</resources>
