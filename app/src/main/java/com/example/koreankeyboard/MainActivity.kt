@@ -45,6 +45,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btnMoreApps.setOnClickListener {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://play.google.com/store/apps/developer?id=app+Logix+Developer")
+            )
+            startActivity(intent)
+        }
+
         btnRateUs.setOnClickListener {
             val p = BuildConfig.APPLICATION_ID
             val uri: Uri = Uri.parse("market://details?id=$p")
@@ -77,65 +85,48 @@ class MainActivity : AppCompatActivity() {
         }
 
         blockView.setOnClickListener {
-//            blockView.visibility = View.GONE
+            blockView.visibility = View.GONE
             clMenu.animate().translationX(-clMenu.width.toFloat())
-            val a: Animation =
-                AnimationUtils.loadAnimation(
-                    this,
-                    R.anim.slide_from_right_to_left
-                )
-            a.fillAfter = true
-            clMain.startAnimation(a)
+            clMain.animate().translationX(0f)
 
-            val a1: Animation =
-            AnimationUtils.loadAnimation(
-                this,
-                R.anim.slide_from_right_to_left_menu
-            )
-            a1.fillAfter = true
-            clMenu.startAnimation(a1)
+//            val a: Animation =
+//                AnimationUtils.loadAnimation(
+//                    this,
+//                    R.anim.slide_from_right_to_left
+//                )
+//            a.fillAfter = true
+//            clMain.startAnimation(a)
             isMenuOpen = false
         }
 
         btnMenu.setOnClickListener {
-//            clMenu.animate().translationX(0f)
+            clMenu.animate().translationX(0f)
+            clMain.animate().translationX(clMenu.width.toFloat())
             blockView.visibility = View.VISIBLE
 
-            val a: Animation =
-                AnimationUtils.loadAnimation(
-                    this,
-                    R.anim.slide_from_left_to_right
-                )
-            a.fillAfter = true
-            clMain.startAnimation(a)
-             val a1: Animation =
-            AnimationUtils.loadAnimation(
-                this,
-                R.anim.slide_from_left_to_right_menu
-            )
-            a1.fillAfter = true
-            clMenu.startAnimation(a1)
-
+//            val a: Animation =
+//                AnimationUtils.loadAnimation(
+//                    this,
+//                    R.anim.slide_from_left_to_right
+//                )
+//            a.fillAfter = true
+//            clMain.startAnimation(a)
             isMenuOpen = true
         }
 
         btnMenuClose.setOnClickListener {
             blockView.visibility = View.GONE
-//            clMenu.animate().translationX(-clMenu.width.toFloat())
-            val a: Animation =
-                AnimationUtils.loadAnimation(
-                    this,
-                    R.anim.slide_from_right_to_left
-                )
-            a.fillAfter = true
-            clMain.startAnimation(a)
-             val a1: Animation =
-            AnimationUtils.loadAnimation(
-                this,
-                R.anim.slide_from_right_to_left_menu
-            )
-            a1.fillAfter = true
-            clMenu.startAnimation(a1)
+            clMenu.animate().translationX(-clMenu.width.toFloat())
+            clMain.animate().translationX(0f)
+
+//            val a: Animation =
+//                AnimationUtils.loadAnimation(
+//                    this,
+//                    R.anim.slide_from_right_to_left
+//                )
+//            a.fillAfter = true
+//            clMain.startAnimation(a)
+
             isMenuOpen = false
         }
 
@@ -165,21 +156,16 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (isMenuOpen) {
             blockView.visibility = View.GONE
-//            clMenu.animate().translationX(-clMenu.width.toFloat())
-            val a: Animation =
-                AnimationUtils.loadAnimation(
-                    this,
-                    R.anim.slide_from_right_to_left
-                )
-            a.fillAfter = true
-            clMain.startAnimation(a)
-             val a1: Animation =
-            AnimationUtils.loadAnimation(
-                this,
-                R.anim.slide_from_right_to_left_menu
-            )
-            a1.fillAfter = true
-            clMenu.startAnimation(a1)
+            clMenu.animate().translationX(-clMenu.width.toFloat())
+            clMain.animate().translationX(0f)
+
+//            val a: Animation =
+//                AnimationUtils.loadAnimation(
+//                    this,
+//                    R.anim.slide_from_right_to_left
+//                )
+//            a.fillAfter = true
+//            clMain.startAnimation(a)
             isMenuOpen = false
         } else {
             super.onBackPressed()

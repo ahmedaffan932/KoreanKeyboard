@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_blur"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -12,8 +12,8 @@
         android:id="@+id/clMenu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:translationX="-290dp"
-        android:background="@color/white"
+        android:background="@drawable/bg_menu"
+        android:translationX="-280dp"
         android:elevation="64dp"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -29,19 +29,17 @@
             app:srcCompat="@drawable/ic_close"
             app:tint="#920417" />
 
-        <ImageView
+        <View
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:layout_height="170dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/menu_bg" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btnEnableKeyBoard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/extra_padding"
             android:layout_marginTop="@dimen/extra_padding"
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toStartOf="@id/imageView"
@@ -68,7 +66,7 @@
                 android:background="@drawable/bg_menu_item"
                 android:gravity="center_vertical"
                 android:text="@string/select_keyboard"
-                android:paddingStart="36dp"
+                android:paddingStart="24dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageVieew"
@@ -77,13 +75,11 @@
                 app:layout_constraintTop_toTopOf="@id/imageVieew"
                 tools:ignore="RtlSymmetry" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btnSelectKeyBoard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/extra_padding"
-            android:layout_marginTop="@dimen/fab_padding"
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@id/btnEnableKeyBoard">
@@ -108,7 +104,7 @@
                 android:layout_marginStart="-32dp"
                 android:gravity="center_vertical"
                 android:text="@string/enable_keyboard"
-                android:paddingStart="36dp"
+                android:paddingStart="24dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageVieo"
@@ -117,13 +113,11 @@
                 app:layout_constraintTop_toTopOf="@id/imageVieo"
                 tools:ignore="RtlSymmetry" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btnRateUs"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/extra_padding"
-            android:layout_marginTop="@dimen/fab_padding"
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@id/btnSelectKeyBoard">
@@ -148,7 +142,7 @@
                 android:layout_marginStart="-32dp"
                 android:gravity="center_vertical"
                 android:text="@string/rate_us"
-                android:paddingStart="36dp"
+                android:paddingStart="24dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageVie"
@@ -162,8 +156,6 @@
             android:id="@+id/btnShareApp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/extra_padding"
-            android:layout_marginTop="@dimen/fab_padding"
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@id/btnRateUs">
@@ -186,7 +178,7 @@
                 android:layout_marginVertical="@dimen/less_padding"
                 android:layout_marginStart="-32dp"
                 android:gravity="center_vertical"
-                android:paddingStart="36dp"
+                android:paddingStart="24dp"
                 android:text="@string/share"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -200,8 +192,6 @@
             android:id="@+id/btnPrivacyPolicy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/extra_padding"
-            android:layout_marginTop="@dimen/fab_padding"
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@id/btnShareApp">
@@ -225,7 +215,7 @@
                 android:layout_marginVertical="@dimen/less_padding"
                 android:layout_marginStart="-32dp"
                 android:text="@string/privacy_policy"
-                android:paddingStart="36dp"
+                android:paddingStart="24dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -236,14 +226,49 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnExit"
+            android:id="@+id/btnMoreApps"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/extra_padding"
-            android:layout_marginTop="@dimen/fab_padding"
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@id/btnPrivacyPolicy">
+
+            <ImageView
+                android:id="@+id/imq"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:elevation="1dp"
+                android:padding="@dimen/extra_padding"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_more_apps"
+                app:tint="@color/black" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/less_padding"
+                android:layout_marginStart="-32dp"
+                android:text="@string/more_keyboards"
+                android:paddingStart="24dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/imq"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imq"
+                app:layout_constraintTop_toTopOf="@id/imq" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnExit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="@id/imageView"
+            app:layout_constraintTop_toBottomOf="@id/btnMoreApps">
 
             <ImageView
                 android:id="@+id/imqw"
@@ -264,7 +289,7 @@
                 android:layout_marginVertical="@dimen/less_padding"
                 android:layout_marginStart="-32dp"
                 android:text="@string/exit"
-                android:paddingStart="36dp"
+                android:paddingStart="24dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:textSize="18sp"

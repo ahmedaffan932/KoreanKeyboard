@@ -1,18 +1,8 @@
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:color="@color/gray_700"
-    tools:targetApi="lollipop">
-    <item android:id="@android:id/mask">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
         <shape android:shape="rectangle">
-            <solid android:color="#00ffffff"/>
-            <corners android:radius="7sp"/>
+            <solid android:color="#00ff00ff"/>
+            <corners android:radius="10sp"/>
         </shape>
     </item>
-    <item
-        android:id="@android:id/background" >
-        <shape android:shape="rectangle">
-            <solid android:color="#00ffffff"/>
-            <corners android:radius="7sp"/>
-        </shape>
-    </item>
-</ripple>
+</layer-list>
