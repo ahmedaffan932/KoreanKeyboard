@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:weightSum="21">
 
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:tag="2"
-            android:src="@drawable/ic_flag_a3" />
+            android:src="@drawable/ic_flag_a3"
+            android:tag="2" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,26 +53,26 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:tag="3"
-            android:src="@drawable/ic_flag_a4" />
+            android:src="@drawable/ic_flag_a4"
+            android:tag="3" />
 
         <ImageView
             android:id="@+id/theme_e"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tag="4"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a5" />
+            android:src="@drawable/ic_flag_a5"
+            android:tag="4" />
 
         <ImageView
             android:id="@+id/theme_f"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tag="5"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a6" />
+            android:src="@drawable/ic_flag_a6"
+            android:tag="5" />
     </LinearLayout>
 
     <LinearLayout
@@ -86,28 +86,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tag="6"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a7" />
+            android:src="@drawable/ic_flag_a7"
+            android:tag="6" />
 
         <ImageView
             android:id="@+id/theme_h"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tag="7"
-            android:padding="@dimen/padding"
             android:focusable="true"
-            android:src="@drawable/ic_flag_a8" />
+            android:padding="@dimen/padding"
+            android:src="@drawable/ic_flag_a8"
+            android:tag="7" />
 
         <ImageView
             android:id="@+id/theme_i"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tag="8"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a9" />
+            android:src="@drawable/ic_flag_a9"
+            android:tag="8" />
     </LinearLayout>
 
     <LinearLayout
@@ -120,10 +120,10 @@
             android:id="@+id/theme_j"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="9"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a10" />
+            android:src="@drawable/ic_flag_a10"
+            android:tag="9" />
 
         <ImageView
             android:id="@+id/theme_k"
@@ -131,8 +131,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:tag="10"
-            android:src="@drawable/ic_flag_a11" />
+            android:src="@drawable/ic_flag_a11"
+            android:tag="10" />
 
         <ImageView
             android:id="@+id/theme_l"
@@ -140,8 +140,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:tag="11"
-            android:src="@drawable/ic_flag_a12" />
+            android:src="@drawable/ic_flag_a12"
+            android:tag="11" />
     </LinearLayout>
 
     <LinearLayout
@@ -155,27 +155,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tag="12"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a13" />
+            android:src="@drawable/ic_flag_a13"
+            android:tag="12" />
 
         <ImageView
             android:id="@+id/theme_n"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="13"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a14" />
+            android:src="@drawable/ic_flag_a14"
+            android:tag="13" />
 
         <ImageView
             android:id="@+id/theme_o"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="14"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a15" />
+            android:src="@drawable/ic_flag_a15"
+            android:tag="14" />
     </LinearLayout>
 
     <LinearLayout
@@ -189,27 +189,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tag="15"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a16" />
+            android:src="@drawable/ic_flag_a16"
+            android:tag="15" />
 
         <ImageView
             android:id="@+id/theme_q"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="16"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a17" />
+            android:src="@drawable/ic_flag_a17"
+            android:tag="16" />
 
         <ImageView
             android:id="@+id/theme_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="17"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a18" />
+            android:src="@drawable/ic_flag_a18"
+            android:tag="17" />
     </LinearLayout>
 
     <LinearLayout
@@ -224,8 +224,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:tag="18"
-            android:src="@drawable/ic_flag_a19" />
+            android:src="@drawable/ic_flag_a19"
+            android:tag="18" />
 
         <ImageView
             android:id="@+id/theme_t"
@@ -233,37 +233,26 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/padding"
-            android:tag="19"
-            android:src="@drawable/ic_flag_a20" />
+            android:src="@drawable/ic_flag_a20"
+            android:tag="19" />
 
         <ImageView
             android:id="@+id/theme_u"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tag="20"
             android:padding="@dimen/padding"
-            android:src="@drawable/ic_flag_a21" />
+            android:src="@drawable/ic_flag_a21"
+            android:tag="20" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:visibility="gone"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/keyBackgroundSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/show_borders"
-            app:switchPadding="@dimen/extra_padding"
-            android:thumb="@drawable/custom_thumb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:track="@drawable/custom_track" />
 
         <EditText
             android:id="@+id/etTemp"
@@ -271,8 +260,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:visibility="gone"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Name"
+            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>

@@ -50,7 +50,7 @@
         <service
             android:name=".services.CustomInputMethodService"
             android:exported="false"
-            android:label="Korean"
+            android:label="@string/korean_keyboard"
             android:screenOrientation="portrait"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>

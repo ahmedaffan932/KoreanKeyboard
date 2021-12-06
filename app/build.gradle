@@ -46,4 +46,7 @@ dependencies {
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.github.kimkevin:hangulparser:1.0.0'
+
+    implementation 'com.github.ravindu1024:android-keyboardlistener:1.0.0'
+
 }

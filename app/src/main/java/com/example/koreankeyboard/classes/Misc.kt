@@ -22,7 +22,7 @@ class Misc {
         fun getTheme(context: Context): Int {
             val sharedPreferences =
                 context.getSharedPreferences(themeKey, Context.MODE_PRIVATE)
-            return sharedPreferences.getInt(themeKey, 0)
+            return sharedPreferences.getInt(themeKey, 1)
         }
 
         fun setTheme(context: Context) {

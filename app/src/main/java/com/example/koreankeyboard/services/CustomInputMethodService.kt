@@ -49,10 +49,7 @@ import com.github.kimkevin.hangulparser.HangulParser
 import com.github.kimkevin.hangulparser.HangulParserException
 import android.view.inputmethod.ExtractedTextRequest
 import android.inputmethodservice.Keyboard
-
-
-
-
+import android.os.Looper
 
 class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
     OnSharedPreferenceChangeListener, RecognitionListener {
@@ -153,7 +150,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         try {
 
             val themeId = Misc.getTheme(this)
-            if (themeId == 198) {
+            if (themeId == 0) {
                 val sharedPreferences =
                     getSharedPreferences(Misc.themeFromGallery, Context.MODE_PRIVATE)
                 val str = sharedPreferences.getString(Misc.themeFromGallery, "")
@@ -425,35 +422,45 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
     private fun setKeyboard(keyboardId: Int, isCaps: Boolean) {
         mInputView?.keyboard = KeyboardClass(this, keyboardId)
         Misc.setIsKorean(this, isKorean)
-        if (isKorean) {
-            val `is`: InputStream = resources.openRawResource(R.raw.korean_suggestions)
-            val size: Int = `is`.available()
-            val buffer = ByteArray(size)
-            `is`.read(buffer)
-            `is`.close()
 
-            val json = String(buffer)
-            objSuggestions = JSONObject(json)
-            arrSuggestion = ArrayList()
-            for (word in objSuggestions.keys()) {
-                arrSuggestion.add(word)
+        object : Thread() {
+            override fun run() {
+                val l = Looper.getMainLooper()
+                val h = Handler(l)
+                h.post {
+                    if (isKorean) {
+                        val `is`: InputStream = resources.openRawResource(R.raw.korean_suggestions)
+                        val size: Int = `is`.available()
+                        val buffer = ByteArray(size)
+                        `is`.read(buffer)
+                        `is`.close()
+
+                        val json = String(buffer)
+                        objSuggestions = JSONObject(json)
+                        arrSuggestion = ArrayList()
+                        for (word in objSuggestions.keys()) {
+                            arrSuggestion.add(word)
+                        }
+                    } else {
+
+                        val `is`: InputStream = resources.openRawResource(R.raw.english_suggestions)
+                        val size: Int = `is`.available()
+                        val buffer = ByteArray(size)
+                        `is`.read(buffer)
+                        `is`.close()
+
+                        val json = String(buffer)
+                        objSuggestions = JSONObject(json)
+                        arrSuggestion = ArrayList()
+                        for (word in objSuggestions.keys()) {
+                            arrSuggestion.add(word)
+                        }
+
+                    }
+                }
             }
-        } else {
+        }.start()
 
-            val `is`: InputStream = resources.openRawResource(R.raw.english_suggestions)
-            val size: Int = `is`.available()
-            val buffer = ByteArray(size)
-            `is`.read(buffer)
-            `is`.close()
-
-            val json = String(buffer)
-            objSuggestions = JSONObject(json)
-            arrSuggestion = ArrayList()
-            for (word in objSuggestions.keys()) {
-                arrSuggestion.add(word)
-            }
-
-        }
 
         this.isCaps = isCaps
     }

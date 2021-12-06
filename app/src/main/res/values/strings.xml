@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Korean Keyboard: Voice Typing</string>
+    <string name="korean_keyboard">Korean Keyboard</string>
+    <string name="voice_typing">Voice Typing</string>
     <string name="enable_keyboard">Enable Keyboard</string>
     <string name="select_keyboard">Select Keyboard</string>
     <string name="input_method">input_method</string>
@@ -40,6 +42,7 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="exit">Exit</string>
     <string name="korean">Korean </string>
+    <string name="korean_">한국인</string>
     <string name="keyboard">Keyboard</string>
     <string name="enable">Enable</string>
     <string name="select">Select</string>

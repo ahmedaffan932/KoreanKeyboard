@@ -100,9 +100,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnMenu.setOnClickListener {
-            clMenu.animate().translationX(0f)
-            clMain.animate().translationX(clMenu.width.toFloat())
-            blockView.visibility = View.VISIBLE
+            if (isMenuOpen)
+                onBackPressed()
+            else {
+                clMenu.animate().translationX(0f)
+                clMain.animate().translationX(clMenu.width.toFloat())
+                blockView.visibility = View.VISIBLE
 
 //            val a: Animation =
 //                AnimationUtils.loadAnimation(
@@ -111,7 +114,8 @@ class MainActivity : AppCompatActivity() {
 //                )
 //            a.fillAfter = true
 //            clMain.startAnimation(a)
-            isMenuOpen = true
+                isMenuOpen = true
+            }
         }
 
         btnMenuClose.setOnClickListener {

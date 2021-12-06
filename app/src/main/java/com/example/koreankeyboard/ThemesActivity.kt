@@ -2,7 +2,6 @@ package com.example.koreankeyboard
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -12,27 +11,25 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
 import android.util.Base64
-import android.util.Log
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.koreankeyboard.classes.Misc
+import com.rw.keyboardlistener.KeyboardUtils
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.keyboard_themes_dialog.*
 import java.io.ByteArrayOutputStream
-import androidx.core.content.ContextCompat
-
-import android.graphics.drawable.ColorDrawable
-import android.widget.ImageView
-import androidx.annotation.RequiresApi
 
 @RequiresApi(Build.VERSION_CODES.M)
 class ThemesActivity : AppCompatActivity() {
     private val requestCode = 1243
     private val actionRequestGallery = 123
     lateinit var previousThemeView: ImageView
+    var isKeyboardOpen = false
 
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -40,7 +37,10 @@ class ThemesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.keyboard_themes_dialog)
 
-        keyBackgroundSwitch.isChecked = Misc.isKeyBackgroundEnable(this)
+        KeyboardUtils.addKeyboardToggleListener(this){ isVisible ->
+            isKeyboardOpen = isVisible
+        }
+
         selectedTheme()
 
         theme_a.setOnClickListener {
@@ -183,7 +183,7 @@ class ThemesActivity : AppCompatActivity() {
                 editor.putString(Misc.themeFromGallery, encoded)
                 editor.apply()
 
-                Misc.setTheme(this, 198)
+                Misc.setTheme(this, 0)
                 openKeyboard()
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
@@ -209,26 +209,19 @@ class ThemesActivity : AppCompatActivity() {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun openKeyboard() {
-//        hideSoftKeyboard(this)
+        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
         val mDrawableTheme = resources.getDrawable(R.drawable.bg_nothing)
         previousThemeView.foreground = mDrawableTheme
-        Handler().postDelayed({
-            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-        }, 20)
-        selectedTheme()
-    }
+        if (isKeyboardOpen)
+            Handler().postDelayed({
+                val inputMethodManager =
+                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+            }, 300)
 
-    private fun hideSoftKeyboard(activity: Activity) {
-        val inputMethodManager = activity.getSystemService(
-            INPUT_METHOD_SERVICE
-        ) as InputMethodManager
-        if (inputMethodManager.isAcceptingText) {
-            inputMethodManager.hideSoftInputFromWindow(
-                activity.currentFocus!!.windowToken,
-                0
-            )
-        }
+        isKeyboardOpen = true
+        selectedTheme()
     }
 
     override fun onRequestPermissionsResult(
@@ -245,7 +238,7 @@ class ThemesActivity : AppCompatActivity() {
         }
     }
 
-    private fun selectedTheme(){
+    private fun selectedTheme() {
 
         val th = Misc.getTheme(this)
         val mDrawableTheme = resources.getDrawable(R.drawable.done)
