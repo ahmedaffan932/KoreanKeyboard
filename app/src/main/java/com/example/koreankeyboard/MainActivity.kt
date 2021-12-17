@@ -1,43 +1,42 @@
 package com.example.koreankeyboard
 
 import android.content.ActivityNotFoundException
-import android.content.ComponentName
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import com.example.koreankeyboard.databinding.ActivityMainBinding
 import com.example.koreankeyboard.classes.Misc
-import com.example.koreankeyboard.services.CustomInputMethodService
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var isMenuOpen = false
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        clMenu.setOnClickListener { }
+        Misc.downloadTranslationModel(this)
 
-        btnSelectKeyBoard.setOnClickListener {
+        binding.clMenu.setOnClickListener { }
+
+        binding.btnSelectKeyBoard.setOnClickListener {
             startActivityForResult(Intent("android.settings.INPUT_METHOD_SETTINGS"), 0)
         }
 
-        btnEnableKeyBoard.setOnClickListener {
+        binding.btnEnableKeyBoard.setOnClickListener {
             (getSystemService(
                 getString(R.string.input_method)
             ) as InputMethodManager).showInputMethodPicker()
         }
 
-        btnExit.setOnClickListener {
+        binding.btnExit.setOnClickListener {
             finishAffinity()
         }
 
-        btnPrivacyPolicy.setOnClickListener {
+        binding.btnPrivacyPolicy.setOnClickListener {
             val intent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://applogixpro.blogspot.com/2021/10/privacy-policy-app-logix-developer.html")
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnMoreApps.setOnClickListener {
+        binding.btnMoreApps.setOnClickListener {
             val intent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://play.google.com/store/apps/developer?id=app+Logix+Developer")
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnRateUs.setOnClickListener {
+        binding.btnRateUs.setOnClickListener {
             val p = BuildConfig.APPLICATION_ID
             val uri: Uri = Uri.parse("market://details?id=$p")
             val goToMarket = Intent(Intent.ACTION_VIEW, uri)
@@ -74,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btnShareApp.setOnClickListener {
+        binding.btnShareApp.setOnClickListener {
             val sharingIntent = Intent(Intent.ACTION_SEND)
             sharingIntent.type = "text/plain"
             sharingIntent.putExtra(
@@ -84,92 +83,45 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(sharingIntent, "Share via"))
         }
 
-        blockView.setOnClickListener {
-            blockView.visibility = View.GONE
-            clMenu.animate().translationX(-clMenu.width.toFloat())
-            clMain.animate().translationX(0f)
-
-//            val a: Animation =
-//                AnimationUtils.loadAnimation(
-//                    this,
-//                    R.anim.slide_from_right_to_left
-//                )
-//            a.fillAfter = true
-//            clMain.startAnimation(a)
-            isMenuOpen = false
+        binding.blockView.setOnClickListener {
+            onBackPressed()
         }
 
-        btnMenu.setOnClickListener {
-            if (isMenuOpen)
+        binding.btnMenu.setOnClickListener {
+            if (isMenuOpen) {
                 onBackPressed()
-            else {
-                clMenu.animate().translationX(0f)
-                clMain.animate().translationX(clMenu.width.toFloat())
-                blockView.visibility = View.VISIBLE
-
-//            val a: Animation =
-//                AnimationUtils.loadAnimation(
-//                    this,
-//                    R.anim.slide_from_left_to_right
-//                )
-//            a.fillAfter = true
-//            clMain.startAnimation(a)
+            } else {
+                binding.clMenu.animate().translationX(0f)
+                binding.clMain.animate().translationX(binding.clMenu.width.toFloat())
+                binding.blockView.visibility = View.VISIBLE
                 isMenuOpen = true
+
             }
         }
 
-        btnMenuClose.setOnClickListener {
-            blockView.visibility = View.GONE
-            clMenu.animate().translationX(-clMenu.width.toFloat())
-            clMain.animate().translationX(0f)
-
-//            val a: Animation =
-//                AnimationUtils.loadAnimation(
-//                    this,
-//                    R.anim.slide_from_right_to_left
-//                )
-//            a.fillAfter = true
-//            clMain.startAnimation(a)
-
-            isMenuOpen = false
+        binding.btnMenuClose.setOnClickListener {
+            onBackPressed()
         }
 
-        clSettings.setOnClickListener {
+        binding.clSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
 
-        clTheme.setOnClickListener {
+        binding.clTheme.setOnClickListener {
             startActivity(Intent(this, ThemesActivity::class.java))
         }
 
-        btnHowToUse.setOnClickListener {
+        binding.btnHowToUse.setOnClickListener {
             startActivity(Intent(this, HowToUseActivity::class.java))
         }
     }
 
-    fun isInputMethodSelected(): Boolean {
-        val id: String = Settings.Secure.getString(
-            contentResolver,
-            Settings.Secure.DEFAULT_INPUT_METHOD
-        )
-        val defaultInputMethod = ComponentName.unflattenFromString(id)
-        val myInputMethod = ComponentName(this, CustomInputMethodService::class.java)
-        return myInputMethod == defaultInputMethod
-    }
-
     override fun onBackPressed() {
         if (isMenuOpen) {
-            blockView.visibility = View.GONE
-            clMenu.animate().translationX(-clMenu.width.toFloat())
-            clMain.animate().translationX(0f)
+            binding.blockView.visibility = View.GONE
+            binding.clMenu.animate().translationX(-binding.clMenu.width.toFloat())
+            binding.clMain.animate().translationX(0f)
 
-//            val a: Animation =
-//                AnimationUtils.loadAnimation(
-//                    this,
-//                    R.anim.slide_from_right_to_left
-//                )
-//            a.fillAfter = true
-//            clMain.startAnimation(a)
             isMenuOpen = false
         } else {
             super.onBackPressed()

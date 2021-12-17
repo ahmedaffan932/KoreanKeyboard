@@ -4,6 +4,7 @@
     <color name="orange">#fdd302</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray_50">#FAFAFA</color>
     <color name="gray_900">#1e1e1e</color>
     <color name="gray_700">#616161</color>
     <color name="blue">#12263D</color>

@@ -47,6 +47,14 @@
     <string name="enable">Enable</string>
     <string name="select">Select</string>
     <string name="rate_us">Rate us</string>
-    <string name="more_keyboards">More Keyboards</string>
+    <string name="more_keyboards">More Applications</string>
+    <string name="screen_name">Screen Name</string>
+
+    <string name="on_key_press_sound">On key press sound</string>
+    <string name="suggestion_while_typing">Suggestions while typing</string>
+    <string name="vibration">On key press vibration</string>
+    <string name="translate">Translate</string>
+    <string name="download">Download</string>
+    <string name="translation_is_not_downloaded">Translation is not downloaded.</string>
 
 </resources>

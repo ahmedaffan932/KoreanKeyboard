@@ -13,6 +13,8 @@
         android:layout_height="128dp"
         app:layout_constraintBottom_toTopOf="@id/ll"
         android:layout_marginBottom="@dimen/fab_padding"
+        android:elevation="@dimen/_32sdp"
+        android:background="@drawable/bg_ic_splash"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_splash" />
@@ -44,15 +46,6 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/voice_typing"
-        app:layout_constraintTop_toBottomOf="@id/ll"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="16sp"
-        android:textColor="@color/black"/>
     <TextView
         android:id="@+id/btnStart"
         android:layout_width="168dp"

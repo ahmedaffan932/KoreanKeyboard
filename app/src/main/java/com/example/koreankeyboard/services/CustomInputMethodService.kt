@@ -15,7 +15,6 @@ import android.media.AudioManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Vibrator
-import android.preference.PreferenceManager
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
@@ -48,8 +47,12 @@ import com.example.koreankeyboard.classes.SuggestionClass
 import com.github.kimkevin.hangulparser.HangulParser
 import com.github.kimkevin.hangulparser.HangulParserException
 import android.view.inputmethod.ExtractedTextRequest
-import android.inputmethodservice.Keyboard
 import android.os.Looper
+import androidx.annotation.RequiresApi
+import com.example.koreankeyboard.interfaces.TranslateCallBack
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 
 class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
     OnSharedPreferenceChangeListener, RecognitionListener {
@@ -101,6 +104,27 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         R.drawable.ic_flag_a19,
         R.drawable.ic_flag_a20,
         R.drawable.ic_flag_a21,
+        R.drawable.bg_kb_gradient_1,
+        R.drawable.bg_kb_gradient_2,
+        R.drawable.bg_kb_gradient_3,
+        R.drawable.bg_kb_gradient_4,
+        R.drawable.bg_kb_gradient_5,
+        R.drawable.bg_kb_gradient_6,
+        R.drawable.bg_kb_gradient_7,
+        R.drawable.bg_kb_gradient_8,
+        R.drawable.bg_kb_gradient_9,
+        R.drawable.bg_kb_gradient_10,
+        R.drawable.bg_kb_gradient_11,
+        R.drawable.bg_kb_gradient_12,
+        R.drawable.bg_kb_gradient_13,
+        R.drawable.bg_kb_gradient_14,
+        R.drawable.bg_kb_gradient_15,
+        R.drawable.bg_kb_gradient_16,
+        R.drawable.bg_kb_gradient_17,
+        R.drawable.bg_kb_gradient_18,
+        R.drawable.bg_kb_gradient_19,
+        R.drawable.bg_kb_gradient_20,
+        R.drawable.bg_kb_gradient_21
     )
 
     override fun swipeUp() {}
@@ -122,10 +146,6 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
     }
 
     override fun onCreateInputView(): View {
-
-        val defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        defaultSharedPreferences.registerOnSharedPreferenceChangeListener(this)
-        defaultSharedPreferences?.let { loadPreferences(it) }
 
         mInputView = layoutInflater.inflate(
             R.layout.keyboard_layout,
@@ -167,6 +187,8 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         } catch (unused: OutOfMemoryError) {
             unused.printStackTrace()
         }
+        loadSuggestions()
+        loadPreferences()
     }
 
     override fun onStartInput(editorInfo: EditorInfo, z: Boolean) {
@@ -196,6 +218,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         setKbThemes()
         mInputView?.closing()
         setCandidatesViewShown(true)
+        candidateView!!.changeTranslateIcon(isKorean)
     }
 
     override fun onUpdateSelection(i: Int, i2: Int, i3: Int, i4: Int, i5: Int, i6: Int) {
@@ -275,10 +298,14 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
             -134 -> {
                 isKorean = false
                 setKeyboard(R.xml.qwerty_caps, true)
+                loadSuggestions()
+
             }
             -1340 -> {
                 isKorean = true
                 setKeyboard(R.xml.qwertz_caps, true)
+                loadSuggestions()
+
             }
             -1 -> {
                 setKeyboard(R.xml.symbols_two, false)
@@ -294,22 +321,27 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                     } else
                         setKeyboard(R.xml.qwerty, false)
                 }
+                loadSuggestions()
             }
             -11 -> {
                 isKorean = false
                 setKeyboard(R.xml.qwerty_caps_lock, false)
+                loadSuggestions()
             }
             -110 -> {
                 isKorean = true
                 setKeyboard(R.xml.qwertz_caps_lock, false)
+                loadSuggestions()
             }
             -12 -> {
                 isKorean = false
                 setKeyboard(R.xml.qwerty, false)
+                loadSuggestions()
             }
             -120 -> {
                 isKorean = true
                 setKeyboard(R.xml.qwertz, false)
+                loadSuggestions()
             }
             -15 -> {
                 if (isKorean) {
@@ -326,6 +358,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                     else
                         setKeyboard(R.xml.qwerty, isCaps)
                 }
+                loadSuggestions()
             }
             -14 -> {
                 if (isCaps) {
@@ -335,6 +368,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                     isKorean = true
                     setKeyboard(R.xml.qwertz, false)
                 }
+                loadSuggestions()
             }
             -200 -> {
                 setKeyboard(R.xml.symbols_one, false)
@@ -387,6 +421,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                     setKeyboard(R.xml.qwerty_caps, true)
                 } else
                     setKeyboard(R.xml.qwerty, false)
+                loadSuggestions()
             }
             10 -> {
                 val options = currentInputEditorInfo.imeOptions
@@ -423,6 +458,11 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         mInputView?.keyboard = KeyboardClass(this, keyboardId)
         Misc.setIsKorean(this, isKorean)
 
+        candidateView!!.changeTranslateIcon(isKorean)
+        this.isCaps = isCaps
+    }
+
+    fun loadSuggestions(){
         object : Thread() {
             override fun run() {
                 val l = Looper.getMainLooper()
@@ -461,8 +501,6 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
             }
         }.start()
 
-
-        this.isCaps = isCaps
     }
 
     private fun setting() {
@@ -666,7 +704,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
     }
 
     private fun vibrateOnChars() {
-        vibrator!!.vibrate(10)
+        vibrator!!.vibrate(5)
     }
 
     private fun handleClose() {
@@ -703,13 +741,13 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, str: String) {
-        loadPreferences(sharedPreferences)
+        loadPreferences()
     }
 
-    private fun loadPreferences(sharedPreferences: SharedPreferences) {
-        isSoundOn = sharedPreferences.getBoolean("prefSound", PROCESS_HARD_KEYS)
-        isVibrationOn = sharedPreferences.getBoolean("prefVibrate", PROCESS_HARD_KEYS)
-        isPredictionOn = sharedPreferences.getBoolean("prefPrediction", PROCESS_HARD_KEYS)
+    private fun loadPreferences() {
+        isSoundOn = Misc.getIsSettingEnable(this, Misc.sound)
+        isVibrationOn = Misc.getIsSettingEnable(this, Misc.vibrate)
+        isPredictionOn = Misc.getIsSettingEnable(this, Misc.suggestions)
 
         mInputView?.isPreviewEnabled = false
     }
@@ -746,6 +784,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateCandidatesView(): View? {
         candidateView = CandidateView(this, object : CandidateViewButtonOnClick {
             override fun onClickSettings() {
@@ -910,6 +949,53 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                 lastWord = ""
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun translate(translateCallBack: TranslateCallBack){
+        val text = currentInputConnection.getExtractedText(ExtractedTextRequest(), 0).text.toString()
+        if (isKorean){
+            if (Misc.isBToADownloaded(this)){
+                val optionsNew = TranslatorOptions.Builder()
+                    .setSourceLanguage(TranslateLanguage.KOREAN)
+                    .setTargetLanguage(TranslateLanguage.ENGLISH)
+                    .build()
+                val spanishToEnglishTranslator = Translation.getClient(optionsNew)
+                spanishToEnglishTranslator.translate(text)
+                    .addOnSuccessListener { translatedText ->
+                        currentInputConnection.deleteSurroundingTextInCodePoints(text.length, 0)
+                        currentInputConnection.commitText(translatedText, 1)
+                        Log.d(Misc.logKey, translatedText)
+                    }
+                    .addOnFailureListener { exception ->
+                        Toast.makeText(this, "Some Error occurred in translation.", Toast.LENGTH_SHORT).show()
+                    }
+            }else{
+                translateCallBack.isNotDownloaded()
+                Toast.makeText(this, "Translation model is not downloaded, Please download it.", Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            if (Misc.isAToBDownloaded(this)){
+                val options = TranslatorOptions.Builder()
+                    .setSourceLanguage(TranslateLanguage.ENGLISH)
+                    .setTargetLanguage(TranslateLanguage.KOREAN)
+                    .build()
+                val englishSpanishTranslator = Translation.getClient(options)
+                englishSpanishTranslator.translate(text)
+                    .addOnSuccessListener { translatedText ->
+                        currentInputConnection.deleteSurroundingTextInCodePoints(text.length, 0)
+                        currentInputConnection.commitText(translatedText, 1)
+                        Log.d(Misc.logKey, translatedText)
+                    }
+                    .addOnFailureListener { exception ->
+                        Toast.makeText(this, "Some Error occurred in translation.", Toast.LENGTH_SHORT).show()
+                    }
+            }else{
+                translateCallBack.isNotDownloaded()
+                Toast.makeText(this, "Translation model is not downloaded, Please go to app and download it.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 
 }

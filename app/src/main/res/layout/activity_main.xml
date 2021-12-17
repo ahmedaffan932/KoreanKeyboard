@@ -7,12 +7,11 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clMenu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_menu"
+        android:background="@color/white"
         android:translationX="-280dp"
         android:elevation="64dp"
         app:layout_constraintStart_toStartOf="parent">
@@ -27,12 +26,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_close"
-            app:tint="#920417" />
+            app:tint="#0038A5" />
 
-        <View
+        <ImageView
             android:id="@+id/imageView"
             android:layout_width="280dp"
             android:layout_height="170dp"
+            android:src="@drawable/img_menu"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -311,6 +311,7 @@
             android:id="@+id/blockView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:elevation="@dimen/_100sdp"
             android:visibility="gone"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -327,7 +328,9 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/grid" />
+                android:tint="#7A8088"
+                app:srcCompat="@drawable/grid"
+                tools:ignore="UseAppTint" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -359,6 +362,7 @@
                 android:layout_marginTop="@dimen/padding"
                 android:background="@drawable/bg_translucent"
                 android:hint="@string/type_here"
+                android:maxLines="3"
                 android:minHeight="48dp"
                 android:padding="@dimen/fab_padding"
                 android:textColor="@color/black"

@@ -2,23 +2,17 @@ package com.example.koreankeyboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_how_to_use.*
-import kotlinx.android.synthetic.main.activity_how_to_use.btnExit
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.koreankeyboard.classes.Misc
+import com.example.koreankeyboard.databinding.ActivityHowToUseBinding
 
 class HowToUseActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHowToUseBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_how_to_use)
+        binding = ActivityHowToUseBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btnBackHowToUse.setOnClickListener {
-            onBackPressed()
-        }
-
-        btnExit.setOnClickListener {
-            Toast.makeText(this, "Enjoy Korean keyboard.", Toast.LENGTH_SHORT).show()
-            finishAffinity()
-        }
+        Misc.InitTopBar(this, "How to use")
     }
 }

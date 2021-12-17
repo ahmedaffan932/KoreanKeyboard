@@ -9,8 +9,10 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.util.Base64
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
@@ -18,10 +20,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.koreankeyboard.classes.Misc
+import com.example.koreankeyboard.databinding.KeyboardThemesDialogBinding
 import com.rw.keyboardlistener.KeyboardUtils
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
-import kotlinx.android.synthetic.main.keyboard_themes_dialog.*
 import java.io.ByteArrayOutputStream
 
 @RequiresApi(Build.VERSION_CODES.M)
@@ -30,12 +32,16 @@ class ThemesActivity : AppCompatActivity() {
     private val actionRequestGallery = 123
     lateinit var previousThemeView: ImageView
     var isKeyboardOpen = false
+    private lateinit var binding: KeyboardThemesDialogBinding
 
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.keyboard_themes_dialog)
+        binding = KeyboardThemesDialogBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        Misc.InitTopBar(this, "Themes")
 
         KeyboardUtils.addKeyboardToggleListener(this){ isVisible ->
             isKeyboardOpen = isVisible
@@ -43,7 +49,13 @@ class ThemesActivity : AppCompatActivity() {
 
         selectedTheme()
 
-        theme_a.setOnClickListener {
+        binding.themeA.setOnClickListener {
+            if(isKeyboardOpen) {
+                val inputMethodManager =
+                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+            }
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -65,97 +77,180 @@ class ThemesActivity : AppCompatActivity() {
             }
 
         }
-        theme_b.setOnClickListener {
+        binding.themeB.setOnClickListener {
             Misc.setTheme(this, 1)
             openKeyboard()
         }
-        theme_c.setOnClickListener {
+        binding.themeB.setOnClickListener {
             Misc.setTheme(this, 2)
             openKeyboard()
 
         }
-        theme_d.setOnClickListener {
+        binding.themeD.setOnClickListener {
             Misc.setTheme(this, 3)
             openKeyboard()
 
         }
-        theme_e.setOnClickListener {
+        binding.themeE.setOnClickListener {
             Misc.setTheme(this, 4)
             openKeyboard()
 
         }
-        theme_f.setOnClickListener {
+        binding.themeF.setOnClickListener {
             Misc.setTheme(this, 5)
 
             openKeyboard()
         }
-        theme_g.setOnClickListener {
+        binding.themeG.setOnClickListener {
             Misc.setTheme(this, 6)
             openKeyboard()
 
         }
-        theme_h.setOnClickListener {
+        binding.themeH.setOnClickListener {
             Misc.setTheme(this, 7)
 
             openKeyboard()
         }
-        theme_i.setOnClickListener {
+        binding.themeI.setOnClickListener {
             Misc.setTheme(this, 8)
-
             openKeyboard()
         }
-        theme_j.setOnClickListener {
+        binding.themeJ.setOnClickListener {
             Misc.setTheme(this, 9)
             openKeyboard()
 
         }
-        theme_k.setOnClickListener {
+        binding.themeK.setOnClickListener {
             Misc.setTheme(this, 10)
 
             openKeyboard()
         }
-        theme_l.setOnClickListener {
+        binding.themeL.setOnClickListener {
             Misc.setTheme(this, 11)
             openKeyboard()
         }
-        theme_m.setOnClickListener {
+        binding.themeM.setOnClickListener {
             Misc.setTheme(this, 12)
             openKeyboard()
         }
-        theme_n.setOnClickListener {
+        binding.themeN.setOnClickListener {
             Misc.setTheme(this, 13)
             openKeyboard()
 
         }
-        theme_o.setOnClickListener {
+        binding.themeO.setOnClickListener {
             Misc.setTheme(this, 14)
             openKeyboard()
 
         }
-        theme_p.setOnClickListener {
+        binding.themeP.setOnClickListener {
             Misc.setTheme(this, 15)
             openKeyboard()
 
         }
-        theme_q.setOnClickListener {
+        binding.themeQ.setOnClickListener {
             Misc.setTheme(this, 16)
             openKeyboard()
 
         }
-        theme_r.setOnClickListener {
+        binding.themeR.setOnClickListener {
             Misc.setTheme(this, 17)
             openKeyboard()
         }
-        theme_s.setOnClickListener {
+        binding.themeS.setOnClickListener {
             Misc.setTheme(this, 18)
             openKeyboard()
         }
-        theme_t.setOnClickListener {
+        binding.themeT.setOnClickListener {
             Misc.setTheme(this, 19)
             openKeyboard()
         }
-        theme_u.setOnClickListener {
+        binding.themeU.setOnClickListener {
             Misc.setTheme(this, 20)
+            openKeyboard()
+        }
+        binding.themeG1.setOnClickListener {
+            Misc.setTheme(this, 21)
+            openKeyboard()
+        }
+        binding.themeG2.setOnClickListener {
+            Misc.setTheme(this, 22)
+            openKeyboard()
+        }
+        binding.themeG3.setOnClickListener {
+            Misc.setTheme(this, 23)
+            openKeyboard()
+        }
+        binding.themeG4.setOnClickListener {
+            Misc.setTheme(this, 24)
+            openKeyboard()
+        }
+        binding.themeG5.setOnClickListener {
+            Misc.setTheme(this, 25)
+            openKeyboard()
+        }
+        binding.themeG6.setOnClickListener {
+            Misc.setTheme(this, 26)
+            openKeyboard()
+        }
+        binding.themeG7.setOnClickListener {
+            Misc.setTheme(this, 27)
+            openKeyboard()
+        }
+        binding.themeG8.setOnClickListener {
+            Misc.setTheme(this, 28)
+            openKeyboard()
+        }
+        binding.themeG9.setOnClickListener {
+            Misc.setTheme(this, 29)
+            openKeyboard()
+        }
+        binding.themeG10.setOnClickListener {
+            Misc.setTheme(this, 30)
+            openKeyboard()
+        }
+        binding.themeG11.setOnClickListener {
+            Misc.setTheme(this, 31)
+            openKeyboard()
+        }
+        binding.themeG12.setOnClickListener {
+            Misc.setTheme(this, 32)
+            openKeyboard()
+        }
+        binding.themeG13.setOnClickListener {
+            Misc.setTheme(this, 33)
+            openKeyboard()
+        }
+        binding.themeG14.setOnClickListener {
+            Misc.setTheme(this, 34)
+            openKeyboard()
+        }
+        binding.themeG15.setOnClickListener {
+            Misc.setTheme(this, 35)
+            openKeyboard()
+        }
+        binding.themeG16.setOnClickListener {
+            Misc.setTheme(this, 36)
+            openKeyboard()
+        }
+        binding.themeG17.setOnClickListener {
+            Misc.setTheme(this, 37)
+            openKeyboard()
+        }
+        binding.themeG18.setOnClickListener {
+            Misc.setTheme(this, 38)
+            openKeyboard()
+        }
+        binding.themeG19.setOnClickListener {
+            Misc.setTheme(this, 39)
+            openKeyboard()
+        }
+        binding.themeG20.setOnClickListener {
+            Misc.setTheme(this, 40)
+            openKeyboard()
+        }
+        binding.themeG21.setOnClickListener {
+            Misc.setTheme(this, 41)
             openKeyboard()
         }
 
@@ -165,32 +260,43 @@ class ThemesActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            binding.pb.visibility = View.VISIBLE
             val result = CropImage.getActivityResult(data)
             if (resultCode == RESULT_OK) {
-                val resultUri = result.uri
-                val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, resultUri)
-                theme_a.setImageBitmap(bitmap)
+                object : Thread() {
+                    override fun run() {
+                        val l = Looper.getMainLooper()
+                        val h = Handler(l)
+                        h.post {
+                            val resultUri = result.uri
+                            val bitmap = MediaStore.Images.Media.getBitmap(this@ThemesActivity.contentResolver, resultUri)
+                            binding.themeA.setImageBitmap(bitmap)
 
-                val baos = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos) //bm is the bitmap object
+                            val baos = ByteArrayOutputStream()
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos) //bm is the bitmap object
 
-                val b: ByteArray = baos.toByteArray()
-                val encoded: String = Base64.encodeToString(b, Base64.DEFAULT)
+                            val b: ByteArray = baos.toByteArray()
+                            val encoded: String = Base64.encodeToString(b, Base64.DEFAULT)
 
-                val sharedPreferences =
-                    getSharedPreferences(Misc.themeFromGallery, MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                editor.putString(Misc.themeFromGallery, encoded)
-                editor.apply()
+                            val sharedPreferences =
+                                getSharedPreferences(Misc.themeFromGallery, MODE_PRIVATE)
+                            val editor = sharedPreferences.edit()
+                            editor.putString(Misc.themeFromGallery, encoded)
+                            editor.apply()
 
-                Misc.setTheme(this, 0)
-                openKeyboard()
+                            Misc.setTheme(this@ThemesActivity, 0)
+                            binding.pb.visibility = View.GONE
+                            openKeyboard()
+                        }
+                    }
+                }.start()
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 val error = result.error
                 Toast.makeText(this, "Some error occurred in image cropping.", Toast.LENGTH_LONG)
                     .show()
                 error.printStackTrace()
+                binding.pb.visibility = View.GONE
             }
         }
         if (resultCode == RESULT_OK) {
@@ -244,88 +350,172 @@ class ThemesActivity : AppCompatActivity() {
         val mDrawableTheme = resources.getDrawable(R.drawable.done)
         previousThemeView = when (th) {
             0 -> {
-                theme_a.foreground = mDrawableTheme
-                theme_a
+                binding.themeA.foreground = mDrawableTheme
+                binding.themeA
             }
             1 -> {
-                theme_b.foreground = mDrawableTheme
-                theme_b
+                binding.themeB.foreground = mDrawableTheme
+                binding.themeB
             }
             2 -> {
-                theme_c.foreground = mDrawableTheme
-                theme_c
+                binding.themeB.foreground = mDrawableTheme
+                binding.themeB
             }
             3 -> {
-                theme_d.foreground = mDrawableTheme
-                theme_d
+                binding.themeD.foreground = mDrawableTheme
+                binding.themeD
             }
             4 -> {
-                theme_e.foreground = mDrawableTheme
-                theme_e
+                binding.themeE.foreground = mDrawableTheme
+                binding.themeE
             }
             5 -> {
-                theme_f.foreground = mDrawableTheme
-                theme_f
+                binding.themeF.foreground = mDrawableTheme
+                binding.themeF
             }
             6 -> {
-                theme_g.foreground = mDrawableTheme
-                theme_g
+                binding.themeG.foreground = mDrawableTheme
+                binding.themeG
             }
             7 -> {
-                theme_h.foreground = mDrawableTheme
-                theme_h
+                binding.themeH.foreground = mDrawableTheme
+                binding.themeH
             }
             8 -> {
-                theme_i.foreground = mDrawableTheme
-                theme_i
+                binding.themeI.foreground = mDrawableTheme
+                binding.themeI
             }
             9 -> {
-                theme_j.foreground = mDrawableTheme
-                theme_j
+                binding.themeJ.foreground = mDrawableTheme
+                binding.themeJ
             }
             10 -> {
-                theme_k.foreground = mDrawableTheme
-                theme_k
+                binding.themeK.foreground = mDrawableTheme
+                binding.themeK
             }
             11 -> {
-                theme_l.foreground = mDrawableTheme
-                theme_l
+                binding.themeL.foreground = mDrawableTheme
+                binding.themeL
             }
             12 -> {
-                theme_m.foreground = mDrawableTheme
-                theme_m
+                binding.themeM.foreground = mDrawableTheme
+                binding.themeM
             }
             13 -> {
-                theme_n.foreground = mDrawableTheme
-                theme_n
+                binding.themeN.foreground = mDrawableTheme
+                binding.themeN
             }
             14 -> {
-                theme_o.foreground = mDrawableTheme
-                theme_o
+                binding.themeO.foreground = mDrawableTheme
+                binding.themeO
             }
             15 -> {
-                theme_p.foreground = mDrawableTheme
-                theme_p
+                binding.themeP.foreground = mDrawableTheme
+                binding.themeP
             }
             16 -> {
-                theme_q.foreground = mDrawableTheme
-                theme_q
+                binding.themeQ.foreground = mDrawableTheme
+                binding.themeQ
             }
             17 -> {
-                theme_r.foreground = mDrawableTheme
-                theme_r
+                binding.themeR.foreground = mDrawableTheme
+                binding.themeR
             }
             18 -> {
-                theme_s.foreground = mDrawableTheme
-                theme_s
+                binding.themeS.foreground = mDrawableTheme
+                binding.themeS
             }
             19 -> {
-                theme_t.foreground = mDrawableTheme
-                theme_t
+                binding.themeT.foreground = mDrawableTheme
+                binding.themeT
+            }
+            20 -> {
+                binding.themeU.foreground = mDrawableTheme
+                binding.themeU
+            }
+            21 -> {
+                binding.themeG1.foreground = mDrawableTheme
+                binding.themeG1
+            }
+            22 -> {
+                binding.themeG2.foreground = mDrawableTheme
+                binding.themeG2
+            }
+            23 -> {
+                binding.themeG3.foreground = mDrawableTheme
+                binding.themeG3
+            }
+            24 -> {
+                binding.themeG4.foreground = mDrawableTheme
+                binding.themeG4
+            }
+            25 -> {
+                binding.themeG5.foreground = mDrawableTheme
+                binding.themeG5
+            }
+            26 -> {
+                binding.themeG6.foreground = mDrawableTheme
+                binding.themeG6
+            }
+            27 -> {
+                binding.themeG7.foreground = mDrawableTheme
+                binding.themeG7
+            }
+            28 -> {
+                binding.themeG8.foreground = mDrawableTheme
+                binding.themeG8
+            }
+            29 -> {
+                binding.themeG9.foreground = mDrawableTheme
+                binding.themeG9
+            }
+            30 -> {
+                binding.themeG10.foreground = mDrawableTheme
+                binding.themeG10
+            }
+            31 -> {
+                binding.themeG11.foreground = mDrawableTheme
+                binding.themeG11
+            }
+            32 -> {
+                binding.themeG12.foreground = mDrawableTheme
+                binding.themeG12
+            }
+            33 -> {
+                binding.themeG13.foreground = mDrawableTheme
+                binding.themeG13
+            }
+            34 -> {
+                binding.themeG14.foreground = mDrawableTheme
+                binding.themeG14
+            }
+            35 -> {
+                binding.themeG15.foreground = mDrawableTheme
+                binding.themeG15
+            }
+            36 -> {
+                binding.themeG16.foreground = mDrawableTheme
+                binding.themeG16
+            }
+            37 -> {
+                binding.themeG17.foreground = mDrawableTheme
+                binding.themeG17
+            }
+            38 -> {
+                binding.themeG18.foreground = mDrawableTheme
+                binding.themeG18
+            }
+            39 -> {
+                binding.themeG19.foreground = mDrawableTheme
+                binding.themeG19
+            }
+            40 -> {
+                binding.themeG20.foreground = mDrawableTheme
+                binding.themeG20
             }
             else -> {
-                theme_u.foreground = mDrawableTheme
-                theme_u
+                binding.themeG21.foreground = mDrawableTheme
+                binding.themeG21
             }
         }
     }

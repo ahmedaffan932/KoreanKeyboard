@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/top_bar" />
+
+    <CheckBox
+        android:id="@+id/cbVibration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:checked="false"
+        android:button="@null"
+        android:gravity="start"
+        android:padding="@dimen/extra_padding"
+        android:background="@drawable/bg_bottom_border"
+        android:summary="@string/vibrate_on_keys"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+        android:text="@string/vibration"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include" />
+
+    <CheckBox
+        android:id="@+id/cbSound"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:checked="false"
+        android:button="@null"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+        android:padding="@dimen/extra_padding"
+        android:background="@drawable/bg_bottom_border"
+        android:text="@string/on_key_press_sound"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cbVibration" />
+
+    <CheckBox
+        android:id="@+id/cbSuggestions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/extra_padding"
+        android:background="@drawable/bg_bottom_border"
+        android:checked="false"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+        android:button="@null"
+        android:text="@string/suggestion_while_typing"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cbSound" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
