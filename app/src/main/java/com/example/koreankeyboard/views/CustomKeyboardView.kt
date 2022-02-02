@@ -12,7 +12,6 @@ import com.example.koreankeyboard.utils.KeyboardClass
 
 class CustomKeyboardView : KeyboardView {
 
-
     var customInputMethodService: CustomInputMethodService? = null
 
     constructor(context: Context, attributeSet: AttributeSet?) : super(context, attributeSet) {
@@ -40,5 +39,8 @@ class CustomKeyboardView : KeyboardView {
         paint.color = -1
     }
 
-}
+    override fun setMinimumHeight(minHeight: Int) {
+        super.setMinimumHeight(70)
+    }
 
+}

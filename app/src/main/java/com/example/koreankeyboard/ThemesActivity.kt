@@ -41,7 +41,7 @@ class ThemesActivity : AppCompatActivity() {
         binding = KeyboardThemesDialogBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Misc.InitTopBar(this, "Themes")
+        Misc.initTopBar(this, "Themes")
 
         KeyboardUtils.addKeyboardToggleListener(this){ isVisible ->
             isKeyboardOpen = isVisible
@@ -81,7 +81,7 @@ class ThemesActivity : AppCompatActivity() {
             Misc.setTheme(this, 1)
             openKeyboard()
         }
-        binding.themeB.setOnClickListener {
+        binding.themeC.setOnClickListener {
             Misc.setTheme(this, 2)
             openKeyboard()
 
@@ -358,8 +358,8 @@ class ThemesActivity : AppCompatActivity() {
                 binding.themeB
             }
             2 -> {
-                binding.themeB.foreground = mDrawableTheme
-                binding.themeB
+                binding.themeC.foreground = mDrawableTheme
+                binding.themeC
             }
             3 -> {
                 binding.themeD.foreground = mDrawableTheme
@@ -517,6 +517,15 @@ class ThemesActivity : AppCompatActivity() {
                 binding.themeG21.foreground = mDrawableTheme
                 binding.themeG21
             }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (isKeyboardOpen) {
+            val inputMethodManager =
+                getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
         }
     }
 }

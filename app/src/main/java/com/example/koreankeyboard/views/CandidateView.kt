@@ -2,16 +2,20 @@ package com.example.koreankeyboard.views
 
 import android.content.Context
 import android.os.Build
+import android.speech.SpeechRecognizer
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.ExtractedTextRequest
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import com.example.koreankeyboard.R
 import com.example.koreankeyboard.classes.Misc
 import com.example.koreankeyboard.databinding.LayoutCandidateBinding
 import com.example.koreankeyboard.interfaces.CandidateViewButtonOnClick
+import com.example.koreankeyboard.interfaces.TranslateCallBack
 import com.example.koreankeyboard.services.CustomInputMethodService
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
@@ -28,14 +32,36 @@ class CandidateView
     private var suggestions: List<String>? = null
 
     init {
+
+        val colors = intArrayOf(
+            ContextCompat.getColor(context, R.color.white),
+            ContextCompat.getColor(context, R.color.color2),
+            ContextCompat.getColor(context, R.color.color3),
+            ContextCompat.getColor(context, R.color.color4),
+            ContextCompat.getColor(context, R.color.color5)
+        )
+
+        val heights = intArrayOf(20, 24, 18, 23, 16)
+
         val view = View.inflate(context, R.layout.layout_candidate, this)
         binding = LayoutCandidateBinding.bind(view)
-        binding.btnSpeechInput.setOnClickListener { candidateViewButtonOnClick.onClickSpeechInput() }
+
+        binding.animSpeak.setColors(colors)
+        binding.animSpeak.setBarMaxHeightsInDp(heights)
+        binding.animSpeak.setCircleRadiusInDp(2)
+        binding.animSpeak.setSpacingInDp(2)
+        binding.animSpeak.setIdleStateAmplitudeInDp(2)
+        binding.animSpeak.setRotationRadiusInDp(10)
+        binding.animSpeak.play()
+
+        binding.btnSpeechInput.setOnClickListener {
+            candidateViewButtonOnClick.onClickSpeechInput()
+        }
         binding.firstPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
         binding.thirdPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
         binding.secondPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
         binding.btnTranslate.setOnClickListener {
-            service?.translate(object : com.example.koreankeyboard.interfaces.TranslateCallBack {
+            service?.translate(object : TranslateCallBack {
                 override fun isNotDownloaded() {
                     binding.clDownload.visibility = View.VISIBLE
                 }
@@ -92,9 +118,18 @@ class CandidateView
             }
         }
 
-
-
     }
+
+    fun startVoiceAnim(speechRecognizer: SpeechRecognizer){
+        binding.animSpeak.setSpeechRecognizer(speechRecognizer)
+
+        binding.animSpeak.play()
+    }
+
+    fun getVoiceAnimView(): com.github.zagum.speechrecognitionview.RecognitionProgressView{
+        return binding.animSpeak
+    }
+
 
     fun setService(listener: CustomInputMethodService) {
         service = listener
@@ -102,9 +137,9 @@ class CandidateView
 
     fun changeTranslateIcon(isKoreanSelected: Boolean){
         if(isKoreanSelected){
-            binding.btnTranslate.setImageResource(R.drawable.kr_to_eng)
+            binding.btnTranslate.setImageResource(R.drawable.b_to_a)
         }else{
-            binding.btnTranslate.setImageResource(R.drawable.eng_to_kr)
+            binding.btnTranslate.setImageResource(R.drawable.a_to_b)
         }
     }
 
@@ -120,7 +155,7 @@ class CandidateView
         invalidate()
     }
 
-    // TODO Refactor this method
+    // TODO Refactor context method
     private fun updatePredictions(prediction: List<String>) {
         binding.firstPrediction.text = ""
         binding.firstPrediction.text = if (prediction.isNotEmpty()) {
@@ -152,9 +187,19 @@ class CandidateView
 
     fun enableDisableSpeechAnim(res: Int, isActive: Boolean) {
         binding.btnSpeechInput.setImageResource(res)
-        if (isActive)
+        if (isActive) {
+            binding.firstPrediction.visibility = View.INVISIBLE
+            binding.secondPrediction.visibility = View.INVISIBLE
+            binding.thirdPrediction.visibility = View.INVISIBLE
             binding.animSpeak.visibility = View.VISIBLE
-        else
+        }
+        else {
+            binding.firstPrediction.visibility = View.VISIBLE
+            binding.secondPrediction.visibility = View.VISIBLE
+            binding.thirdPrediction.visibility = View.VISIBLE
             binding.animSpeak.visibility = View.GONE
+        }
     }
+
+
 }

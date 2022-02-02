@@ -5,16 +5,19 @@ import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.provider.Settings
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.koreankeyboard.databinding.ActivityEnableKeyboardBinding
 import com.example.koreankeyboard.services.CustomInputMethodService
 import java.util.*
+import java.lang.Runnable as Runnable1
 
 class EnableKeyboardActivity : AppCompatActivity() {
     private val t = Timer()
     private lateinit var binding: ActivityEnableKeyboardBinding
+    private val handler: Handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,25 +27,6 @@ class EnableKeyboardActivity : AppCompatActivity() {
         binding.clEnableKeyboard.setOnClickListener {
             startActivityForResult(Intent("android.settings.INPUT_METHOD_SETTINGS"), 0)
         }
-
-        t.scheduleAtFixedRate(
-            object : TimerTask() {
-                override fun run() {
-                    if (isInputMethodSelected()) {
-                        finish()
-                        binding.clSelectKeyboard.background =
-                            resources.getDrawable(R.drawable.bg_main_less_rounded)
-                        binding.textSelect.setTextColor(Color.WHITE)
-                        startActivity(Intent(this@EnableKeyboardActivity, MainActivity::class.java))
-                    } else {
-                        binding.clSelectKeyboard.background =
-                            resources.getDrawable(R.drawable.bg_plain_less_rounded)
-                    }
-                }
-            },
-            100,
-            1000
-        )
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -66,27 +50,46 @@ class EnableKeyboardActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        t.cancel()
+        handler.removeCallbacks(runMainBanner)
+    }
+
+    private val runMainBanner: Runnable1 by lazy {
+        return@lazy object : Runnable1 {
+            override fun run() {
+                if (isInputMethodSelected()) {
+                    finish()
+                    binding.clSelectKeyboard.background =
+                        resources.getDrawable(R.drawable.bg_main_less_rounded)
+                    binding.textSelect.setTextColor(Color.WHITE)
+                    startActivity(Intent(this@EnableKeyboardActivity, AllDoneActivity::class.java))
+                } else {
+                    binding.clSelectKeyboard.background =
+                        resources.getDrawable(R.drawable.bg_plain_less_rounded)
+                }
+                handler.postDelayed(this, 1000)
+            }
+        }
     }
 
     override fun onResume() {
         super.onResume()
         checkKeyboardActivation()
+
+        Handler().postDelayed({
+            handler.post(runMainBanner)
+        }, 999)
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun checkKeyboardActivation() {
-        //Check Keyboard Enabled
         val packageLocal = packageName
 
-        //InputMethodManager
         val mInputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         val lists: String = mInputMethodManager.enabledInputMethodList.toString()
         val mActKeyboard = lists.contains(packageLocal)
 
         if (mActKeyboard) {
             binding.clEnableKeyboard.setOnClickListener { }
-//            btnSelectKeyBoard.visibility = View.VISIBLE
             binding.clEnableKeyboard.background =
                 resources.getDrawable(R.drawable.bg_main_less_rounded)
             binding.textEnable.setTextColor(resources.getColor(R.color.white))

@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_mic_permission.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\activity_mic_permission.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_splash_screen.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\activity_splash_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\top_bar.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\top_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\keyboard_layout_s.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\keyboard_layout_s.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\keyboard_themes_dialog.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\keyboard_themes_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_all_done.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\activity_all_done.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_enable_keyboard.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\activity_enable_keyboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\layout_candidate.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\layout_candidate.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\keyboard_layout.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\keyboard_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_how_to_use.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\activity_how_to_use.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_settings.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\activity_settings.xml"
+    }
+]

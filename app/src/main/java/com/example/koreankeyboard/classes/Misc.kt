@@ -6,6 +6,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.util.Log
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -22,6 +25,7 @@ class Misc {
         const val suggestions = "suggestions"
         const val sound = "sounds"
         const val vibrate = "vibration"
+        private const val keyboardSize = "keyboardSize"
         const val themeFromGallery: String = "themeFromGallery"
         const val data: String = "data"
         const val logKey = "logKey"
@@ -31,25 +35,18 @@ class Misc {
         const val appUrl: String =
             "https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
 
-        fun extendedLogKey(string: String): String {
-            return "logKey $string"
-        }
-
-        @SuppressLint("MissingPermission")
-        fun checkInternetConnection(context: Context): Boolean {
-            //Check internet connection:
-            val connectivityManager: ConnectivityManager? =
-                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
-
-            //Means that we are connected to a network (mobile or wi-fi)
-            return connectivityManager!!.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)!!.state === NetworkInfo.State.CONNECTED ||
-                    connectivityManager!!.getNetworkInfo(ConnectivityManager.TYPE_WIFI)!!.state === NetworkInfo.State.CONNECTED
-        }
-
         fun getTheme(context: Context): Int {
             val sharedPreferences =
                 context.getSharedPreferences(themeKey, Context.MODE_PRIVATE)
-            return sharedPreferences.getInt(themeKey, 1)
+            return sharedPreferences.getInt(themeKey, 27)
+        }
+
+
+        fun zoomInView(view: View, activity: Activity, duration: Int) {
+            val a: Animation =
+                AnimationUtils.loadAnimation(activity, R.anim.zoom_in)
+            a.duration = duration.toLong()
+            view.startAnimation(a)
         }
 
         fun setTheme(context: Context) {
@@ -72,16 +69,16 @@ class Misc {
             editor.apply()
         }
 
-        fun setIsKorean(context: Context, isKorean: Boolean) {
+        fun setIskorean(context: Context, iskorean: Boolean) {
             val sharedPreferences =
                 context.getSharedPreferences(selectedKeyboard, AppCompatActivity.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.putBoolean(selectedKeyboard, isKorean)
+            editor.putBoolean(selectedKeyboard, iskorean)
             editor.apply()
         }
 
 
-        fun getIsKorean(context: Context): Boolean {
+        fun getIskorean(context: Context): Boolean {
             val sharedPreferences =
                 context.getSharedPreferences(selectedKeyboard, Context.MODE_PRIVATE)
             return sharedPreferences.getBoolean(selectedKeyboard, false)
@@ -101,14 +98,24 @@ class Misc {
             editor.putBoolean(kyeBackground, isKeyBackground)
             editor.apply()
         }
+        @SuppressLint("MissingPermission")
+        fun checkInternetConnection(context: Context): Boolean {
+            //Check internet connection:
+            val connectivityManager: ConnectivityManager? =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
 
-        fun InitTopBar(activity: Activity, screenName: String){
+            //Means that we are connected to a network (mobile or wi-fi)
+            return connectivityManager!!.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)!!.state === NetworkInfo.State.CONNECTED ||
+                    connectivityManager!!.getNetworkInfo(ConnectivityManager.TYPE_WIFI)!!.state === NetworkInfo.State.CONNECTED
+        }
+
+
+        fun initTopBar(activity: Activity, screenName: String){
             activity.findViewById<TextView>(R.id.tvScreenName).text = screenName
             activity.findViewById<ImageView>(R.id.btnBack).setOnClickListener {
                 activity.onBackPressed()
             }
         }
-
 
         fun setIsSettingEnable(context: Context, isSettingEnabled: Boolean, settingName: String) {
             val sharedPreferences =
@@ -116,6 +123,20 @@ class Misc {
             val editor = sharedPreferences.edit()
             editor.putBoolean(settingName, isSettingEnabled)
             editor.apply()
+        }
+
+        fun setIsKeyboardSizeLarge(context: Context, bool: Boolean) {
+            val sharedPreferences =
+                context.getSharedPreferences(keyboardSize, AppCompatActivity.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean(keyboardSize, bool)
+            editor.apply()
+        }
+
+        fun getIsKeyboardSizeLarge(context: Context):Boolean {
+            val sharedPreferences =
+                context.getSharedPreferences(keyboardSize, Context.MODE_PRIVATE)
+            return sharedPreferences.getBoolean(keyboardSize, false)
         }
 
         fun getIsSettingEnable(context: Context, settingName: String): Boolean {
@@ -156,7 +177,7 @@ class Misc {
                     }
 
             }else{
-                if(!Misc.isAToBDownloaded(context) || !isBToADownloaded(context)){
+                if(!isAToBDownloaded(context) || !isBToADownloaded(context)){
                     Toast.makeText(context, "Please check your internet.", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -187,7 +208,5 @@ class Misc {
             editor.putBoolean("bToA", isDownloaded)
             editor.apply()
         }
-
-
     }
 }

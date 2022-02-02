@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.provider.Settings
 import com.example.koreankeyboard.databinding.ActivitySplashScreenBinding
 import com.example.koreankeyboard.services.CustomInputMethodService
+import com.example.koreankeyboard.MainActivity
+import com.example.koreankeyboard.classes.Misc
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
@@ -16,18 +18,26 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if(intent.extras?.get(Misc.logKey) != null){
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(Misc.logKey, Misc.logKey)
+            startActivity(intent)
+            finish()
+        }
+
         binding.btnStart.setOnClickListener {
             if(isInputMethodSelected()){
-                finish()
                 startActivity(Intent(this, MainActivity::class.java))
-            }else{
                 finish()
+            }else{
                 startActivity(Intent(this, EnableKeyboardActivity::class.java))
+                finish()
             }
         }
     }
 
-    fun isInputMethodSelected(): Boolean {
+    private fun isInputMethodSelected(): Boolean {
         val id: String = Settings.Secure.getString(
             contentResolver,
             Settings.Secure.DEFAULT_INPUT_METHOD

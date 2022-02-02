@@ -5,50 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context="com.example.romaniankeyboard.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clMenu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:translationX="-280dp"
         android:elevation="64dp"
+        android:translationX="-230dp"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/btnMenuClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding"
             android:elevation="@dimen/padding"
             android:padding="@dimen/padding"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_close"
-            app:tint="#0038A5" />
+            app:tint="#002B7F" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="280dp"
-            android:layout_height="170dp"
+            android:layout_width="230dp"
+            android:layout_height="140dp"
             android:src="@drawable/img_menu"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/btnMenuClose"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btnEnableKeyBoard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/extra_padding"
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@id/imageView">
 
             <ImageView
                 android:id="@+id/imageVieew"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:padding="@dimen/extra_padding"
                 android:elevation="1dp"
                 android:scaleType="centerInside"
@@ -68,7 +66,7 @@
                 android:text="@string/select_keyboard"
                 android:paddingStart="24dp"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageVieew"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageVieew"
@@ -86,8 +84,8 @@
 
             <ImageView
                 android:id="@+id/imageVieo"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:padding="@dimen/extra_padding"
                 android:elevation="1dp"
                 android:scaleType="centerInside"
@@ -106,7 +104,7 @@
                 android:text="@string/enable_keyboard"
                 android:paddingStart="24dp"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageVieo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageVieo"
@@ -124,8 +122,8 @@
 
             <ImageView
                 android:id="@+id/imageVie"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:padding="@dimen/extra_padding"
                 android:elevation="1dp"
                 android:scaleType="centerInside"
@@ -144,7 +142,7 @@
                 android:text="@string/rate_us"
                 android:paddingStart="24dp"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageVie"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageVie"
@@ -162,8 +160,9 @@
 
             <ImageView
                 android:id="@+id/imageV"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="@dimen/extra_padding"
                 android:elevation="1dp"
                 android:scaleType="centerInside"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -181,7 +180,7 @@
                 android:paddingStart="24dp"
                 android:text="@string/share"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageV"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageV"
@@ -198,8 +197,8 @@
 
             <ImageView
                 android:id="@+id/imag"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:elevation="1dp"
                 android:padding="@dimen/extra_padding"
                 android:scaleType="centerInside"
@@ -218,7 +217,7 @@
                 android:paddingStart="24dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/imag"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imag"
@@ -235,8 +234,8 @@
 
             <ImageView
                 android:id="@+id/imq"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:elevation="1dp"
                 android:padding="@dimen/extra_padding"
                 android:scaleType="centerInside"
@@ -251,11 +250,11 @@
                 android:layout_height="0dp"
                 android:layout_marginVertical="@dimen/less_padding"
                 android:layout_marginStart="-32dp"
-                android:text="@string/more_keyboards"
+                android:text="@string/more_apps"
                 android:paddingStart="24dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/imq"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imq"
@@ -272,8 +271,8 @@
 
             <ImageView
                 android:id="@+id/imqw"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:elevation="1dp"
                 android:padding="@dimen/extra_padding"
                 android:scaleType="centerInside"
@@ -292,7 +291,7 @@
                 android:paddingStart="24dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/imqw"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imqw"
@@ -311,9 +310,16 @@
             android:id="@+id/blockView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:elevation="@dimen/_100sdp"
+            android:elevation="@dimen/extra_padding"
             android:visibility="gone"/>
 
+
+        <View
+            android:id="@+id/unFocusView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="50dp"
+            android:visibility="gone"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btnMenu"
             android:layout_width="wrap_content"
@@ -328,9 +334,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:tint="#7A8088"
-                app:srcCompat="@drawable/grid"
-                tools:ignore="UseAppTint" />
+                app:srcCompat="@drawable/grid" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -357,6 +361,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding"

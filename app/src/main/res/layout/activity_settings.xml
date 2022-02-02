@@ -7,7 +7,6 @@
     <include
         android:id="@+id/include"
         layout="@layout/top_bar" />
-
     <CheckBox
         android:id="@+id/cbVibration"
         android:layout_width="0dp"
@@ -60,5 +59,53 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cbSound" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cbSuggestions"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        android:textColor="@color/app_main"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/extra_padding"
+        android:layout_marginTop="@dimen/fab_padding"
+        android:text="@string/keyboard_size" />
+
+    <CheckBox
+        android:id="@+id/kbSizeLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/extra_padding"
+        android:background="@drawable/bg_bottom_border"
+        android:checked="false"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+        android:button="@null"
+        android:text="@string/large"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView4" />
+
+    <CheckBox
+        android:id="@+id/kbSizeSmall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/extra_padding"
+        android:background="@drawable/bg_bottom_border"
+        android:checked="false"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+        android:button="@null"
+        android:text="@string/normal"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kbSizeLarge" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

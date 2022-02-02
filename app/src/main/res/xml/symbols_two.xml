@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Keyboard xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:keyWidth="9.1%p" android:keyHeight="@dimen/key_height" android:horizontalGap="1%p" android:verticalGap="1%p">
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:keyWidth="9.1%p"  android:horizontalGap="1%p" android:verticalGap="1%p" android:keyHeight="@dimen/key_height">
     <Row>
         <Key android:keyWidth="9%p" android:codes="126" android:keyEdgeFlags="left" android:keyLabel="~"/>
         <Key android:keyWidth="8.9%p" android:codes="177" android:keyLabel="±"/>

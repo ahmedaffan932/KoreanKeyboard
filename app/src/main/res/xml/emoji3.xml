@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:horizontalGap="1%p"
     android:keyWidth="9.1%p"
-    android:keyHeight="@dimen/key_height"
+    android:keyHeight="@dimen/key_height_small"
     android:verticalGap="1%p">
     <Row
         android:horizontalGap="1%p"
         android:keyWidth="8.9%p"
-        android:keyHeight="@dimen/key_height"
+
         android:rowEdgeFlags="top"
         android:verticalGap="3%p">
         <Key

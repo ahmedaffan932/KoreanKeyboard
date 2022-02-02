@@ -1,0 +1,280 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.korean.keyboard.voice.typing.english.keyboard"
+4    android:versionCode="3"
+5    android:versionName="1.2" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+11-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:6:5-84
+11-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:6:22-81
+12    <uses-permission android:name="android.permission.VIBRATE" />
+12-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:7:5-66
+12-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:7:22-63
+13    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+13-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:8:5-80
+13-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:8:22-77
+14    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+14-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:9:5-71
+14-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:9:22-68
+15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+15-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:10:5-80
+15-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:10:22-77
+16    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+16-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:11:5-82
+16-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:11:22-79
+17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+17-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:12:5-81
+17-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:12:22-78
+18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+18-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:7:5-79
+18-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:7:22-76
+19    <uses-permission android:name="android.permission.INTERNET" />
+19-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:8:5-67
+19-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:8:22-64
+20
+21    <application
+21-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:14:5-81:19
+22        android:allowBackup="true"
+22-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:15:9-35
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.7.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\77d889afdefcb5766ece5e0491fb0f1a\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+24        android:debuggable="true"
+25        android:hardwareAccelerated="true"
+25-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:21:9-43
+26        android:icon="@mipmap/ic_launcher_foreground"
+26-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:16:9-54
+27        android:label="@string/app_name"
+27-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:17:9-41
+28        android:requestLegacyExternalStorage="true"
+28-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:18:9-52
+29        android:roundIcon="@mipmap/ic_launcher_round"
+29-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:19:9-54
+30        android:supportsRtl="true"
+30-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:20:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.KeyboardKotlin" >
+32-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:22:9-52
+33        <activity
+33-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:24:9-27:52
+34            android:name="com.example.koreankeyboard.AllDoneActivity"
+34-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:25:13-44
+35            android:exported="true"
+35-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:26:13-36
+36            android:screenOrientation="portrait" />
+36-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:27:13-49
+37        <activity
+37-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:28:9-31:39
+38            android:name="com.example.koreankeyboard.EnableKeyboardActivity"
+38-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:29:13-51
+39            android:exported="true"
+39-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:31:13-36
+40            android:screenOrientation="portrait" />
+40-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:30:13-49
+41        <activity
+41-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:32:9-35:39
+42            android:name="com.example.koreankeyboard.HowToUseActivity"
+42-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:33:13-45
+43            android:exported="true"
+43-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:35:13-36
+44            android:screenOrientation="portrait" />
+44-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:34:13-49
+45        <activity
+45-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:36:9-39:39
+46            android:name="com.example.koreankeyboard.ThemesActivity"
+46-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:37:13-43
+47            android:exported="true"
+47-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:39:13-36
+48            android:screenOrientation="portrait" />
+48-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:38:13-49
+49        <activity
+49-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:40:9-48:20
+50            android:name="com.example.koreankeyboard.SplashScreenActivity"
+50-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:41:13-49
+51            android:exported="true"
+51-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:43:13-36
+52            android:screenOrientation="portrait" >
+52-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:42:13-49
+53            <intent-filter>
+53-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:44:13-47:29
+54                <action android:name="android.intent.action.MAIN" />
+54-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:45:17-69
+54-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:45:25-66
+55
+56                <category android:name="android.intent.category.LAUNCHER" />
+56-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:46:17-77
+56-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:46:27-74
+57            </intent-filter>
+58        </activity>
+59        <activity
+59-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:49:9-52:39
+60            android:name="com.example.koreankeyboard.MicPermissionActivity"
+60-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:50:13-50
+61            android:exported="true"
+61-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:52:13-36
+62            android:screenOrientation="portrait" />
+62-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:51:13-49
+63
+64        <service
+64-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:54:9-67:19
+65            android:name="com.example.koreankeyboard.services.CustomInputMethodService"
+65-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:55:13-62
+66            android:exported="false"
+66-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:56:13-37
+67            android:label="Korean Keyboard"
+67-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:57:13-44
+68            android:permission="android.permission.BIND_INPUT_METHOD"
+68-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:59:13-70
+69            android:screenOrientation="portrait" >
+69-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:58:13-49
+70            <intent-filter>
+70-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:60:13-62:29
+71                <action android:name="android.view.InputMethod" />
+71-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:61:17-67
+71-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:61:25-64
+72            </intent-filter>
+73
+74            <meta-data
+74-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:64:13-66:59
+75                android:name="android.view.im"
+75-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:65:17-47
+76                android:resource="@xml/keyboard_method" />
+76-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:66:17-56
+77        </service>
+78
+79        <activity
+79-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:69:9-72:63
+80            android:name="com.example.koreankeyboard.SettingsActivity"
+80-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:70:13-45
+81            android:exported="true"
+81-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:71:13-36
+82            android:label="@string/title_activity_settings" />
+82-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:72:13-60
+83        <activity
+83-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:73:9-77:20
+84            android:name="com.example.koreankeyboard.MainActivity"
+84-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:74:13-41
+85            android:exported="true" >
+85-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:75:13-36
+86        </activity>
+87        <activity
+87-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:78:9-80:59
+88            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+88-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:79:13-76
+89            android:theme="@style/Base.Theme.AppCompat" />
+89-->C:\Users\Affan Ahmed\AndroidStudioProjects\KoreanKeyboard\app\src\main\AndroidManifest.xml:80:13-56
+90
+91        <service
+91-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:11:9-20:19
+92            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+92-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:12:13-91
+93            android:directBootAware="true"
+93-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:17:13-43
+94            android:exported="false" >
+94-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:13:13-37
+95            <meta-data
+95-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:14:13-16:85
+96                android:name="com.google.firebase.components:com.google.mlkit.nl.translate.NaturalLanguageTranslateRegistrar"
+96-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:15:17-126
+97                android:value="com.google.firebase.components.ComponentRegistrar" />
+97-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:16:17-82
+98            <meta-data
+98-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:17:13-19:85
+99                android:name="com.google.firebase.components:com.google.mlkit.nl.translate.RemoteConfigRegistrar"
+99-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:18:17-114
+100                android:value="com.google.firebase.components.ComponentRegistrar" />
+100-->[com.google.mlkit:translate:16.1.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\a27c0a3d61a18a895d7a10e990517ee3\transformed\jetified-translate-16.1.2\AndroidManifest.xml:19:17-82
+101            <meta-data
+101-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:20:13-22:85
+102                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+102-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:21:17-120
+103                android:value="com.google.firebase.components.ComponentRegistrar" />
+103-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:22:17-82
+104        </service>
+105
+106        <provider
+106-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:9:9-13:38
+107            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+107-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:10:13-78
+108            android:authorities="com.korean.keyboard.voice.typing.english.keyboard.mlkitinitprovider"
+108-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:11:13-69
+109            android:exported="false"
+109-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:12:13-37
+110            android:initOrder="99" />
+110-->[com.google.mlkit:common:17.1.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\93332b755829c928f5a3a16de991042a\transformed\jetified-common-17.1.0\AndroidManifest.xml:13:13-35
+111
+112        <activity
+112-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\2e3674e3fdb20cd7aa57505f229f6cf9\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:23:9-26:75
+113            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+113-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\2e3674e3fdb20cd7aa57505f229f6cf9\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:24:13-79
+114            android:exported="false"
+114-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\2e3674e3fdb20cd7aa57505f229f6cf9\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:25:13-37
+115            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+115-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\2e3674e3fdb20cd7aa57505f229f6cf9\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:26:13-72
+116
+117        <meta-data
+117-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\4c94cbcdb1f34a1d127d75b6c4d89ba4\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:23:9-25:69
+118            android:name="com.google.android.gms.version"
+118-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\4c94cbcdb1f34a1d127d75b6c4d89ba4\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:24:13-58
+119            android:value="@integer/google_play_services_version" />
+119-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\4c94cbcdb1f34a1d127d75b6c4d89ba4\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:25:13-66
+120
+121        <provider
+121-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\1934b08dcc9d3a3009252d87496963d4\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+122            android:name="androidx.startup.InitializationProvider"
+122-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\1934b08dcc9d3a3009252d87496963d4\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+123            android:authorities="com.korean.keyboard.voice.typing.english.keyboard.androidx-startup"
+123-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\1934b08dcc9d3a3009252d87496963d4\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+124            android:exported="false" >
+124-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\1934b08dcc9d3a3009252d87496963d4\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+125            <meta-data
+125-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\1934b08dcc9d3a3009252d87496963d4\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+126                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+126-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\1934b08dcc9d3a3009252d87496963d4\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+127                android:value="androidx.startup" />
+127-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\1934b08dcc9d3a3009252d87496963d4\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+128            <meta-data
+128-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\d172b22a3f3986157c259c2317d53cc6\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+129                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+129-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\d172b22a3f3986157c259c2317d53cc6\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+130                android:value="androidx.startup" />
+130-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\d172b22a3f3986157c259c2317d53cc6\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+131        </provider>
+132
+133        <service
+133-->[com.google.android.datatransport:transport-backend-cct:2.3.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\83b4e34c8af906f470f8745a6557c086\transformed\jetified-transport-backend-cct-2.3.2\AndroidManifest.xml:29:9-35:19
+134            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+134-->[com.google.android.datatransport:transport-backend-cct:2.3.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\83b4e34c8af906f470f8745a6557c086\transformed\jetified-transport-backend-cct-2.3.2\AndroidManifest.xml:30:13-103
+135            android:exported="false" >
+135-->[com.google.android.datatransport:transport-backend-cct:2.3.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\83b4e34c8af906f470f8745a6557c086\transformed\jetified-transport-backend-cct-2.3.2\AndroidManifest.xml:31:13-37
+136            <meta-data
+136-->[com.google.android.datatransport:transport-backend-cct:2.3.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\83b4e34c8af906f470f8745a6557c086\transformed\jetified-transport-backend-cct-2.3.2\AndroidManifest.xml:32:13-34:39
+137                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+137-->[com.google.android.datatransport:transport-backend-cct:2.3.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\83b4e34c8af906f470f8745a6557c086\transformed\jetified-transport-backend-cct-2.3.2\AndroidManifest.xml:33:17-94
+138                android:value="cct" />
+138-->[com.google.android.datatransport:transport-backend-cct:2.3.2] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\83b4e34c8af906f470f8745a6557c086\transformed\jetified-transport-backend-cct-2.3.2\AndroidManifest.xml:34:17-36
+139        </service>
+140        <service
+140-->[com.google.android.datatransport:transport-runtime:2.2.5] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\669aab661e2410fb60c958a04842d5c3\transformed\jetified-transport-runtime-2.2.5\AndroidManifest.xml:26:9-30:19
+141            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+141-->[com.google.android.datatransport:transport-runtime:2.2.5] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\669aab661e2410fb60c958a04842d5c3\transformed\jetified-transport-runtime-2.2.5\AndroidManifest.xml:27:13-117
+142            android:exported="false"
+142-->[com.google.android.datatransport:transport-runtime:2.2.5] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\669aab661e2410fb60c958a04842d5c3\transformed\jetified-transport-runtime-2.2.5\AndroidManifest.xml:28:13-37
+143            android:permission="android.permission.BIND_JOB_SERVICE" >
+143-->[com.google.android.datatransport:transport-runtime:2.2.5] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\669aab661e2410fb60c958a04842d5c3\transformed\jetified-transport-runtime-2.2.5\AndroidManifest.xml:29:13-69
+144        </service>
+145
+146        <receiver
+146-->[com.google.android.datatransport:transport-runtime:2.2.5] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\669aab661e2410fb60c958a04842d5c3\transformed\jetified-transport-runtime-2.2.5\AndroidManifest.xml:32:9-34:40
+147            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+147-->[com.google.android.datatransport:transport-runtime:2.2.5] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\669aab661e2410fb60c958a04842d5c3\transformed\jetified-transport-runtime-2.2.5\AndroidManifest.xml:33:13-132
+148            android:exported="false" />
+148-->[com.google.android.datatransport:transport-runtime:2.2.5] C:\Users\Affan Ahmed\.gradle\caches\transforms-3\669aab661e2410fb60c958a04842d5c3\transformed\jetified-transport-runtime-2.2.5\AndroidManifest.xml:34:13-37
+149    </application>
+150
+151</manifest>

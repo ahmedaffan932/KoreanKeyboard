@@ -21,6 +21,15 @@
         android:hardwareAccelerated="true"
         android:theme="@style/Theme.KeyboardKotlin"
         tools:ignore="AllowBackup">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+        <activity
+            android:name=".AllDoneActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EnableKeyboardActivity"
             android:screenOrientation="portrait"
@@ -50,7 +59,7 @@
         <service
             android:name=".services.CustomInputMethodService"
             android:exported="false"
-            android:label="@string/korean_keyboard"
+            android:label="Korean Keyboard"
             android:screenOrientation="portrait"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>

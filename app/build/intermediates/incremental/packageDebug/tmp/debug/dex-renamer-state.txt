@@ -1,0 +1,4 @@
+#Wed Feb 02 14:32:32 PKT 2022
+base.0=C\:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\dex\\debug\\minifyDebugWithR8\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Keyboard xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:keyWidth="9.1%p" android:keyHeight="@dimen/key_height" android:horizontalGap="1%p" android:verticalGap="1%p">
-    <Row android:keyWidth="8.9%p" android:keyHeight="@dimen/key_height" android:horizontalGap="1%p" android:verticalGap="3%p" android:rowEdgeFlags="top">
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="9.1%p"
+    android:keyHeight="@dimen/key_height_small"
+    android:horizontalGap="1%p"
+    android:verticalGap="1%p">
+    <Row android:keyWidth="8.9%p"  android:horizontalGap="1%p" android:verticalGap="3%p" android:rowEdgeFlags="top">
         <Key android:codes="-300" android:keyEdgeFlags="left" android:keyIcon="@mipmap/a11"/>
         <Key android:codes="-302" android:keyIcon="@mipmap/emoji_1f63b"/>
         <Key android:codes="-303" android:keyIcon="@mipmap/emoji_1f352"/>

@@ -1,0 +1,26 @@
+com/example/koreankeyboard/databinding/ActivityMicPermissionBinding.java
+ com.example.koreankeyboard.databinding.ActivityMicPermissionBinding
+com/example/koreankeyboard/databinding/ActivityMainBinding.java
+ com.example.koreankeyboard.databinding.ActivityMainBinding
+com/example/koreankeyboard/databinding/ActivityAllDoneBinding.java
+ com.example.koreankeyboard.databinding.ActivityAllDoneBinding
+com/example/koreankeyboard/databinding/LayoutCandidateBinding.java
+ com.example.koreankeyboard.databinding.LayoutCandidateBinding
+com/example/koreankeyboard/databinding/ActivityHowToUseBinding.java
+ com.example.koreankeyboard.databinding.ActivityHowToUseBinding
+com/example/koreankeyboard/databinding/ActivitySplashScreenBinding.java
+ com.example.koreankeyboard.databinding.ActivitySplashScreenBinding
+com/example/koreankeyboard/BuildConfig.java
+ com.example.koreankeyboard.BuildConfig
+com/example/koreankeyboard/databinding/KeyboardThemesDialogBinding.java
+ com.example.koreankeyboard.databinding.KeyboardThemesDialogBinding
+com/example/koreankeyboard/databinding/TopBarBinding.java
+ com.example.koreankeyboard.databinding.TopBarBinding
+com/example/koreankeyboard/databinding/ActivitySettingsBinding.java
+ com.example.koreankeyboard.databinding.ActivitySettingsBinding
+com/example/koreankeyboard/databinding/ActivityEnableKeyboardBinding.java
+ com.example.koreankeyboard.databinding.ActivityEnableKeyboardBinding
+com/example/koreankeyboard/databinding/KeyboardLayoutSBinding.java
+ com.example.koreankeyboard.databinding.KeyboardLayoutSBinding
+com/example/koreankeyboard/databinding/KeyboardLayoutBinding.java
+ com.example.koreankeyboard.databinding.KeyboardLayoutBinding

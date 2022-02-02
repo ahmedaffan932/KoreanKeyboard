@@ -4,18 +4,15 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.media.AudioManager
-import android.os.Build
-import android.os.Bundle
-import android.os.Vibrator
-import android.speech.RecognitionListener
+import android.os.*
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.text.method.MetaKeyKeyListener
@@ -24,49 +21,42 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.CompletionInfo
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputConnection
-import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.*
 import android.widget.Toast
-import com.example.koreankeyboard.interfaces.CandidateViewButtonOnClick
-import com.example.koreankeyboard.utils.KeyboardClass
-import com.example.koreankeyboard.views.CandidateView
-import com.example.koreankeyboard.views.CustomKeyboardView
-import org.json.JSONObject
-import java.io.InputStream
-import kotlin.collections.ArrayList
-import kotlin.text.isNotEmpty as isNotEmpty1
-import android.graphics.BitmapFactory
-
-import android.graphics.drawable.BitmapDrawable
-import android.os.Handler
+import androidx.annotation.RequiresApi
 import com.example.koreankeyboard.*
 import com.example.koreankeyboard.classes.Misc
 import com.example.koreankeyboard.classes.SuggestionClass
+import com.example.koreankeyboard.interfaces.CandidateViewButtonOnClick
+import com.example.koreankeyboard.interfaces.TranslateCallBack
+import com.example.koreankeyboard.utils.KeyboardClass
+import com.example.koreankeyboard.views.CandidateView
+import com.example.koreankeyboard.views.CustomKeyboardView
 import com.github.kimkevin.hangulparser.HangulParser
 import com.github.kimkevin.hangulparser.HangulParserException
-import android.view.inputmethod.ExtractedTextRequest
-import android.os.Looper
-import androidx.annotation.RequiresApi
-import com.example.koreankeyboard.interfaces.TranslateCallBack
+import com.github.zagum.speechrecognitionview.adapters.RecognitionListenerAdapter
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
+import org.json.JSONObject
+import java.io.InputStream
+import kotlin.text.isNotEmpty as isNotEmpty1
 
-class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
-    OnSharedPreferenceChangeListener, RecognitionListener {
+
+@RequiresApi(Build.VERSION_CODES.N)
+class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     var isSpace = true
     var lastWord = ""
-    var isFirstChar = true
     private var isCaps = true
+    var isFirstChar = true
     private var isSoundOn = false
-    private var isVibrationOn = false
-    private var isPredictionOn = false
     private var mMetaState: Long = 0
     private var mCompletionOn = false
+    private var isVibrationOn = false
+    private var isPredictionOn = false
     private var isKorean: Boolean = false
+    private var isLarge: Boolean = false
     private var vibrator: Vibrator? = null
     private val mComposing = StringBuilder()
     private var mWordSeparators: String? = null
@@ -76,11 +66,11 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
     private lateinit var objSuggestions: JSONObject
     private var candidateView: CandidateView? = null
     private var mInputView: CustomKeyboardView? = null
-    private val koreanWordArrayList = ArrayList<String>()
     private var completions: Array<CompletionInfo>? = null
     private var mInputMethodManager: InputMethodManager? = null
+    lateinit var speechRecognizer: SpeechRecognizer
+    private val koreanWordArrayList = ArrayList<String>()
     private var koreanWordPreviousLength = 1
-    var isAgain = false
 
     private val themes = intArrayOf(
         R.drawable.ic_flag_a1,
@@ -147,13 +137,23 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
 
     override fun onCreateInputView(): View {
 
-        mInputView = layoutInflater.inflate(
-            R.layout.keyboard_layout,
-            null as ViewGroup?, true
-        ) as CustomKeyboardView?
+        mInputView =
+            if (Misc.getIsKeyboardSizeLarge(this)) {
+                layoutInflater.inflate(
+                    R.layout.keyboard_layout,
+                    null as ViewGroup?, true
+                ) as CustomKeyboardView?
+            } else {
+                layoutInflater.inflate(
+                    R.layout.keyboard_layout_s,
+                    null as ViewGroup?, true
+                ) as CustomKeyboardView?
+            }
 
         mInputView?.setOnKeyboardActionListener(this)
+        candidateView?.visibility = View.VISIBLE
 
+        loadPreferences()
         return mInputView!!
     }
 
@@ -170,7 +170,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         try {
 
             val themeId = Misc.getTheme(this)
-            if (themeId == 0) {
+            if (themeId == 198) {
                 val sharedPreferences =
                     getSharedPreferences(Misc.themeFromGallery, Context.MODE_PRIVATE)
                 val str = sharedPreferences.getString(Misc.themeFromGallery, "")
@@ -179,22 +179,22 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                     BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
                 val ob = BitmapDrawable(resources, decodedByte)
                 mInputView?.background = ob
-
             } else {
                 mDrawableTheme = resources.getDrawable(themes[themeId])
                 mInputView?.background = mDrawableTheme
             }
+            loadPreferences()
         } catch (unused: OutOfMemoryError) {
             unused.printStackTrace()
+            loadPreferences()
         }
-        loadSuggestions()
-        loadPreferences()
     }
 
     override fun onStartInput(editorInfo: EditorInfo, z: Boolean) {
         super.onStartInput(editorInfo, z)
         mComposing.setLength(0)
         mCompletionOn = false
+        candidateView?.visibility = View.VISIBLE
         updateCandidates()
 
     }
@@ -203,22 +203,33 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         super.onFinishInput()
         mComposing.setLength(0)
         setCandidatesViewShown(false)
+        candidateView?.visibility = View.GONE
         val e5Var: CustomKeyboardView? = mInputView
         e5Var?.closing()
     }
 
     override fun onStartInputView(editorInfo: EditorInfo, z: Boolean) {
         super.onStartInputView(editorInfo, z)
-        isKorean = Misc.getIsKorean(this)
-        if (isKorean)
-            setKeyboard(R.xml.qwertz, true)
-        else
-            setKeyboard(R.xml.qwerty_caps, true)
+        isKorean = Misc.getIskorean(this)
+        isLarge = Misc.getIsKeyboardSizeLarge(this)
+        if (isKorean) {
+            if (isLarge)
+                setKeyboard(R.xml.qwertz, true)
+            else
+                setKeyboard(R.xml.qwertz_s, true)
+        } else {
+            if (isLarge)
+                setKeyboard(R.xml.qwerty_caps, true)
+            else
+                setKeyboard(R.xml.qwerty_caps_s, true)
+        }
 
         setKbThemes()
         mInputView?.closing()
+        loadSuggestions()
         setCandidatesViewShown(true)
-        candidateView!!.changeTranslateIcon(isKorean)
+        candidateView?.visibility = View.VISIBLE
+
     }
 
     override fun onUpdateSelection(i: Int, i2: Int, i3: Int, i4: Int, i5: Int, i6: Int) {
@@ -291,230 +302,252 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
     }
 
     override fun onKey(i: Int, iArr: IntArray) {
-        when (i) {
-            -5 -> {
-                handleBackspace()
-            }
-            -134 -> {
-                isKorean = false
-                setKeyboard(R.xml.qwerty_caps, true)
-                loadSuggestions()
-
-            }
-            -1340 -> {
-                isKorean = true
-                setKeyboard(R.xml.qwertz_caps, true)
-                loadSuggestions()
-
-            }
-            -1 -> {
-                setKeyboard(R.xml.symbols_two, false)
-            }
-            -123 -> {
-                if (isKorean) {
-                    isKorean = true
-                    setKeyboard(R.xml.qwertz, false)
-                } else {
-                    isKorean = false
-                    if (mComposing.isEmpty()) {
-                        setKeyboard(R.xml.qwerty_caps, true)
-                    } else
-                        setKeyboard(R.xml.qwerty, false)
-                }
-                loadSuggestions()
-            }
-            -11 -> {
-                isKorean = false
-                setKeyboard(R.xml.qwerty_caps_lock, false)
-                loadSuggestions()
-            }
-            -110 -> {
-                isKorean = true
-                setKeyboard(R.xml.qwertz_caps_lock, false)
-                loadSuggestions()
-            }
-            -12 -> {
-                isKorean = false
-                setKeyboard(R.xml.qwerty, false)
-                loadSuggestions()
-            }
-            -120 -> {
-                isKorean = true
-                setKeyboard(R.xml.qwertz, false)
-                loadSuggestions()
-            }
-            -15 -> {
-                if (isKorean) {
-                    isKorean = true
-                    if (isCaps)
-                        setKeyboard(R.xml.qwertz_caps, isCaps)
-                    else {
-                        setKeyboard(R.xml.qwertz, isCaps)
-                    }
-                } else {
-                    isKorean = false
-                    if (isCaps)
-                        setKeyboard(R.xml.qwerty_caps, isCaps)
-                    else
-                        setKeyboard(R.xml.qwerty, isCaps)
-                }
-                loadSuggestions()
-            }
-            -14 -> {
-                if (isCaps) {
-                    isKorean = true
-                    setKeyboard(R.xml.qwertz_caps, true)
-                } else {
-                    isKorean = true
-                    setKeyboard(R.xml.qwertz, false)
-                }
-                loadSuggestions()
-            }
-            -200 -> {
-                setKeyboard(R.xml.symbols_one, false)
-            }
-            -300 -> {
-                setKeyboard(R.xml.emoji, false)
-            }
-            -302 -> {
-                setKeyboard(R.xml.emoji1, false)
-            }
-            -303 -> {
-                setKeyboard(R.xml.emoji2, false)
-            }
-            -304 -> {
-                setKeyboard(R.xml.emoji3, false)
-            }
-            -305 -> {
-                setKeyboard(R.xml.emoji4, false)
-            }
-            -306 -> {
-                setKeyboard(R.xml.emoji5, false)
-            }
-            -307 -> {
-                setKeyboard(R.xml.emoji6, false)
-            }
-            -308 -> {
-                setKeyboard(R.xml.emoji7, false)
-            }
-            -309 -> {
-                setKeyboard(R.xml.emoji8, false)
-            }
-            -310 -> {
-                setKeyboard(R.xml.emoji9, false)
-            }
-            -16 -> {
-                setting()
-                isCaps = false
-            }
-            -17 -> {
-                val intent = Intent(this, ThemesActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-            }
-            -105 -> {
-                handleBackspaceKorean()
-            }
-            12345 -> {
-                isKorean = false
-                if (isCaps) {
-                    setKeyboard(R.xml.qwerty_caps, true)
-                } else
-                    setKeyboard(R.xml.qwerty, false)
-                loadSuggestions()
-            }
-            10 -> {
-                val options = currentInputEditorInfo.imeOptions
-                when (options and EditorInfo.IME_MASK_ACTION) {
-                    EditorInfo.IME_ACTION_SEARCH -> sendDefaultEditorAction(true)
-                    EditorInfo.IME_ACTION_GO -> sendDefaultEditorAction(true)
-                    EditorInfo.IME_ACTION_SEND -> sendDefaultEditorAction(true)
-                    else -> handleCharacter(i)
-                }
-            }
-            else -> {
-                if (isCaps) {
-                    if (isKorean) {
-                        isKorean = true
-                        setKeyboard(R.xml.qwertz, false)
-                    } else {
-                        isKorean = false
-                        setKeyboard(R.xml.qwerty, false)
-                    }
-                }
-                handleCharacter(i)
-
-            }
-        }
-        if (isVibrationOn) {
-            vibrateOnChars()
-        }
-        if (isSoundOn) {
-            soundOnChars()
-        }
-    }
-
-    private fun setKeyboard(keyboardId: Int, isCaps: Boolean) {
-        mInputView?.keyboard = KeyboardClass(this, keyboardId)
-        Misc.setIsKorean(this, isKorean)
-
-        candidateView!!.changeTranslateIcon(isKorean)
-        this.isCaps = isCaps
-    }
-
-    fun loadSuggestions(){
         object : Thread() {
             override fun run() {
                 val l = Looper.getMainLooper()
                 val h = Handler(l)
                 h.post {
-                    if (isKorean) {
-                        val `is`: InputStream = resources.openRawResource(R.raw.korean_suggestions)
-                        val size: Int = `is`.available()
-                        val buffer = ByteArray(size)
-                        `is`.read(buffer)
-                        `is`.close()
-
-                        val json = String(buffer)
-                        objSuggestions = JSONObject(json)
-                        arrSuggestion = ArrayList()
-                        for (word in objSuggestions.keys()) {
-                            arrSuggestion.add(word)
+                    if (isAlphabet(i)) {
+                        handleCharacter(i)
+                        if (isCaps) {
+                            if (isKorean) {
+                                if (isLarge)
+                                    setKeyboard(R.xml.qwertz, false)
+                                else
+                                    setKeyboard(R.xml.qwertz_s, false)
+                            } else {
+                                if (isLarge)
+                                    setKeyboard(R.xml.qwerty, false)
+                                else
+                                    setKeyboard(R.xml.qwerty_s, false)
+                            }
                         }
                     } else {
+                        when (i) {
+                            -5 -> {
+                                handleBackspace()
+                            }
+                            -134 -> {
+                                isKorean = false
+                                if (isLarge)
+                                    setKeyboard(R.xml.qwerty_caps, true)
+                                else
+                                    setKeyboard(R.xml.qwerty_caps_s, true)
 
-                        val `is`: InputStream = resources.openRawResource(R.raw.english_suggestions)
-                        val size: Int = `is`.available()
-                        val buffer = ByteArray(size)
-                        `is`.read(buffer)
-                        `is`.close()
+                                loadSuggestions()
 
-                        val json = String(buffer)
-                        objSuggestions = JSONObject(json)
-                        arrSuggestion = ArrayList()
-                        for (word in objSuggestions.keys()) {
-                            arrSuggestion.add(word)
+                            }
+                            -1340 -> {
+                                isKorean = true
+                                if (isLarge)
+                                    setKeyboard(R.xml.qwertz_caps, true)
+                                else
+                                    setKeyboard(R.xml.qwertz_caps_s, true)
+                                loadSuggestions()
+
+                            }
+                            -1 -> {
+                                setKeyboard(R.xml.symbols_two, false)
+                            }
+                            -123 -> {
+                                if (isKorean) {
+                                    isKorean = true
+                                    if (isLarge)
+                                        setKeyboard(R.xml.qwertz, false)
+                                    else
+                                        setKeyboard(R.xml.qwertz_s, false)
+                                } else {
+                                    isKorean = false
+                                    if (mComposing.isEmpty()) {
+                                        if (isLarge)
+                                            setKeyboard(R.xml.qwerty_caps, true)
+                                        else
+                                            setKeyboard(R.xml.qwerty_caps_s, true)
+                                    } else
+                                        if (isLarge)
+                                            setKeyboard(R.xml.qwerty, false)
+                                        else
+                                            setKeyboard(R.xml.qwerty_s, false)
+                                }
+                                loadSuggestions()
+                            }
+                            -11 -> {
+                                isKorean = false
+                                if (isLarge)
+                                    setKeyboard(R.xml.qwerty_caps_lock, false)
+                                else
+                                    setKeyboard(R.xml.qwerty_caps_lock_s, false)
+                                loadSuggestions()
+                            }
+                            -110 -> {
+                                isKorean = true
+                                if (isLarge)
+                                    setKeyboard(R.xml.qwertz_caps_lock, false)
+                                else
+                                    setKeyboard(R.xml.qwertz_caps_lock_s, false)
+                                loadSuggestions()
+                            }
+                            -12 -> {
+                                isKorean = false
+                                if (isLarge)
+                                    setKeyboard(R.xml.qwerty, false)
+                                else
+                                    setKeyboard(R.xml.qwerty_s, false)
+                                loadSuggestions()
+                            }
+                            -120 -> {
+                                isKorean = true
+                                if (isLarge)
+                                    setKeyboard(R.xml.qwertz, false)
+                                else
+                                    setKeyboard(R.xml.qwertz_s, false)
+                                loadSuggestions()
+                            }
+                            -15 -> {
+                                if (isKorean) {
+                                    isKorean = true
+                                    if (isCaps)
+                                        if (isLarge)
+                                            setKeyboard(R.xml.qwertz_caps, isCaps)
+                                        else
+                                            setKeyboard(R.xml.qwertz_caps_s, isCaps)
+                                    else {
+                                        if (isLarge)
+                                            setKeyboard(R.xml.qwertz, isCaps)
+                                        else
+                                            setKeyboard(R.xml.qwertz_s, isCaps)
+                                    }
+                                } else {
+                                    isKorean = false
+                                    if (isCaps)
+                                        if (isLarge)
+                                            setKeyboard(R.xml.qwerty_caps, isCaps)
+                                        else
+                                            setKeyboard(R.xml.qwerty_caps_s, isCaps)
+                                    else {
+                                        if (isLarge)
+                                            setKeyboard(R.xml.qwerty, isCaps)
+                                        else
+                                            setKeyboard(R.xml.qwerty_s, isCaps)
+                                    }
+                                }
+                                loadSuggestions()
+                            }
+                            -14 -> {
+                                if (isCaps) {
+                                    isKorean = true
+                                    if (isLarge)
+                                        setKeyboard(R.xml.qwertz_caps, true)
+                                    else
+                                        setKeyboard(R.xml.qwertz_caps_s, true)
+                                } else {
+                                    isKorean = true
+                                    if (isLarge)
+                                        setKeyboard(R.xml.qwertz, false)
+                                    else
+                                        setKeyboard(R.xml.qwertz_s, false)
+
+                                }
+                                loadSuggestions()
+                            }
+                            -200 -> {
+                                setKeyboard(R.xml.symbols_one, false)
+                            }
+                            -300 -> {
+                                setKeyboard(R.xml.emoji, false)
+                            }
+                            -302 -> {
+                                setKeyboard(R.xml.emoji1, false)
+                            }
+                            -303 -> {
+                                setKeyboard(R.xml.emoji2, false)
+                            }
+                            -304 -> {
+                                setKeyboard(R.xml.emoji3, false)
+                            }
+                            -305 -> {
+                                setKeyboard(R.xml.emoji4, false)
+                            }
+                            -306 -> {
+                                setKeyboard(R.xml.emoji5, false)
+                            }
+                            -307 -> {
+                                setKeyboard(R.xml.emoji6, false)
+                            }
+                            -308 -> {
+                                setKeyboard(R.xml.emoji7, false)
+                            }
+                            -309 -> {
+                                setKeyboard(R.xml.emoji8, false)
+                            }
+                            -310 -> {
+                                setKeyboard(R.xml.emoji9, false)
+                            }
+                            -16 -> {
+                                setting()
+                                isCaps = false
+                            }
+                            -17 -> {
+                                val intent = Intent(this@CustomInputMethodService, ThemesActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
+                            }
+                            -105 -> {
+                                handleBackspaceKorean()
+                            }
+                            12345 -> {
+                                isKorean = false
+                                if (isCaps) {
+                                    if (isLarge)
+                                        setKeyboard(R.xml.qwerty_caps, true)
+                                    else
+                                        setKeyboard(R.xml.qwerty_caps_s, true)
+                                } else {
+                                    if (isLarge)
+                                        setKeyboard(R.xml.qwerty, false)
+                                    else
+                                        setKeyboard(R.xml.qwerty_s, false)
+                                }
+                                loadSuggestions()
+                            }
+                            10 -> {
+                                val options = currentInputEditorInfo.imeOptions
+                                when (options and EditorInfo.IME_MASK_ACTION) {
+                                    EditorInfo.IME_ACTION_SEARCH -> sendDefaultEditorAction(true)
+                                    EditorInfo.IME_ACTION_GO -> sendDefaultEditorAction(true)
+                                    EditorInfo.IME_ACTION_SEND -> sendDefaultEditorAction(true)
+                                    else -> handleCharacter(i)
+                                }
+                            }
+                            else -> {
+                                if (isCaps) {
+                                    if (isKorean) {
+                                        isKorean = true
+                                        if (isLarge)
+                                            setKeyboard(R.xml.qwertz, false)
+                                        else
+                                            setKeyboard(R.xml.qwertz_s, false)
+                                    } else {
+                                        isKorean = false
+                                        if (isLarge)
+                                            setKeyboard(R.xml.qwerty, false)
+                                        else
+                                            setKeyboard(R.xml.qwerty_s, false)
+                                    }
+                                }
+                                handleCharacter(i)
+
+                            }
                         }
-
                     }
                 }
             }
         }.start()
-
-    }
-
-    private fun setting() {
-        val intent = Intent(this, SettingsActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
-    }
-
-    override fun onText(charSequence: CharSequence) {
-        val currentInputConnection = currentInputConnection
-        if (currentInputConnection != null) {
-            currentInputConnection.beginBatchEdit()
-            currentInputConnection.commitText(charSequence, 0)
-            currentInputConnection.endBatchEdit()
+        if (isVibrationOn) {
+            vibrateOnChars()
+        }
+        if (isSoundOn) {
+            soundOnChars()
         }
     }
 
@@ -561,6 +594,49 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         }
     }
 
+    private fun handleBackspaceFor() {
+        val length = this.mComposing.length
+        when {
+            length > 1 -> {
+                this.mComposing.delete(length - 1, length)
+                currentInputConnection.setComposingText(mComposing, 1)
+            }
+            length > 0 -> {
+                this.mComposing.setLength(0)
+                currentInputConnection.commitText("", 0)
+                setSuggestions(emptyList())
+                isCaps = true
+            }
+            else -> {
+                setSuggestions(emptyList())
+                keyDownUp(67)
+            }
+        }
+    }
+
+    private fun setKeyboard(keyboardId: Int, isCaps: Boolean) {
+        mInputView?.keyboard = KeyboardClass(this, keyboardId)
+        Misc.setIskorean(this, isKorean)
+
+        this.isCaps = isCaps
+    }
+
+    private fun setting() {
+        val intent = Intent(this, SettingsActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+    }
+
+    override fun onText(charSequence: CharSequence) {
+        val currentInputConnection = currentInputConnection
+        if (currentInputConnection != null) {
+            currentInputConnection.beginBatchEdit()
+            currentInputConnection.commitText(charSequence, 0)
+            currentInputConnection.endBatchEdit()
+        }
+    }
+
+
     private fun handleBackspace() {
         val length = this.mComposing.length
         when {
@@ -574,26 +650,6 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                 currentInputConnection.commitText("", 0)
                 setSuggestions(emptyList())
                 updateCandidates()
-                isCaps = true
-            }
-            else -> {
-                setSuggestions(emptyList())
-                keyDownUp(67)
-            }
-        }
-    }
-
-    private fun handleBackspaceFor() {
-        val length = this.mComposing.length
-        when {
-            length > 1 -> {
-                this.mComposing.delete(length - 1, length)
-                currentInputConnection.setComposingText(mComposing, 1)
-            }
-            length > 0 -> {
-                this.mComposing.setLength(0)
-                currentInputConnection.commitText("", 0)
-                setSuggestions(emptyList())
                 isCaps = true
             }
             else -> {
@@ -676,35 +732,34 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
 
     }
 
-
-    private fun isDisassembleAble(char: Char): Boolean {
-        return try {
-            HangulParser.disassemble(char)
-            true
-        } catch (e: java.lang.Exception) {
-            false
+    private fun getKoreanLastWord() {
+        val arr =
+            currentInputConnection.getExtractedText(ExtractedTextRequest(), 0).text
+        val space = 32
+        lastWord = ""
+        for (i in arr.indices - arr.lastIndex) {
+            lastWord += arr[i]
+            Log.d(Misc.logKey, "${arr[i]} arr[$i]")
+            if (arr[i] == space.toChar()) {
+                lastWord = ""
+            }
         }
     }
 
-    private fun isAssembleAble(arr: MutableList<String>): Boolean {
-        return try {
-            HangulParser.assemble(arr)
-            true
-        } catch (e: java.lang.Exception) {
-            false
-        }
-
-    }
 
     private fun soundOnChars() {
         (getSystemService(getString(R.string.audio)) as AudioManager).playSoundEffect(
-            AudioManager.FX_KEY_CLICK,
-            0.3f
+            AudioManager.FX_KEYPRESS_STANDARD,
+            0.7f
         )
     }
 
     private fun vibrateOnChars() {
-        vibrator!!.vibrate(5)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            vibrator?.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK)); // repeat at index 0
+        } else {
+            vibrator!!.vibrate(10)
+        }
     }
 
     private fun handleClose() {
@@ -740,10 +795,6 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         mInputView?.isPreviewEnabled = false
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, str: String) {
-        loadPreferences()
-    }
-
     private fun loadPreferences() {
         isSoundOn = Misc.getIsSettingEnable(this, Misc.sound)
         isVibrationOn = Misc.getIsSettingEnable(this, Misc.vibrate)
@@ -773,6 +824,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         updateCandidates()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun setSuggestions(suggestions: List<String>) {
         if (suggestions.isNotEmpty()) {
             setCandidatesViewShown(true)
@@ -872,58 +924,9 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         return arrSuggestion.filter { it.startsWith(str, true) }
     }
 
-    override fun onReadyForSpeech(params: Bundle?) {
-        Log.d(Misc.logKey, "onReadyForSpeech")
-    }
-
-    override fun onBeginningOfSpeech() {
-        Log.d(Misc.logKey, "onBeginningOfSpeech")
-    }
-
-    override fun onRmsChanged(rmsdB: Float) {
-
-    }
-
-    override fun onBufferReceived(buffer: ByteArray?) {
-        Log.d(Misc.logKey, "onBufferReceived")
-    }
-
-    override fun onEndOfSpeech() {
-        candidateView?.enableDisableSpeechAnim(R.drawable.ic_baseline_mic_none_24, false)
-    }
-
-    override fun onError(error: Int) {
-        if (isKorean)
-            Toast.makeText(this, "죄송합니다. 감지된 텍스트가 없습니다.", Toast.LENGTH_SHORT).show()
-        else
-            Toast.makeText(this, "Sorry, No text detected.", Toast.LENGTH_SHORT).show()
-        candidateView?.enableDisableSpeechAnim(R.drawable.ic_baseline_mic_none_24, false)
-    }
-
-    override fun onResults(results: Bundle?) {
-        val data: ArrayList<String> =
-            results!!.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) as ArrayList<String>
-        mComposing.append(data[0])
-        currentInputConnection.setComposingText(mComposing, 1)
-
-        currentInputConnection.commitText(mComposing, 1)
-        currentInputConnection.commitText(String(Character.toChars(32)), 1)
-        Log.d(Misc.logKey, data[0])
-        candidateView?.enableDisableSpeechAnim(R.drawable.ic_baseline_mic_none_24, false)
-    }
-
-    override fun onPartialResults(partialResults: Bundle?) {
-        Log.d(Misc.logKey, "partialResults")
-    }
-
-    override fun onEvent(eventType: Int, params: Bundle?) {
-        Log.d(Misc.logKey, "onEvent")
-    }
-
     private fun startVoiceInput() {
-        val speechRecognizer: SpeechRecognizer =
+        speechRecognizer =
             SpeechRecognizer.createSpeechRecognizer(this@CustomInputMethodService)
-        speechRecognizer.setRecognitionListener(this@CustomInputMethodService)
         val speechIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         speechIntent.putExtra(
             RecognizerIntent.EXTRA_LANGUAGE_MODEL,
@@ -935,27 +938,106 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
         speechIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, packageName)
         speechRecognizer.startListening(speechIntent)
         candidateView?.enableDisableSpeechAnim(R.drawable.ic_baseline_mic_active_24, true)
+        candidateView?.startVoiceAnim(speechRecognizer)
+
+        candidateView?.getVoiceAnimView()?.setSpeechRecognizer(speechRecognizer)
+        candidateView?.getVoiceAnimView()
+            ?.setRecognitionListener(object : RecognitionListenerAdapter() {
+                override fun onResults(results: Bundle) {
+                    val data: ArrayList<String> =
+                        results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) as ArrayList<String>
+                    mComposing.append(data[0])
+                    currentInputConnection.setComposingText(mComposing, 1)
+
+                    currentInputConnection.commitText(mComposing, 1)
+                    currentInputConnection.commitText(String(Character.toChars(32)), 1)
+                    Log.d(Misc.logKey, data[0])
+                    candidateView?.enableDisableSpeechAnim(
+                        R.drawable.ic_baseline_mic_none_24,
+                        false
+                    )
+                }
+
+                override fun onEndOfSpeech() {
+                    candidateView?.enableDisableSpeechAnim(
+                        R.drawable.ic_baseline_mic_none_24,
+                        false
+                    )
+                }
+
+                override fun onError(error: Int) {
+                    if (isKorean)
+                        Toast.makeText(
+                            this@CustomInputMethodService,
+                            "Ne pare rău, nu a fost detectat niciun text.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    else
+                        Toast.makeText(
+                            this@CustomInputMethodService,
+                            "Sorry, No text detected.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    candidateView?.enableDisableSpeechAnim(
+                        R.drawable.ic_baseline_mic_none_24,
+                        false
+                    )
+                }
+            })
     }
 
-    private fun getKoreanLastWord() {
-        val arr =
-            currentInputConnection.getExtractedText(ExtractedTextRequest(), 0).text
-        val space = 32
-        lastWord = ""
-        for (i in arr.indices - arr.lastIndex) {
-            lastWord += arr[i]
-            Log.d(Misc.logKey, "${arr[i]} arr[$i]")
-            if (arr[i] == space.toChar()) {
-                lastWord = ""
+
+    private fun loadSuggestions() {
+        candidateView?.changeTranslateIcon(isKorean)
+
+        object : Thread() {
+            override fun run() {
+                val l = Looper.getMainLooper()
+                val h = Handler(l)
+                h.post {
+                    if (isKorean) {
+                        val `is`: InputStream =
+                            resources.openRawResource(R.raw.korean_suggestions)
+                        val size: Int = `is`.available()
+                        val buffer = ByteArray(size)
+                        `is`.read(buffer)
+                        `is`.close()
+
+                        val json = String(buffer)
+                        objSuggestions = JSONObject(json)
+                        arrSuggestion = ArrayList()
+                        for (word in objSuggestions.keys()) {
+                            arrSuggestion.add(word)
+                        }
+                    } else {
+
+                        val `is`: InputStream = resources.openRawResource(R.raw.english_suggestions)
+                        val size: Int = `is`.available()
+                        val buffer = ByteArray(size)
+                        `is`.read(buffer)
+                        `is`.close()
+
+                        val json = String(buffer)
+                        objSuggestions = JSONObject(json)
+                        arrSuggestion = ArrayList()
+                        for (word in objSuggestions.keys()) {
+                            arrSuggestion.add(word)
+                        }
+
+                    }
+                }
             }
-        }
+        }.start()
+
     }
+
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun translate(translateCallBack: TranslateCallBack){
-        val text = currentInputConnection.getExtractedText(ExtractedTextRequest(), 0).text.toString()
-        if (isKorean){
-            if (Misc.isBToADownloaded(this)){
+    fun translate(translateCallBack: TranslateCallBack) {
+        val text =
+            currentInputConnection.getExtractedText(ExtractedTextRequest(), 0).text.toString()
+        if (isKorean) {
+            if (Misc.isBToADownloaded(this)) {
                 val optionsNew = TranslatorOptions.Builder()
                     .setSourceLanguage(TranslateLanguage.KOREAN)
                     .setTargetLanguage(TranslateLanguage.ENGLISH)
@@ -968,14 +1050,22 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                         Log.d(Misc.logKey, translatedText)
                     }
                     .addOnFailureListener { exception ->
-                        Toast.makeText(this, "Some Error occurred in translation.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Some Error occurred in translation.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-            }else{
+            } else {
                 translateCallBack.isNotDownloaded()
-                Toast.makeText(this, "Translation model is not downloaded, Please download it.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Translation model is not downloaded, Please download it.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-        }else{
-            if (Misc.isAToBDownloaded(this)){
+        } else {
+            if (Misc.isAToBDownloaded(this)) {
                 val options = TranslatorOptions.Builder()
                     .setSourceLanguage(TranslateLanguage.ENGLISH)
                     .setTargetLanguage(TranslateLanguage.KOREAN)
@@ -988,14 +1078,20 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener,
                         Log.d(Misc.logKey, translatedText)
                     }
                     .addOnFailureListener { exception ->
-                        Toast.makeText(this, "Some Error occurred in translation.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Some Error occurred in translation.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-            }else{
+            } else {
                 translateCallBack.isNotDownloaded()
-                Toast.makeText(this, "Translation model is not downloaded, Please go to app and download it.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Translation model is not downloaded, Please go to app and download it.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
-
     }
-
 }

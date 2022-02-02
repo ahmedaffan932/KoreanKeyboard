@@ -1,14 +1,20 @@
 package com.example.koreankeyboard
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import com.example.koreankeyboard.databinding.ActivityMainBinding
 import com.example.koreankeyboard.classes.Misc
+import com.example.koreankeyboard.databinding.ActivityMainBinding
+import com.rw.keyboardlistener.KeyboardUtils
+import com.rw.keyboardlistener.KeyboardUtils.SoftKeyboardToggleListener
+
 
 class MainActivity : AppCompatActivity() {
     private var isMenuOpen = false
@@ -17,11 +23,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.clMenu.setOnClickListener { }
 
         Misc.downloadTranslationModel(this)
 
-        binding.clMenu.setOnClickListener { }
+        if (intent.getStringExtra(Misc.logKey) != null) {
+            binding.et.requestFocus()
+            Handler().postDelayed({
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(binding.et, InputMethodManager.SHOW_IMPLICIT)
+            }, 200)
+        }
 
+        binding.et.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.unFocusView.visibility = View.VISIBLE
+            } else {
+                binding.unFocusView.visibility = View.GONE
+            }
+        }
+
+        binding.unFocusView.setOnClickListener {
+            val view = this.currentFocus
+            if (view != null) {
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(view.windowToken, 0)
+            }
+            binding.et.clearFocus();
+        }
         binding.btnSelectKeyBoard.setOnClickListener {
             startActivityForResult(Intent("android.settings.INPUT_METHOD_SETTINGS"), 0)
         }
@@ -124,7 +153,20 @@ class MainActivity : AppCompatActivity() {
 
             isMenuOpen = false
         } else {
-            super.onBackPressed()
+            finishAffinity()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        KeyboardUtils.addKeyboardToggleListener(
+            this
+        ) { isVisible ->
+            if(isVisible){
+                binding.unFocusView.visibility = View.VISIBLE
+            }else{
+                binding.unFocusView.visibility = View.GONE
+            }
         }
     }
 }
