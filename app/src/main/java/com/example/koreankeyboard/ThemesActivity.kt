@@ -41,6 +41,7 @@ class ThemesActivity : AppCompatActivity() {
         binding = KeyboardThemesDialogBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Misc.loadBannerAd(this, binding.bannerAdFrameLayout)
         Misc.initTopBar(this, "Themes")
 
         KeyboardUtils.addKeyboardToggleListener(this){ isVisible ->
@@ -50,11 +51,11 @@ class ThemesActivity : AppCompatActivity() {
         selectedTheme()
 
         binding.themeA.setOnClickListener {
-            if(isKeyboardOpen) {
-                val inputMethodManager =
-                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-            }
+//            if(isKeyboardOpen) {
+//                val inputMethodManager =
+//                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+//                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+//            }
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {

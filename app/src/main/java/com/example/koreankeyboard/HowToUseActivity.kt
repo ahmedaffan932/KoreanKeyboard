@@ -13,6 +13,7 @@ class HowToUseActivity : AppCompatActivity() {
         binding = ActivityHowToUseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         Misc.initTopBar(this, "How to use")
     }
 }

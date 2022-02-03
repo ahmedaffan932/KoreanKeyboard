@@ -26,6 +26,8 @@ class SplashScreenActivity : AppCompatActivity() {
             finish()
         }
 
+        Misc.loadInterstitial(this)
+
         binding.btnStart.setOnClickListener {
             if(isInputMethodSelected()){
                 startActivity(Intent(this, MainActivity::class.java))

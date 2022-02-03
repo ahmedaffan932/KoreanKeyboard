@@ -99,6 +99,9 @@ attr actionProviderClass
 attr actionTextColorAlpha
 attr actionViewClass
 attr activityChooserViewStyle
+attr adSize
+attr adSizes
+attr adUnitId
 attr alertDialogButtonGroupStyle
 attr alertDialogCenterButtons
 attr alertDialogStyle
@@ -502,6 +505,7 @@ attr foregroundInsidePadding
 attr framePosition
 attr gapBetweenBars
 attr gestureInsetBottomIgnored
+attr gnt_template_type
 attr goIcon
 attr haloColor
 attr haloRadius
@@ -1115,7 +1119,11 @@ attr yearStyle
 attr yearTodayStyle
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
+bool enable_system_alarm_service_default
+bool enable_system_foreground_service_default
+bool enable_system_job_service_default
 bool mtrl_btn_textappearance_all_caps
+bool workmanager_test_configuration
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -1158,6 +1166,10 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color browser_actions_bg_grey
+color browser_actions_divider_color
+color browser_actions_text_color
+color browser_actions_title_color
 color button_material_dark
 color button_material_light
 color cardview_dark_background
@@ -1227,6 +1239,16 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color gnt_ad_green
+color gnt_black
+color gnt_blue
+color gnt_gray
+color gnt_green
+color gnt_outline
+color gnt_red
+color gnt_test_background_color
+color gnt_test_background_color_2
+color gnt_white
 color gray_50
 color gray_700
 color gray_900
@@ -2090,6 +2112,8 @@ dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
 dimen action_bar_size
 dimen appcompat_dialog_background_inset
+dimen browser_actions_context_menu_max_width
+dimen browser_actions_context_menu_min_padding
 dimen candidate_font_height
 dimen candidate_vertical_padding
 dimen cardview_compat_inset_shadow
@@ -2159,6 +2183,23 @@ dimen fab_padding
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
+dimen gnt_ad_indicator_bar_height
+dimen gnt_ad_indicator_bottom_margin
+dimen gnt_ad_indicator_height
+dimen gnt_ad_indicator_text_size
+dimen gnt_ad_indicator_top_margin
+dimen gnt_ad_indicator_width
+dimen gnt_default_margin
+dimen gnt_media_view_weight
+dimen gnt_medium_cta_button_height
+dimen gnt_medium_template_bottom_weight
+dimen gnt_medium_template_top_weight
+dimen gnt_no_margin
+dimen gnt_no_size
+dimen gnt_small_cta_button_height
+dimen gnt_text_row_weight
+dimen gnt_text_size_large
+dimen gnt_text_size_small
 dimen highlight_alpha_material_colored
 dimen highlight_alpha_material_dark
 dimen highlight_alpha_material_light
@@ -2522,6 +2563,7 @@ drawable add_new_bg
 drawable avd_hide_password
 drawable avd_show_password
 drawable b_to_a
+drawable bg_border
 drawable bg_bottom_border
 drawable bg_enable
 drawable bg_home
@@ -2602,6 +2644,8 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable done
 drawable enable
+drawable gnt_outline_shape
+drawable gnt_rounded_corners_shape
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable grid
@@ -2682,6 +2726,7 @@ drawable mtrl_navigation_bar_item_background
 drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
+drawable native_ads_side_ad_triangle
 drawable navigation_empty_icon
 drawable next
 drawable notification_action_background
@@ -2776,6 +2821,7 @@ id action_mode_close_button
 id action_text
 id actions
 id activity_chooser_view_content
+id ad_notification_view
 id add
 id adjust_height
 id adjust_width
@@ -2798,6 +2844,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id automatic
+id background
 id bannerAdFrameLayout
 id barrier
 id baseline
@@ -2806,11 +2853,17 @@ id beginning
 id bestChoice
 id blockView
 id blocking
+id body
 id bottom
 id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id browser_actions_header_text
+id browser_actions_menu_item_icon
+id browser_actions_menu_item_text
+id browser_actions_menu_items
+id browser_actions_menu_view
 id btnBack
 id btnDownload
 id btnEnableKeyBoard
@@ -2882,6 +2935,7 @@ id crop_image_menu_flip_horizontally
 id crop_image_menu_flip_vertically
 id crop_image_menu_rotate_left
 id crop_image_menu_rotate_right
+id cta
 id currentState
 id custom
 id customPanel
@@ -2960,6 +3014,7 @@ id guideline
 id guideline2
 id hardware
 id header_title
+id headline
 id hideable
 id home
 id homeAsUp
@@ -3033,6 +3088,7 @@ id material_timepicker_mode_button
 id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
+id media_view
 id message
 id middle
 id mini
@@ -3067,6 +3123,8 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nativeAdViewMain
+id native_ad_view
 id navigation_bar_item_icon_view
 id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
@@ -3107,9 +3165,11 @@ id percent
 id pin
 id position
 id postLayout
+id primary
 id progress_circular
 id progress_horizontal
 id radio
+id rating_bar
 id ratio
 id rectangle
 id rectangles
@@ -3122,6 +3182,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id row_two
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3143,6 +3204,7 @@ id search_plate
 id search_src_text
 id search_voice_btn
 id secondPrediction
+id secondary
 id select_dialog_listview
 id selected
 id selection_type
@@ -3387,6 +3449,8 @@ layout activity_main
 layout activity_mic_permission
 layout activity_settings
 layout activity_splash_screen
+layout browser_actions_context_menu_page
+layout browser_actions_context_menu_row
 layout crop_image_activity
 layout crop_image_view
 layout custom_dialog
@@ -3406,6 +3470,8 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dp_example
+layout gnt_medium_template_view
+layout gnt_small_template_view
 layout keyboard_layout
 layout keyboard_layout_s
 layout keyboard_themes_dialog
@@ -3453,6 +3519,7 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
+layout native_hctr
 layout notification_action
 layout notification_action_tombstone
 layout notification_template_custom_big
@@ -3785,6 +3852,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string ad
 string all_done
 string androidx_startup
 string app_name
@@ -3909,6 +3977,13 @@ string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string normal
+string offline_notification_text
+string offline_notification_title
+string offline_opt_in_confirm
+string offline_opt_in_confirmation
+string offline_opt_in_decline
+string offline_opt_in_message
+string offline_opt_in_title
 string on_key_press_sound
 string password_toggle_content_description
 string path_password_eye
@@ -3919,6 +3994,13 @@ string pick_image_intent_chooser_title
 string prediction
 string privacy_policy
 string rate_us
+string s1
+string s2
+string s3
+string s4
+string s5
+string s6
+string s7
 string screen_name
 string search_menu_title
 string select
@@ -4361,6 +4443,7 @@ style Theme_Design_Light
 style Theme_Design_Light_BottomSheetDialog
 style Theme_Design_Light_NoActionBar
 style Theme_Design_NoActionBar
+style Theme_IAPTheme
 style Theme_KeyboardKotlin
 style Theme_MaterialComponents
 style Theme_MaterialComponents_BottomSheetDialog
@@ -4674,6 +4757,7 @@ styleable ActionMenuItemView android_minWidth
 styleable ActionMenuView
 styleable ActionMode background backgroundSplit closeItemLayout height subtitleTextStyle titleTextStyle
 styleable ActivityChooserView expandActivityOverflowButtonDrawable initialActivityCount
+styleable AdsAttrs adSize adSizes adUnitId
 styleable AlertDialog android_layout buttonIconDimen buttonPanelSideLayout listItemLayout listLayout multiChoiceItemLayout showTitle singleChoiceItemLayout
 styleable AnimatedStateListDrawableCompat android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable AnimatedStateListDrawableItem android_id android_drawable
@@ -4802,6 +4886,7 @@ styleable SwitchCompat android_textOn android_textOff android_thumb showText spl
 styleable SwitchMaterial useMaterialThemeColors
 styleable TabItem android_icon android_layout android_text
 styleable TabLayout tabBackground tabContentStart tabGravity tabIconTint tabIconTintMode tabIndicator tabIndicatorAnimationDuration tabIndicatorAnimationMode tabIndicatorColor tabIndicatorFullWidth tabIndicatorGravity tabIndicatorHeight tabInlineLabel tabMaxWidth tabMinWidth tabMode tabPadding tabPaddingBottom tabPaddingEnd tabPaddingStart tabPaddingTop tabRippleColor tabSelectedTextColor tabTextAppearance tabTextColor tabUnboundedRipple
+styleable TemplateView gnt_template_type
 styleable TextAppearance android_textSize android_typeface android_textStyle android_textColor android_textColorHint android_textColorLink android_shadowColor android_shadowDx android_shadowDy android_shadowRadius android_fontFamily android_textFontWeight fontFamily fontVariationSettings textAllCaps textLocale
 styleable TextEffects android_textSize android_typeface android_textStyle android_text android_shadowColor android_shadowDx android_shadowDy android_shadowRadius android_fontFamily borderRound borderRoundPercent textFillColor textOutlineColor textOutlineThickness
 styleable TextInputEditText textInputLayoutFocusedRectEnabled

@@ -30,8 +30,8 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/fab_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginVertical="@dimen/fab_padding"
+        app:layout_constraintBottom_toTopOf="@+id/bannerAdFrameLayout"
         app:layout_constraintTop_toBottomOf="@id/include"
         android:orientation="vertical">
 
@@ -480,15 +480,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
-                <FrameLayout
-                    android:id="@+id/bannerAdFrameLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:animateLayoutChanges="true"
-                    app:layout_constraintBottom_toBottomOf="parent" />
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/bannerAdFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

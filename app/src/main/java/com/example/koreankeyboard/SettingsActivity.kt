@@ -6,9 +6,11 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.koreankeyboard.classes.Misc
 import com.example.koreankeyboard.databinding.ActivitySettingsBinding
+import com.example.koreankeyboard.interfaces.NativeAdCallBack
 
 
 @SuppressLint("ExportedPreferenceActivity")
@@ -21,7 +23,6 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.cbSound.isChecked = Misc.getIsSettingEnable(this, Misc.sound)
         binding.cbVibration.isChecked = Misc.getIsSettingEnable(this, Misc.vibrate)
         binding.cbSuggestions.isChecked = Misc.getIsSettingEnable(this, Misc.suggestions)
@@ -29,16 +30,21 @@ class SettingsActivity : AppCompatActivity() {
         binding.kbSizeLarge.isChecked = Misc.getIsKeyboardSizeLarge(this)
         binding.kbSizeSmall.isChecked = !Misc.getIsKeyboardSizeLarge(this)
 
+
+        Misc.loadNativeAd(this, object : NativeAdCallBack{
+            override fun onLoad() {
+                Misc.showNativeAd(binding.nativeAdViewMain)
+                binding.nativeAdViewMain.visibility = View.VISIBLE
+            }
+        })
         binding.kbSizeSmall.setOnCheckedChangeListener { _, isChecked ->
             Misc.setIsKeyboardSizeLarge(this, !isChecked)
             triggerRebirth(this)
-//            onBackPressed()
         }
 
         binding.kbSizeLarge.setOnCheckedChangeListener { _, isChecked ->
             Misc.setIsKeyboardSizeLarge(this, isChecked)
             triggerRebirth(this)
-//            onBackPressed()
         }
 
         binding.cbSound.setOnCheckedChangeListener { _, isChecked ->
@@ -54,7 +60,7 @@ class SettingsActivity : AppCompatActivity() {
         Misc.initTopBar(this, "Settings")
     }
 
-    fun triggerRebirth(context: Context) {
+    private fun triggerRebirth(context: Context) {
 
         Handler().postDelayed({
             val packageManager: PackageManager = context.packageManager

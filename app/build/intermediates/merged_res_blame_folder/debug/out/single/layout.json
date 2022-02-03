@@ -16,6 +16,10 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\keyboard_layout_s.xml"
     },
     {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\native_hctr.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\native_hctr.xml"
+    },
+    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\keyboard_themes_dialog.xml",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\keyboard_themes_dialog.xml"
     },

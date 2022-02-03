@@ -1,2 +1,3 @@
-    rootProject.name = "KoreanKeyboard"
-    include ':app'
+rootProject.name = "KoreanKeyboard"
+include ':nativetemplates'
+include ':app'

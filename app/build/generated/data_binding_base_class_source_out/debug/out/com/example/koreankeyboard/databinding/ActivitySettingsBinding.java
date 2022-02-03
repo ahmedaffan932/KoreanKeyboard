@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.koreankeyboard.R;
+import com.google.android.ads.nativetemplates.TemplateView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -39,12 +40,15 @@ public final class ActivitySettingsBinding implements ViewBinding {
   public final CheckBox kbSizeSmall;
 
   @NonNull
+  public final TemplateView nativeAdViewMain;
+
+  @NonNull
   public final TextView textView4;
 
   private ActivitySettingsBinding(@NonNull ConstraintLayout rootView, @NonNull CheckBox cbSound,
       @NonNull CheckBox cbSuggestions, @NonNull CheckBox cbVibration,
       @NonNull TopBarBinding include, @NonNull CheckBox kbSizeLarge, @NonNull CheckBox kbSizeSmall,
-      @NonNull TextView textView4) {
+      @NonNull TemplateView nativeAdViewMain, @NonNull TextView textView4) {
     this.rootView = rootView;
     this.cbSound = cbSound;
     this.cbSuggestions = cbSuggestions;
@@ -52,6 +56,7 @@ public final class ActivitySettingsBinding implements ViewBinding {
     this.include = include;
     this.kbSizeLarge = kbSizeLarge;
     this.kbSizeSmall = kbSizeSmall;
+    this.nativeAdViewMain = nativeAdViewMain;
     this.textView4 = textView4;
   }
 
@@ -119,6 +124,12 @@ public final class ActivitySettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.nativeAdViewMain;
+      TemplateView nativeAdViewMain = ViewBindings.findChildViewById(rootView, id);
+      if (nativeAdViewMain == null) {
+        break missingId;
+      }
+
       id = R.id.textView4;
       TextView textView4 = ViewBindings.findChildViewById(rootView, id);
       if (textView4 == null) {
@@ -126,7 +137,7 @@ public final class ActivitySettingsBinding implements ViewBinding {
       }
 
       return new ActivitySettingsBinding((ConstraintLayout) rootView, cbSound, cbSuggestions,
-          cbVibration, binding_include, kbSizeLarge, kbSizeSmall, textView4);
+          cbVibration, binding_include, kbSizeLarge, kbSizeSmall, nativeAdViewMain, textView4);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

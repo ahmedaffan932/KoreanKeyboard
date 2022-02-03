@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.koreankeyboard.classes.Misc
 import com.example.koreankeyboard.databinding.ActivityMainBinding
+import com.example.koreankeyboard.interfaces.InterstitialCallBack
 import com.rw.keyboardlistener.KeyboardUtils
 import com.rw.keyboardlistener.KeyboardUtils.SoftKeyboardToggleListener
 
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         binding.clMenu.setOnClickListener { }
 
         Misc.downloadTranslationModel(this)
+
+        Misc.showInterstitial(this, null)
 
         if (intent.getStringExtra(Misc.logKey) != null) {
             binding.et.requestFocus()
@@ -137,11 +140,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.clTheme.setOnClickListener {
-            startActivity(Intent(this, ThemesActivity::class.java))
+            Misc.showInterstitial(this, object : InterstitialCallBack{
+                override fun onDismiss() {
+                    startActivity(Intent(this@MainActivity, ThemesActivity::class.java))
+                }
+            })
         }
 
         binding.btnHowToUse.setOnClickListener {
-            startActivity(Intent(this, HowToUseActivity::class.java))
+            Misc.showInterstitial(this, object :InterstitialCallBack{
+                override fun onDismiss() {
+                    startActivity(Intent(this@MainActivity, HowToUseActivity::class.java))
+                }
+            })
         }
     }
 

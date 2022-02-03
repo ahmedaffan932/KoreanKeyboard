@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f363.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_flag_a9.jpg.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable-v24\\ic_flag_a9.jpg"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_next.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\next.png"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_flag_a9.jpg.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable-v24\\ic_flag_a9.jpg"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_flag_a18.png.flat",
@@ -60,6 +60,10 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3ec.png"
     },
     {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\layout_native_hctr.xml.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\native_hctr.xml"
+    },
+    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
@@ -88,12 +92,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\top_bar.xml"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f638.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f638.png"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f34d.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f34d.png"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f638.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f638.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_a_to_b.png.flat",
@@ -124,6 +128,10 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f349.png"
     },
     {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_bg_border.xml.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable-v24\\bg_border.xml"
+    },
+    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f4b0.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f4b0.png"
     },
@@ -132,16 +140,16 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3b0.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_theme_key.xml.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\ic_theme_key.xml"
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f400.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f400.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f400.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f400.png"
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_theme_key.xml.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\ic_theme_key.xml"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f49d.png.flat",
@@ -252,12 +260,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f345.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f62d.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f62d.png"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f48e.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f48e.png"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f62d.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f62d.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\raw_korean_suggestions.json.flat",
@@ -292,6 +300,10 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_splash_screen.png"
     },
     {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_native_ads_side_ad_triangle.xml.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable-v24\\native_ads_side_ad_triangle.xml"
+    },
+    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f4ad.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f4ad.png"
     },
@@ -308,24 +320,24 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f495.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\xml_qwertz_caps_s.xml.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\xml\\qwertz_caps_s.xml"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\raw_speak_anim.json.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\raw\\speak_anim.json"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_b7.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\b7.png"
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\xml_qwertz_caps_s.xml.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\xml\\qwertz_caps_s.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f372.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f372.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f4ee.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f4ee.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f372.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f372.png"
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_b7.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\b7.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f683.png.flat",
@@ -356,12 +368,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f688.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_26ab.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_26ab.png"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\xml_qwertz_s.xml.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\xml\\qwertz_s.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_26ab.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_26ab.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_flag_a21.png.flat",
@@ -444,12 +456,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f417.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f3e2.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3e2.png"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f4bc.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f4bc.png"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f3e2.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3e2.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\xml_qwerty_caps_lock_s.xml.flat",
@@ -568,12 +580,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f36d.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f3e4.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3e4.png"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f45f.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f45f.png"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f3e4.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3e4.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_kb_gradient_17.xml.flat",
@@ -588,16 +600,16 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_kb_gradient_4.xml"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_kb_gradient_21.xml.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_kb_gradient_21.xml"
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f418.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f418.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f3b6.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3b6.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f418.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f418.png"
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_kb_gradient_21.xml.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_kb_gradient_21.xml"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f694.png.flat",
@@ -616,6 +628,10 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3e1.png"
     },
     {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_eng_to_kr.xml.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\ic_eng_to_kr.xml"
+    },
+    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\xml_emoji5.xml.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\xml\\emoji5.xml"
     },
@@ -624,16 +640,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f433.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_eng_to_kr.xml.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\ic_eng_to_kr.xml"
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_a5.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\a5.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f484.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f484.png"
-    },
-    {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_a5.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\a5.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher_background.xml.flat",
@@ -920,12 +932,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f3e9.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f355.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f355.png"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_top_bar.xml.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_top_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f355.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f355.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f44c.png.flat",
@@ -1508,16 +1520,16 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f42c.png"
     },
     {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_bottom_border.xml.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_bottom_border.xml"
+    },
+    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_kb_gradient_14.xml.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_kb_gradient_14.xml"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f408.png.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f408.png"
-    },
-    {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_bottom_border.xml.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_bottom_border.xml"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_home.png.flat",
@@ -1652,12 +1664,12 @@
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f42b.png.flat",
-        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f42b.png"
-    },
-    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable_bg_nothing_ripple.xml.flat",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\drawable\\bg_nothing_ripple.xml"
+    },
+    {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_emoji_1f42b.png.flat",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\mipmap-mdpi\\emoji_1f42b.png"
     },
     {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_flag_a10.jpg.flat",

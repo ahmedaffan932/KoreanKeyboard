@@ -170,7 +170,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
         try {
 
             val themeId = Misc.getTheme(this)
-            if (themeId == 198) {
+            if (themeId == 0) {
                 val sharedPreferences =
                     getSharedPreferences(Misc.themeFromGallery, Context.MODE_PRIVATE)
                 val str = sharedPreferences.getString(Misc.themeFromGallery, "")
@@ -515,7 +515,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
                                 when (options and EditorInfo.IME_MASK_ACTION) {
                                     EditorInfo.IME_ACTION_SEARCH -> sendDefaultEditorAction(true)
                                     EditorInfo.IME_ACTION_GO -> sendDefaultEditorAction(true)
-                                    EditorInfo.IME_ACTION_SEND -> sendDefaultEditorAction(true)
+//                                    EditorInfo.IME_ACTION_SEND -> sendDefaultEditorAction(true)
                                     else -> handleCharacter(i)
                                 }
                             }
@@ -969,7 +969,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
                     if (isKorean)
                         Toast.makeText(
                             this@CustomInputMethodService,
-                            "Ne pare rău, nu a fost detectat niciun text.",
+                            "죄송합니다. 감지된 텍스트가 없습니다.",
                             Toast.LENGTH_SHORT
                         ).show()
                     else
@@ -987,6 +987,10 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
     }
 
 
+    override fun onDestroy() {
+        speechRecognizer.destroy()
+        super.onDestroy()
+    }
     private fun loadSuggestions() {
         candidateView?.changeTranslateIcon(isKorean)
 

@@ -107,5 +107,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/kbSizeLarge" />
 
+    <com.google.android.ads.nativetemplates.TemplateView
+        android:id="@+id/nativeAdViewMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_nothing"
+        android:layout_margin="@dimen/less_padding"
+        android:visibility="gone"
+        android:layout_marginHorizontal="@dimen/extra_padding"
+        app:gnt_template_type="@layout/native_hctr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kbSizeSmall"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
