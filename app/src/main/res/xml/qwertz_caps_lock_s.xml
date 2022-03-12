@@ -6,6 +6,18 @@
     android:verticalGap="1%p">
 
     <Row>
+        <Key android:keyWidth="9%p" android:codes="49" android:keyEdgeFlags="left" android:keyLabel="1"/>
+        <Key android:keyWidth="8.9%p" android:codes="50" android:keyLabel="2"/>
+        <Key android:keyWidth="8.9%p" android:codes="51" android:keyLabel="3"/>
+        <Key android:keyWidth="9%p" android:codes="52" android:keyLabel="4"/>
+        <Key android:keyWidth="8.9%p" android:codes="53" android:keyLabel="5"/>
+        <Key android:keyWidth="9%p" android:codes="54" android:keyLabel="6"/>
+        <Key android:keyWidth="9%p" android:codes="55" android:keyLabel="7"/>
+        <Key android:keyWidth="8.9%p" android:codes="56" android:keyLabel="8"/>
+        <Key android:keyWidth="8.9%p" android:codes="57" android:keyLabel="9"/>
+        <Key android:keyWidth="9%p" android:codes="48" android:keyEdgeFlags="right" android:keyLabel="0"/>
+    </Row>
+    <Row>
         <Key android:codes="0x3143" android:keyLabel="\u3143" android:keyEdgeFlags="left"/>
         <Key android:codes="0x3149" android:keyLabel="\u3149"/>
         <Key android:codes="0x3138" android:keyLabel="\u3138"/>

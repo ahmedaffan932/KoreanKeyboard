@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\suggestion_text_list_item.xml",
+        "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\suggestion_text_list_item.xml"
+    },
+    {
         "merged": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_mic_permission.xml",
         "source": "C:\\Users\\Affan Ahmed\\AndroidStudioProjects\\KoreanKeyboard\\app\\src\\main\\res\\layout\\activity_mic_permission.xml"
     },

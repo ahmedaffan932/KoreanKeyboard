@@ -1250,6 +1250,7 @@ color gnt_test_background_color
 color gnt_test_background_color_2
 color gnt_white
 color gray_50
+color gray_600
 color gray_700
 color gray_900
 color highlighted_text_material_dark
@@ -2598,6 +2599,8 @@ drawable bg_menu_item
 drawable bg_nothing
 drawable bg_nothing_ripple
 drawable bg_plain_less_rounded
+drawable bg_plain_rounded
+drawable bg_rounded
 drawable bg_select
 drawable bg_splash_screen
 drawable bg_splashscreen
@@ -2653,7 +2656,9 @@ drawable ic_back
 drawable ic_baseline_add_circle_24
 drawable ic_baseline_backspace_24
 drawable ic_baseline_done_24
+drawable ic_baseline_keyboard_arrow_down_24
 drawable ic_baseline_keyboard_arrow_left_24
+drawable ic_baseline_keyboard_arrow_up_24
 drawable ic_baseline_mic_active_24
 drawable ic_baseline_mic_none_24
 drawable ic_baseline_settings_24
@@ -2879,6 +2884,7 @@ id btnSelectKeyBoard
 id btnShareApp
 id btnSpeechInput
 id btnStart
+id btnSuggestions
 id btnTranslate
 id buttonPanel
 id cache_measures
@@ -2989,7 +2995,6 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
-id firstPrediction
 id fitCenter
 id fitToContents
 id fixed
@@ -2997,6 +3002,7 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
+id frameLayoutBannerAd
 id frost
 id ghost_view
 id ghost_view_holder
@@ -3173,6 +3179,8 @@ id rating_bar
 id ratio
 id rectangle
 id rectangles
+id recyclerViewSuggestionExtended
+id recyclerViewSuggestions
 id restart
 id reverse
 id reverseSawtooth
@@ -3203,7 +3211,6 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
-id secondPrediction
 id secondary
 id select_dialog_listview
 id selected
@@ -3330,7 +3337,6 @@ id theme_r
 id theme_s
 id theme_t
 id theme_u
-id thirdPrediction
 id time
 id title
 id titleDividerNoCustom
@@ -3349,6 +3355,7 @@ id transition_transform
 id triangle
 id tvKbSelected
 id tvScreenName
+id tvSuggestions
 id tvThemes
 id unFocusView
 id unchecked
@@ -3530,6 +3537,7 @@ layout sdp_example
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout suggestion_text_list_item
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_chip_zero_corner_radius
@@ -3984,6 +3992,7 @@ string offline_opt_in_confirmation
 string offline_opt_in_decline
 string offline_opt_in_message
 string offline_opt_in_title
+string ok
 string on_key_press_sound
 string password_toggle_content_description
 string path_password_eye
@@ -4027,6 +4036,7 @@ string vibrator
 string word_separators
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
+style AlertDialogTheme
 style AndroidThemeColorAccentYellow
 style Animation_AppCompat_Dialog
 style Animation_AppCompat_DropDownUp
@@ -4282,6 +4292,7 @@ style Platform_V21_AppCompat_Light
 style Platform_V25_AppCompat
 style Platform_V25_AppCompat_Light
 style Platform_Widget_AppCompat_Spinner
+style PositiveButtonStyle
 style RtlOverlay_DialogWindowTitle_AppCompat
 style RtlOverlay_Widget_AppCompat_ActionBar_TitleItem
 style RtlOverlay_Widget_AppCompat_DialogTitle_Icon
@@ -4933,6 +4944,7 @@ xml standalone_badge_gravity_bottom_end
 xml standalone_badge_gravity_bottom_start
 xml standalone_badge_gravity_top_start
 xml standalone_badge_offset
+xml suggestion
 xml symbols_one
 xml symbols_one_s
 xml symbols_two

@@ -38,6 +38,7 @@ import com.github.zagum.speechrecognitionview.adapters.RecognitionListenerAdapte
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
+import kotlinx.coroutines.tasks.await
 import org.json.JSONObject
 import java.io.InputStream
 import kotlin.text.isNotEmpty as isNotEmpty1
@@ -71,6 +72,9 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
     lateinit var speechRecognizer: SpeechRecognizer
     private val koreanWordArrayList = ArrayList<String>()
     private var koreanWordPreviousLength = 1
+
+    var previousKeyboardLayout: Int = 0
+    var temp = 0
 
     private val themes = intArrayOf(
         R.drawable.ic_flag_a1,
@@ -195,6 +199,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
         mComposing.setLength(0)
         mCompletionOn = false
         candidateView?.visibility = View.VISIBLE
+        candidateView?.hideExtendedSuggestion()
         updateCandidates()
 
     }
@@ -204,6 +209,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
         mComposing.setLength(0)
         setCandidatesViewShown(false)
         candidateView?.visibility = View.GONE
+        candidateView?.hideExtendedSuggestion()
         val e5Var: CustomKeyboardView? = mInputView
         e5Var?.closing()
     }
@@ -229,6 +235,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
         loadSuggestions()
         setCandidatesViewShown(true)
         candidateView?.visibility = View.VISIBLE
+        candidateView?.hideExtendedSuggestion()
 
     }
 
@@ -615,6 +622,8 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
     }
 
     private fun setKeyboard(keyboardId: Int, isCaps: Boolean) {
+        previousKeyboardLayout = keyboardId
+
         mInputView?.keyboard = KeyboardClass(this, keyboardId)
         Misc.setIskorean(this, isKorean)
 
@@ -1037,65 +1046,98 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
 
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun translate(translateCallBack: TranslateCallBack) {
-        val text =
-            currentInputConnection.getExtractedText(ExtractedTextRequest(), 0).text.toString()
-        if (isKorean) {
-            if (Misc.isBToADownloaded(this)) {
-                val optionsNew = TranslatorOptions.Builder()
-                    .setSourceLanguage(TranslateLanguage.KOREAN)
-                    .setTargetLanguage(TranslateLanguage.ENGLISH)
-                    .build()
-                val spanishToEnglishTranslator = Translation.getClient(optionsNew)
-                spanishToEnglishTranslator.translate(text)
-                    .addOnSuccessListener { translatedText ->
-                        currentInputConnection.deleteSurroundingTextInCodePoints(text.length, 0)
-                        currentInputConnection.commitText(translatedText, 1)
-                        Log.d(Misc.logKey, translatedText)
-                    }
-                    .addOnFailureListener { exception ->
+    suspend fun translate(translateCallBack: TranslateCallBack) {
+        try {
+            val text =
+                currentInputConnection.getExtractedText(ExtractedTextRequest(), 0).text.toString()
+            val textList = text.split("\n")
+            var isFirstLine = true
+            var completeTranslatedText = ""
+
+            for (txt in textList) {
+                Log.d(Misc.logKey, txt)
+                if (isKorean) {
+                    if (Misc.isBToADownloaded(this)) {
+                        val optionsNew = TranslatorOptions.Builder()
+                            .setSourceLanguage(TranslateLanguage.KOREAN)
+                            .setTargetLanguage(TranslateLanguage.ENGLISH)
+                            .build()
+                        val spanishToEnglishTranslator = Translation.getClient(optionsNew)
+                        spanishToEnglishTranslator.translate(txt)
+                            .addOnFailureListener { exception ->
+                                Toast.makeText(
+                                    this,
+                                    "Some Error occurred in translation.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            .addOnSuccessListener { translatedText ->
+                                if (isFirstLine) {
+                                    completeTranslatedText = translatedText
+                                    isFirstLine = false
+                                } else {
+                                    completeTranslatedText += "\n" + translatedText
+                                }
+                            }.await()
+                    } else {
+                        translateCallBack.isNotDownloaded()
                         Toast.makeText(
                             this,
-                            "Some Error occurred in translation.",
+                            "Translation model is not downloaded, Please download it.",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-            } else {
-                translateCallBack.isNotDownloaded()
-                Toast.makeText(
-                    this,
-                    "Translation model is not downloaded, Please download it.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        } else {
-            if (Misc.isAToBDownloaded(this)) {
-                val options = TranslatorOptions.Builder()
-                    .setSourceLanguage(TranslateLanguage.ENGLISH)
-                    .setTargetLanguage(TranslateLanguage.KOREAN)
-                    .build()
-                val englishSpanishTranslator = Translation.getClient(options)
-                englishSpanishTranslator.translate(text)
-                    .addOnSuccessListener { translatedText ->
-                        currentInputConnection.deleteSurroundingTextInCodePoints(text.length, 0)
-                        currentInputConnection.commitText(translatedText, 1)
-                        Log.d(Misc.logKey, translatedText)
-                    }
-                    .addOnFailureListener { exception ->
+                } else {
+                    if (Misc.isAToBDownloaded(this)) {
+                        val options = TranslatorOptions.Builder()
+                            .setSourceLanguage(TranslateLanguage.ENGLISH)
+                            .setTargetLanguage(TranslateLanguage.KOREAN)
+                            .build()
+                        val englishSpanishTranslator = Translation.getClient(options)
+                        englishSpanishTranslator.translate(txt)
+                            .addOnFailureListener { exception ->
+                                Toast.makeText(
+                                    this,
+                                    "Some Error occurred in translation.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            .addOnSuccessListener { translatedText ->
+                                if (isFirstLine) {
+                                    completeTranslatedText = translatedText
+                                    isFirstLine = false
+                                } else {
+                                    completeTranslatedText += "\n" + translatedText
+                                }
+                            }.await()
+                    } else {
+                        translateCallBack.isNotDownloaded()
                         Toast.makeText(
                             this,
-                            "Some Error occurred in translation.",
+                            "Translation model is not downloaded, Please go to app and download it.",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-            } else {
-                translateCallBack.isNotDownloaded()
-                Toast.makeText(
-                    this,
-                    "Translation model is not downloaded, Please go to app and download it.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                }
             }
+
+            currentInputConnection.deleteSurroundingTextInCodePoints(text.length, 0)
+            currentInputConnection.commitText(completeTranslatedText, 1)
+            Log.d(Misc.logKey, completeTranslatedText)
+
+        }catch (e: Exception){
+            e.printStackTrace()
+            Log.d(Misc.logKey, "Input Filed not connected.")
         }
     }
+
+    fun hideKeyboardForSuggestion(bool: Boolean) {
+        if (bool) {
+            temp = previousKeyboardLayout
+            setKeyboard(R.xml.suggestion, false)
+        } else
+            setKeyboard(temp, isCaps)
+
+    }
+
 }

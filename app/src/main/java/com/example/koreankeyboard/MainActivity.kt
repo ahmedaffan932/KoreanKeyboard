@@ -4,11 +4,13 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.koreankeyboard.classes.Misc
 import com.example.koreankeyboard.databinding.ActivityMainBinding
@@ -26,7 +28,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.clMenu.setOnClickListener { }
 
-        Misc.downloadTranslationModel(this)
+        KeyboardUtils.addKeyboardToggleListener(this
+        ) { isVisible ->
+            if (isVisible) {
+                binding.unFocusView.visibility = View.VISIBLE
+            } else {
+                binding.unFocusView.visibility = View.GONE
+            }
+        }
+
+        Misc.loadBannerAd(this, binding.frameLayoutBannerAd)
 
         Misc.showInterstitial(this, null)
 
@@ -141,6 +152,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.clTheme.setOnClickListener {
             Misc.showInterstitial(this, object : InterstitialCallBack{
+                @RequiresApi(Build.VERSION_CODES.M)
                 override fun onDismiss() {
                     startActivity(Intent(this@MainActivity, ThemesActivity::class.java))
                 }
@@ -179,5 +191,10 @@ class MainActivity : AppCompatActivity() {
                 binding.unFocusView.visibility = View.GONE
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.et.clearFocus()
     }
 }

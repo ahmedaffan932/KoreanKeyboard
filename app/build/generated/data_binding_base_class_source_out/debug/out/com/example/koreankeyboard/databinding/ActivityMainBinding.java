@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -75,6 +76,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final EditText et;
 
   @NonNull
+  public final FrameLayout frameLayoutBannerAd;
+
+  @NonNull
   public final Guideline guideline2;
 
   @NonNull
@@ -122,11 +126,11 @@ public final class ActivityMainBinding implements ViewBinding {
       @NonNull ConstraintLayout clMain, @NonNull ConstraintLayout clMenu,
       @NonNull LinearLayout clSettings, @NonNull LinearLayout clTheme,
       @NonNull ConstraintLayout constraintLayout, @NonNull EditText et,
-      @NonNull Guideline guideline2, @NonNull ImageView imag, @NonNull ImageView imageV,
-      @NonNull ImageView imageVie, @NonNull ImageView imageVieew, @NonNull ImageView imageVieo,
-      @NonNull ImageView imageView, @NonNull ImageView imageView2, @NonNull ImageView imq,
-      @NonNull ImageView imqw, @NonNull TextView textView, @NonNull TextView textView2,
-      @NonNull View unFocusView) {
+      @NonNull FrameLayout frameLayoutBannerAd, @NonNull Guideline guideline2,
+      @NonNull ImageView imag, @NonNull ImageView imageV, @NonNull ImageView imageVie,
+      @NonNull ImageView imageVieew, @NonNull ImageView imageVieo, @NonNull ImageView imageView,
+      @NonNull ImageView imageView2, @NonNull ImageView imq, @NonNull ImageView imqw,
+      @NonNull TextView textView, @NonNull TextView textView2, @NonNull View unFocusView) {
     this.rootView = rootView;
     this.blockView = blockView;
     this.btnEnableKeyBoard = btnEnableKeyBoard;
@@ -145,6 +149,7 @@ public final class ActivityMainBinding implements ViewBinding {
     this.clTheme = clTheme;
     this.constraintLayout = constraintLayout;
     this.et = et;
+    this.frameLayoutBannerAd = frameLayoutBannerAd;
     this.guideline2 = guideline2;
     this.imag = imag;
     this.imageV = imageV;
@@ -289,6 +294,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.frameLayoutBannerAd;
+      FrameLayout frameLayoutBannerAd = ViewBindings.findChildViewById(rootView, id);
+      if (frameLayoutBannerAd == null) {
+        break missingId;
+      }
+
       id = R.id.guideline2;
       Guideline guideline2 = ViewBindings.findChildViewById(rootView, id);
       if (guideline2 == null) {
@@ -370,8 +381,8 @@ public final class ActivityMainBinding implements ViewBinding {
       return new ActivityMainBinding((ConstraintLayout) rootView, blockView, btnEnableKeyBoard,
           btnExit, btnHowToUse, btnMenu, btnMenuClose, btnMoreApps, btnPrivacyPolicy, btnRateUs,
           btnSelectKeyBoard, btnShareApp, clMain, clMenu, clSettings, clTheme, constraintLayout, et,
-          guideline2, imag, imageV, imageVie, imageVieew, imageVieo, imageView, imageView2, imq,
-          imqw, textView, textView2, unFocusView);
+          frameLayoutBannerAd, guideline2, imag, imageV, imageVie, imageVieew, imageVieo, imageView,
+          imageView2, imq, imqw, textView, textView2, unFocusView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

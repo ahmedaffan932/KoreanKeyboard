@@ -6,6 +6,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray_900">#1e1e1e</color>
     <color name="gray_700">#757575</color>
+    <color name="gray_600">#757575</color>
     <color name="blue">#12263D</color>
     <color name="app_main">#0038A5</color>
     <color name="gray_50">#FAFAFA</color>

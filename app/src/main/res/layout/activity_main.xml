@@ -377,6 +377,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <FrameLayout
+            android:id="@+id/frameLayoutBannerAd"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout"
+            app:layout_constraintBottom_toTopOf="@id/clSettings"/>
+
         <LinearLayout
             android:id="@+id/clSettings"
             android:layout_width="110dp"

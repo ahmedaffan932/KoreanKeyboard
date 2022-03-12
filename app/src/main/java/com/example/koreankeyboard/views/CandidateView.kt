@@ -2,6 +2,7 @@ package com.example.koreankeyboard.views
 
 import android.content.Context
 import android.os.Build
+import android.provider.Settings
 import android.speech.SpeechRecognizer
 import android.util.Log
 import android.view.View
@@ -11,15 +12,22 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.koreankeyboard.R
 import com.example.koreankeyboard.classes.Misc
+import com.example.koreankeyboard.classes.SuggestionsAdapter
 import com.example.koreankeyboard.databinding.LayoutCandidateBinding
 import com.example.koreankeyboard.interfaces.CandidateViewButtonOnClick
+import com.example.koreankeyboard.interfaces.InterfaceOnClickSuggestion
 import com.example.koreankeyboard.interfaces.TranslateCallBack
 import com.example.koreankeyboard.services.CustomInputMethodService
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.Collections.emptyList
 
 @RequiresApi(Build.VERSION_CODES.N)
@@ -30,6 +38,7 @@ class CandidateView
     private var binding: LayoutCandidateBinding
     private var service: CustomInputMethodService? = null
     private var suggestions: List<String>? = null
+    private var isExtendedSuggestionVisible = false
 
     init {
 
@@ -57,16 +66,15 @@ class CandidateView
         binding.btnSpeechInput.setOnClickListener {
             candidateViewButtonOnClick.onClickSpeechInput()
         }
-        binding.firstPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
-        binding.thirdPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
-        binding.secondPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
         binding.btnTranslate.setOnClickListener {
-            service?.translate(object : TranslateCallBack {
-                override fun isNotDownloaded() {
-                    binding.clDownload.visibility = View.VISIBLE
+            GlobalScope.launch(Dispatchers.Main) {
+                service?.translate(object : TranslateCallBack {
+                    override fun isNotDownloaded() {
+                        binding.clDownload.visibility = View.VISIBLE
+                    }
                 }
+                )
             }
-            )
         }
 
         binding.btnDownload.setOnClickListener {
@@ -157,49 +165,57 @@ class CandidateView
 
     // TODO Refactor context method
     private fun updatePredictions(prediction: List<String>) {
-        binding.firstPrediction.text = ""
-        binding.firstPrediction.text = if (prediction.isNotEmpty()) {
-            binding.firstPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
-            prediction[0]
-        } else {
-            binding.firstPrediction.setOnClickListener {  }
-            ""
+        if(prediction.isNotEmpty()){
+            binding.btnSuggestions.setOnClickListener {
+                if(isExtendedSuggestionVisible){
+                    binding.btnSuggestions.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
+                    service?.hideKeyboardForSuggestion(false)
+                    binding.recyclerViewSuggestionExtended.visibility = View.GONE
+                }else {
+                    service?.hideKeyboardForSuggestion(true)
+                    binding.recyclerViewSuggestionExtended.visibility = View.VISIBLE
+                    binding.recyclerViewSuggestionExtended.layoutManager = GridLayoutManager(context, 4)
+                    binding.recyclerViewSuggestionExtended.adapter =
+                        SuggestionsAdapter(prediction, object : InterfaceOnClickSuggestion {
+                            override fun onClick(text: String) {
+                                binding.recyclerViewSuggestionExtended.visibility = GONE
+                                binding.btnSuggestions.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
+                                isExtendedSuggestionVisible = !isExtendedSuggestionVisible
+                                service?.hideKeyboardForSuggestion(false)
+                                service?.pickSuggestion(text)
+                            }
+                        })
+                    binding.btnSuggestions.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24)
+                }
+                isExtendedSuggestionVisible = !isExtendedSuggestionVisible
+            }
+        }else{
+            binding.btnSuggestions.setOnClickListener{}
         }
-
-        binding.secondPrediction.text = ""
-        binding.secondPrediction.text = if (prediction.size > 1) {
-            binding.secondPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
-            prediction[1]
-        } else {
-            binding.secondPrediction.setOnClickListener { }
-            ""
-        }
-
-        binding.thirdPrediction.text = ""
-        binding.thirdPrediction.text = if (prediction.size > 2) {
-            binding.thirdPrediction.setOnClickListener { v -> service?.pickSuggestion((v as TextView).text.toString()) }
-            prediction[2]
-        }else {
-            binding.thirdPrediction.setOnClickListener { }
-            ""
-        }
+        binding.recyclerViewSuggestions.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerViewSuggestions.adapter = SuggestionsAdapter(prediction, object : InterfaceOnClickSuggestion{
+            override fun onClick(text: String) {
+                service?.pickSuggestion(text)
+            }
+        })
     }
 
     fun enableDisableSpeechAnim(res: Int, isActive: Boolean) {
         binding.btnSpeechInput.setImageResource(res)
         if (isActive) {
-            binding.firstPrediction.visibility = View.INVISIBLE
-            binding.secondPrediction.visibility = View.INVISIBLE
-            binding.thirdPrediction.visibility = View.INVISIBLE
+            binding.recyclerViewSuggestions.visibility = View.INVISIBLE
             binding.animSpeak.visibility = View.VISIBLE
         }
         else {
-            binding.firstPrediction.visibility = View.VISIBLE
-            binding.secondPrediction.visibility = View.VISIBLE
-            binding.thirdPrediction.visibility = View.VISIBLE
+            binding.recyclerViewSuggestions.visibility = View.VISIBLE
             binding.animSpeak.visibility = View.GONE
         }
     }
 
+    fun hideExtendedSuggestion(){
+        binding.btnSuggestions.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
+        binding.recyclerViewSuggestionExtended.visibility = View.GONE
+        isExtendedSuggestionVisible = false
+    }
 
 }

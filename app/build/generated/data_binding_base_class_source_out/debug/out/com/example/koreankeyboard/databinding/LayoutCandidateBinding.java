@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.koreankeyboard.R;
@@ -31,43 +32,43 @@ public final class LayoutCandidateBinding implements ViewBinding {
   public final ImageView btnSpeechInput;
 
   @NonNull
+  public final ImageView btnSuggestions;
+
+  @NonNull
   public final ImageView btnTranslate;
 
   @NonNull
   public final ConstraintLayout clDownload;
 
   @NonNull
-  public final TextView firstPrediction;
-
-  @NonNull
   public final ProgressBar pbDownload;
 
   @NonNull
-  public final TextView secondPrediction;
+  public final RecyclerView recyclerViewSuggestionExtended;
+
+  @NonNull
+  public final RecyclerView recyclerViewSuggestions;
 
   @NonNull
   public final TextView textDownload;
 
-  @NonNull
-  public final TextView thirdPrediction;
-
   private LayoutCandidateBinding(@NonNull View rootView, @NonNull RecognitionProgressView animSpeak,
       @NonNull TextView btnDownload, @NonNull ImageView btnSpeechInput,
-      @NonNull ImageView btnTranslate, @NonNull ConstraintLayout clDownload,
-      @NonNull TextView firstPrediction, @NonNull ProgressBar pbDownload,
-      @NonNull TextView secondPrediction, @NonNull TextView textDownload,
-      @NonNull TextView thirdPrediction) {
+      @NonNull ImageView btnSuggestions, @NonNull ImageView btnTranslate,
+      @NonNull ConstraintLayout clDownload, @NonNull ProgressBar pbDownload,
+      @NonNull RecyclerView recyclerViewSuggestionExtended,
+      @NonNull RecyclerView recyclerViewSuggestions, @NonNull TextView textDownload) {
     this.rootView = rootView;
     this.animSpeak = animSpeak;
     this.btnDownload = btnDownload;
     this.btnSpeechInput = btnSpeechInput;
+    this.btnSuggestions = btnSuggestions;
     this.btnTranslate = btnTranslate;
     this.clDownload = clDownload;
-    this.firstPrediction = firstPrediction;
     this.pbDownload = pbDownload;
-    this.secondPrediction = secondPrediction;
+    this.recyclerViewSuggestionExtended = recyclerViewSuggestionExtended;
+    this.recyclerViewSuggestions = recyclerViewSuggestions;
     this.textDownload = textDownload;
-    this.thirdPrediction = thirdPrediction;
   }
 
   @Override
@@ -110,6 +111,12 @@ public final class LayoutCandidateBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnSuggestions;
+      ImageView btnSuggestions = ViewBindings.findChildViewById(rootView, id);
+      if (btnSuggestions == null) {
+        break missingId;
+      }
+
       id = R.id.btnTranslate;
       ImageView btnTranslate = ViewBindings.findChildViewById(rootView, id);
       if (btnTranslate == null) {
@@ -122,21 +129,21 @@ public final class LayoutCandidateBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.firstPrediction;
-      TextView firstPrediction = ViewBindings.findChildViewById(rootView, id);
-      if (firstPrediction == null) {
-        break missingId;
-      }
-
       id = R.id.pbDownload;
       ProgressBar pbDownload = ViewBindings.findChildViewById(rootView, id);
       if (pbDownload == null) {
         break missingId;
       }
 
-      id = R.id.secondPrediction;
-      TextView secondPrediction = ViewBindings.findChildViewById(rootView, id);
-      if (secondPrediction == null) {
+      id = R.id.recyclerViewSuggestionExtended;
+      RecyclerView recyclerViewSuggestionExtended = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerViewSuggestionExtended == null) {
+        break missingId;
+      }
+
+      id = R.id.recyclerViewSuggestions;
+      RecyclerView recyclerViewSuggestions = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerViewSuggestions == null) {
         break missingId;
       }
 
@@ -146,15 +153,9 @@ public final class LayoutCandidateBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.thirdPrediction;
-      TextView thirdPrediction = ViewBindings.findChildViewById(rootView, id);
-      if (thirdPrediction == null) {
-        break missingId;
-      }
-
       return new LayoutCandidateBinding(rootView, animSpeak, btnDownload, btnSpeechInput,
-          btnTranslate, clDownload, firstPrediction, pbDownload, secondPrediction, textDownload,
-          thirdPrediction);
+          btnSuggestions, btnTranslate, clDownload, pbDownload, recyclerViewSuggestionExtended,
+          recyclerViewSuggestions, textDownload);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

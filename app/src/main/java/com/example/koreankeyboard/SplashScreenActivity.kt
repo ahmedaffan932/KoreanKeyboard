@@ -3,9 +3,11 @@ package com.example.koreankeyboard
 import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 import com.example.koreankeyboard.databinding.ActivitySplashScreenBinding
 import com.example.koreankeyboard.services.CustomInputMethodService
 import com.example.koreankeyboard.MainActivity
@@ -14,6 +16,7 @@ import com.example.koreankeyboard.classes.Misc
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
@@ -25,6 +28,8 @@ class SplashScreenActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        Misc.downloadTranslationModel(this)
 
         Misc.loadInterstitial(this)
 
@@ -39,6 +44,7 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun isInputMethodSelected(): Boolean {
         val id: String = Settings.Secure.getString(
             contentResolver,

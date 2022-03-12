@@ -10,8 +10,7 @@
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray_700"
-        android:orientation="horizontal">
+        android:background="@color/gray_700">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clDownload"
@@ -19,7 +18,7 @@
             android:visibility="gone"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/firstPrediction">
+            app:layout_constraintBottom_toTopOf="@id/btnSuggestions">
             <ProgressBar
                 android:id="@+id/pbDownload"
                 android:layout_width="match_parent"
@@ -77,8 +76,8 @@
             android:layout_gravity="center"
             app:layout_constraintStart_toEndOf="@id/btnTranslate"
             app:layout_constraintEnd_toStartOf="@id/btnSpeechInput"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="@+id/btnSpeechInput"
+            app:layout_constraintBottom_toTopOf="@id/recyclerViewSuggestionExtended"/>
 
         <ImageView
             android:id="@+id/btnTranslate"
@@ -88,73 +87,36 @@
             android:textColor="@color/white"
             android:gravity="center"
             android:src="@drawable/a_to_b"
-            app:layout_constraintBottom_toBottomOf="@id/firstPrediction"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerViewSuggestionExtended"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/firstPrediction"/>
+            app:layout_constraintTop_toTopOf="@+id/btnSpeechInput"/>
 
-        <TextView
-            android:id="@+id/firstPrediction"
-            style="@style/Candidate"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewSuggestions"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
             android:background="@color/gray_700"
-            android:layout_marginStart="2dp"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeMinTextSize="10sp"
-            android:autoSizeStepGranularity="1sp"
-            android:autoSizeTextType="uniform"
-            android:maxLines="1"
-            android:textColor="@color/yellow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/secondPrediction"
-            app:layout_constraintStart_toEndOf="@id/btnTranslate"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:targetApi="o"
-            app:layout_constraintVertical_bias="1"
-            tools:text="First Prediction" />
-
-        <TextView
-            android:id="@+id/secondPrediction"
-            style="@style/Candidate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:autoSizeMaxTextSize="100sp"
-            android:background="@color/gray_700"
-            android:autoSizeMinTextSize="10sp"
-            android:autoSizeStepGranularity="1sp"
-            android:autoSizeTextType="uniform"
-            android:maxLines="1"
-            android:textColor="@color/yellow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/thirdPrediction"
-            app:layout_constraintStart_toEndOf="@id/firstPrediction"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:targetApi="o"
-            app:layout_constraintVertical_bias="1"
-            tools:text="Second Prediction" />
-
-        <TextView
-            android:id="@+id/thirdPrediction"
-            style="@style/Candidate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeMinTextSize="10sp"
-            android:autoSizeStepGranularity="1sp"
-            android:background="@color/gray_700"
-            android:autoSizeTextType="uniform"
-            android:maxLines="1"
-            android:textColor="@color/yellow"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/fab_padding"
+            app:layout_constraintBottom_toTopOf="@id/recyclerViewSuggestionExtended"
             app:layout_constraintEnd_toStartOf="@id/btnSpeechInput"
-            app:layout_constraintStart_toEndOf="@id/secondPrediction"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:targetApi="o"
-            tools:text="Third Prediction" />
+            app:layout_constraintStart_toEndOf="@id/btnTranslate"
+            app:layout_constraintTop_toTopOf="@+id/btnSpeechInput" />
+
+        <ImageView
+            android:id="@+id/btnSuggestions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+            android:elevation="@dimen/fab_padding"
+            app:layout_constraintTop_toTopOf="@+id/btnSpeechInput"
+            android:scaleType="center"
+            android:background="@drawable/bg_plain_rounded"
+            android:layout_marginEnd="4dp"
+            android:padding="4dp"
+            app:layout_constraintBottom_toTopOf="@id/recyclerViewSuggestionExtended"
+            app:layout_constraintEnd_toEndOf="@id/recyclerViewSuggestions"
+            app:tint="@color/gray_700" />
 
         <ImageView
             android:id="@+id/btnSpeechInput"
@@ -163,27 +125,20 @@
             android:padding="@dimen/less_padding"
             android:src="@drawable/mic"
             android:background="@color/gray_700"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/recyclerViewSuggestionExtended"
             app:layout_constraintVertical_bias="1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/thirdPrediction"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/animSpeak"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            app:lottie_loop="true"-->
-<!--            android:visibility="gone"-->
-<!--            app:lottie_autoPlay="true"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            app:lottie_rawRes="@raw/speak_anim"-->
-<!--            android:background="@color/gray_700"-->
-<!--            android:layout_marginHorizontal="@dimen/extra_padding"-->
-<!--            app:layout_constraintStart_toEndOf="@id/btnTranslate"-->
-<!--            app:layout_constraintEnd_toStartOf="@id/btnSpeechInput"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewSuggestionExtended"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginBottom="112dp"
+            android:paddingStart="3dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/recyclerViewSuggestionExtended" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </merge>

@@ -53,21 +53,21 @@ class Misc {
         var mNativeAd: com.google.android.gms.ads.nativead.NativeAd? = null
 
         var nativeAdId = if (BuildConfig.DEBUG) {
-            "ca-app-pub-3940256099942544/2247696110"
+            ""
         } else {
-            "ca-app-pub-2344986107534073/5418008325"
+            ""
         }
         var interstitialAdId = if (BuildConfig.DEBUG) {
-            "ca-app-pub-3940256099942544/1033173712"
+            ""
         } else {
-            "ca-app-pub-2344986107534073/9877618777"
+            ""
         }
 
 
         var appOpenAddId = if (BuildConfig.DEBUG) {
             "ca-app-pub-3940256099942544/3419835294"
         } else {
-            "ca-app-pub-2344986107534073~8756108792"
+            "ca-app-pub-2344986107534073/2485849922"
         }
 
 
@@ -75,7 +75,7 @@ class Misc {
             if (BuildConfig.DEBUG)
                 "ca-app-pub-3940256099942544/6300978111"
             else {
-                "ca-app-pub-2344986107534073/3174988360"
+                "ca-app-pub-2344986107534073/4802373144"
             }
 
         fun getTheme(context: Context): Int {
@@ -377,6 +377,7 @@ class Misc {
             bannerView.adListener = object : AdListener() {
                 override fun onAdLoaded() {
                     frameLayout.addView(bannerView)
+                    frameLayout.visibility = View.VISIBLE
                 }
 
                 override fun onAdFailedToLoad(adError: LoadAdError) {

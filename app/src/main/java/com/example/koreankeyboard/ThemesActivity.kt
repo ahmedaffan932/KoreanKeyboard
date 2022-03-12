@@ -11,17 +11,22 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.provider.Settings
 import android.util.Base64
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.koreankeyboard.R
 import com.example.koreankeyboard.classes.Misc
 import com.example.koreankeyboard.databinding.KeyboardThemesDialogBinding
 import com.rw.keyboardlistener.KeyboardUtils
+
+
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import java.io.ByteArrayOutputStream
@@ -41,40 +46,38 @@ class ThemesActivity : AppCompatActivity() {
         binding = KeyboardThemesDialogBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Misc.loadBannerAd(this, binding.bannerAdFrameLayout)
         Misc.initTopBar(this, "Themes")
 
-        KeyboardUtils.addKeyboardToggleListener(this){ isVisible ->
+        KeyboardUtils.addKeyboardToggleListener(this) { isVisible ->
             isKeyboardOpen = isVisible
         }
 
         selectedTheme()
 
         binding.themeA.setOnClickListener {
-//            if(isKeyboardOpen) {
-//                val inputMethodManager =
-//                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-//                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-//            }
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    val intent = Intent(Intent.ACTION_GET_CONTENT)
-                    intent.type = "image/*"
-                    val chooser = Intent.createChooser(intent, "Choose a Picture")
-                    startActivityForResult(chooser, actionRequestGallery)
-                } else {
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        requestCode
-                    );
-                }
-            } else {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 val intent = Intent(Intent.ACTION_GET_CONTENT)
                 intent.type = "image/*"
                 val chooser = Intent.createChooser(intent, "Choose a Picture")
                 startActivityForResult(chooser, actionRequestGallery)
+            } else if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                AlertDialog.Builder(this, R.style.AlertDialogTheme)
+                    .setTitle("Storage Permission")
+                    .setMessage("Go to Permissions")
+                    .setPositiveButton(R.string.ok) { _, i ->
+                        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                        val uri = Uri.fromParts("package", packageName, null)
+                        intent.data = uri
+                        startActivityForResult(intent, requestCode)
+                    }
+                    .create()
+                    .show()
+            } else {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    requestCode
+                );
             }
 
         }
@@ -270,11 +273,18 @@ class ThemesActivity : AppCompatActivity() {
                         val h = Handler(l)
                         h.post {
                             val resultUri = result.uri
-                            val bitmap = MediaStore.Images.Media.getBitmap(this@ThemesActivity.contentResolver, resultUri)
+                            val bitmap = MediaStore.Images.Media.getBitmap(
+                                this@ThemesActivity.contentResolver,
+                                resultUri
+                            )
                             binding.themeA.setImageBitmap(bitmap)
 
                             val baos = ByteArrayOutputStream()
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos) //bm is the bitmap object
+                            bitmap.compress(
+                                Bitmap.CompressFormat.PNG,
+                                100,
+                                baos
+                            ) //bm is the bitmap object
 
                             val b: ByteArray = baos.toByteArray()
                             val encoded: String = Base64.encodeToString(b, Base64.DEFAULT)
