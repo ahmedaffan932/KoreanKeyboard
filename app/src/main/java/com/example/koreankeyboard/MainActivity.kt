@@ -28,18 +28,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.clMenu.setOnClickListener { }
 
-        KeyboardUtils.addKeyboardToggleListener(this
-        ) { isVisible ->
-            if (isVisible) {
-                binding.unFocusView.visibility = View.VISIBLE
-            } else {
-                binding.unFocusView.visibility = View.GONE
-            }
-        }
-
+        Misc.loadInterstitial(this)
         Misc.loadBannerAd(this, binding.frameLayoutBannerAd)
-
-        Misc.showInterstitial(this, null)
 
         if (intent.getStringExtra(Misc.logKey) != null) {
             binding.et.requestFocus()
@@ -147,11 +137,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.clSettings.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
+            Misc.showInterstitial(this, object : InterstitialCallBack {
+                @RequiresApi(Build.VERSION_CODES.M)
+                override fun onDismiss() {
+                    startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+                }
+            })
         }
 
         binding.clTheme.setOnClickListener {
-            Misc.showInterstitial(this, object : InterstitialCallBack{
+            Misc.showInterstitial(this, object : InterstitialCallBack {
                 @RequiresApi(Build.VERSION_CODES.M)
                 override fun onDismiss() {
                     startActivity(Intent(this@MainActivity, ThemesActivity::class.java))
@@ -160,11 +155,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnHowToUse.setOnClickListener {
-            Misc.showInterstitial(this, object :InterstitialCallBack{
-                override fun onDismiss() {
-                    startActivity(Intent(this@MainActivity, HowToUseActivity::class.java))
-                }
-            })
+            startActivity(Intent(this@MainActivity, HowToUseActivity::class.java))
+        }
+
+        KeyboardUtils.addKeyboardToggleListener(this) { isVisible ->
+            if (isVisible) {
+                binding.unFocusView.visibility = View.VISIBLE
+            } else {
+                binding.unFocusView.visibility = View.GONE
+            }
         }
     }
 
@@ -185,9 +184,9 @@ class MainActivity : AppCompatActivity() {
         KeyboardUtils.addKeyboardToggleListener(
             this
         ) { isVisible ->
-            if(isVisible){
+            if (isVisible) {
                 binding.unFocusView.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.unFocusView.visibility = View.GONE
             }
         }

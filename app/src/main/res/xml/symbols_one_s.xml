@@ -41,7 +41,7 @@
     </Row>
     <Row android:rowEdgeFlags="bottom">
         <Key android:codes="-15" android:keyEdgeFlags="left" android:keyLabel="@string/label_english"/>
-        <Key android:codes="-17" android:keyIcon="@drawable/ic_theme_key"/>
+        <Key android:codes="-17" android:keyIcon="@drawable/ic_settings_keyboard"/>
 <!--        <Key android:keyWidth="15%p" android:codes="-14" android:keyLabel="@string/label_thai"/>-->
         <Key android:keyWidth="43%p" android:codes="32" android:keyLabel="space"/>
         <Key android:codes="-300" android:keyIcon="@drawable/ic_smiley_key"/>

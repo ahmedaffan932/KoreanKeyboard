@@ -31,7 +31,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
         Misc.downloadTranslationModel(this)
 
-        Misc.loadInterstitial(this)
 
         binding.btnStart.setOnClickListener {
             if(isInputMethodSelected()){

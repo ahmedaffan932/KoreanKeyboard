@@ -58,9 +58,9 @@ class Misc {
             ""
         }
         var interstitialAdId = if (BuildConfig.DEBUG) {
-            ""
+            "ca-app-pub-3940256099942544/1033173712"
         } else {
-            ""
+            "ca-app-pub-2344986107534073/3489291479"
         }
 
 

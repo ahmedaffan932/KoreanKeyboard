@@ -2698,6 +2698,7 @@ int drawable ic_next_arrow 0x7f0700dd
 int drawable ic_privacy 0x7f0700de
 int drawable ic_rate_us 0x7f0700df
 int drawable ic_settings 0x7f0700e0
+int drawable ic_settings_keyboard 0x7f070117
 int drawable ic_share 0x7f0700e1
 int drawable ic_shift 0x7f0700e2
 int drawable ic_shift_lock 0x7f0700e3

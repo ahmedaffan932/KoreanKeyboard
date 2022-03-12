@@ -7,7 +7,7 @@
     android:alpha="1"
     android:paddingTop="4dp"
     android:inputType="text"
-    android:keyTextSize="27sp"
+    android:keyTextSize="24sp"
     android:keyTextColor="#fff"
     android:keyPreviewOffset="0dp"
     android:adjustViewBounds="true"

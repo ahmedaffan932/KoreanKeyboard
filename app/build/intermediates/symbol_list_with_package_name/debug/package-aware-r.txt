@@ -2699,6 +2699,7 @@ drawable ic_next_arrow
 drawable ic_privacy
 drawable ic_rate_us
 drawable ic_settings
+drawable ic_settings_keyboard
 drawable ic_share
 drawable ic_shift
 drawable ic_shift_lock

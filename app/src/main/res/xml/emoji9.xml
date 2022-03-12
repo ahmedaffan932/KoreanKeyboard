@@ -52,7 +52,7 @@
     </Row>
     <Row>
         <Key android:codes="-200" android:keyEdgeFlags="left" android:keyLabel="123"/>
-        <Key android:codes="-17" android:keyIcon="@drawable/ic_theme_key"/>
+        <Key android:codes="-17" android:keyIcon="@drawable/ic_settings_keyboard"/>
         <Key android:keyWidth="12%p" android:codes="-15" android:keyLabel="@string/eng_ime"/>
         <Key android:keyWidth="43%p" android:codes="32" android:keyLabel="space"/>
         <Key android:codes="46" android:keyLabel="."/>

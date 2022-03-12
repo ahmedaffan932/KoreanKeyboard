@@ -55,7 +55,7 @@
 
     <Row>
         <Key android:codes="-200" android:keyEdgeFlags="left" android:keyLabel="123"/>
-        <Key android:codes="-17" android:keyIcon="@drawable/ic_theme_key"/>
+        <Key android:codes="-17" android:keyIcon="@drawable/ic_settings_keyboard"/>
         <Key android:keyWidth="15%p" android:codes="-14" android:keyLabel="KO"/>
         <Key android:keyWidth="28%p" android:codes="32"  android:keyLabel="space"/>
         <Key android:codes="-300" android:keyIcon="@drawable/ic_smiley_key"/>

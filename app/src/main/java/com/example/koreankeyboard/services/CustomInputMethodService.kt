@@ -495,7 +495,7 @@ class CustomInputMethodService : InputMethodService(), OnKeyboardActionListener 
                                 isCaps = false
                             }
                             -17 -> {
-                                val intent = Intent(this@CustomInputMethodService, ThemesActivity::class.java)
+                                val intent = Intent(this@CustomInputMethodService, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                             }

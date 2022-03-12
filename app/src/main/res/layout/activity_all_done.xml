@@ -81,7 +81,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Let's Go"
+            android:text="Settings"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
